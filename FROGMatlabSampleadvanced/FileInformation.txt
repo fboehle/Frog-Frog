@@ -1,0 +1,106 @@
+INTRO
+
+These are programs related to Frequency-Resolved Optical Gating. They incorporate parts of Adam Wyatt's FROG programs on the MATLAB file exchange.  --Steve Byrnes, 2012
+
+---
+
+PROGRAMS OVERVIEW
+
+These programs are for optical pulse reconstruction with SHG-FROG (second-harmonic generation frequency-resolved optical gating). It does NOT right now work with PG-FROG, etc., although it could be modified to do so.
+
+guesspulse:
+Pt = guesspulse(EF, lastPt, domain, antialias, PowerOrSVD);
+This program guesses the (complex) pulse Pt(t) from the 2D complex FROG field EF and the previous pulse guess lastPt.
+"domain", "antialias", and "PowerOrSVD" are optional arguments about what algorithm to use.
+
+makeFROG:
+[F, EF] = makeFROG(Pt,domain,antialias);
+This program reads in the (complex) pulse Pt(t) and computes the expected SHG-FROG trace.
+"domain" and "antialias" are optional arguments about what algorithm to use.
+
+svdFROG:
+[Pt, Fr, G, iter] = svdFROG(Fm, seed, GTol, iterMAX, method, mov, dtperpx, units);
+This program runs the FROG algorithm, starting with the (real) 2D FROG trace Fm and iterating to get the original (complex) pulse Pt(t). (As is well known, it sometimes might return a time-reversed pulse instead.)
+
+prepFROG:
+function [fnlimg fnldt] = prepFROG(ccddt,ccddv,N,StartImgOrPrompt,showprogress, showautocor, flip);
+This program cleans, smooths, and downsamples data in preparation for running the FROG algorithm on it.
+
+mirror:
+I2 = mirror();
+This program prompts for a picture, then mirrors the bottom half to the top half or vice-versa. I2 is the final result. In SHG-FROG, the image is theoretically symmetric, but in practice sometimes one half is partly cropped off, or noisy, or corrupted in some other way. Therefore you may want to make one half the exact mirror image of the other half. With a good FROG trace, both halves contain good data and you should NOT do this!
+
+DebugTests:
+Not meant to be run directly. Inside this program are a few tests that I ran to check guesspulse and makeFROG for bugs.
+
+---
+
+ALGORITHM OVERVIEW
+
+Based on Kane1998 and Kane1999 algorithms (bibliography is below). When my complex traces stubbornly refused to converge, I modified the algorithm in a few ways discussed below. With default settings, it runs the Kane1999 algorithm unmodified.
+
+---
+
+NOTE ON DEFAULTS
+
+Many programs have arguments with defaults. To use a default, either omit the argument (if it's at the end), or use [].
+For example if a function is f(x,y,z), and you want the default y and the default z, then run either f(x) or f(x,[],[]). If you want just the default y, then run f(x,[],z).
+
+---
+
+FROG trace convention:
+
+Top row is lowest frequency, bottom row is highest. Left column is most negative delay, right column is most positive. (But actually the sign of delay doesn't matter in SHG-FROG.)
+
+For odd N, the zero-frequency-zero-delay point is the center row, center column. For even N, it's the left of the two central columns, and the higher of the two central rows, i.e. EF(N/2,N/2). General formula: zero-frequency-zero-delay is at EF(ceil(N/2),ceil(N/2)).
+
+---
+
+TIME-DOMAIN VS FREQUENCY-DOMAIN IN ALGORITHMS
+
+There are two ways to think about the FROG trace formula:
+
+Time domain:
+--> EF(tau, w) = integral[P(t) * P(t-tau) * e^(-iwt) dt]
+
+Frequency domain:
+--> EF(tau, w) = integral[P(w') * P(w-w')e^(-iw'tau) dw']
+
+These are mathematically equivalent. Either one can be used for going from a pulse to a FROG trace or vice-versa. In Kane1999, only the time-domain is used. In my own experience, I found that sometimes switching back and forth between time and frequency domain gave convergence more reliably than purely using the time domain.
+
+---
+
+ANTI-ALIASING IN ALGORITHMS
+
+The Kane1999 algorithm has aliasing, i.e. the pulse "wraps around" connecting the beginning and end (not surprising, as the algorithm involves performing lots of FFTs, and FFTs always "wrap around"). You are supposed to use enough data that the field is very close to zero for the first 25% and last 25% of datapoints in the time-domain. (Ditto in the frequency domain.) However, for my complex FROG traces, this would have required a huge number of datapoints -- like 2048 x 2048 pixel traces! -- which would slow down the algorithm unacceptably.
+
+Therefore I programmed "anti-aliasing". There is anti-aliasing in the time-domain and in the frequency-domain. The former is functionally very similar to padding everything with zeros in the time-domain, the latter in the frequency domain. (They are implemented differently though.)
+
+* Time-domain anti-aliasing details:
+See Kane1999 Eq. (10). This is the "outer product form" of a FROG trace. (For SHG-FROG, E=G=the complex pulse amplitude as a function of time.) Let's look, for example, at the top-right entry of the "outer product form" matrix. It is E_1*G_N, the product of the first datapoint in the pulse with the last datapoint. If the pulse length is T, this product would contribute to the FROG signal when the FROG delay is tau=T. But hold on, in the actual FROG trace, the largest delay that was measured was tau=T/2. The product E_1*G_N should not be there because it was not measured. It is only there as an aliasing mistake. Therefore, this entry is set to zero. By the same token, about 25% of the entries in the matrix correspond to not-measured-delays, and these are all set to zero.
+
+The outer product form is an intermediate step going from a pulse to a trace, and also going the other direction. So anti-aliasing can be performed during either or both of these processes.
+
+* Frequency-domain anti-aliasing details:
+This is the same idea but using the "frequency-domain outer product form", the outer product of the FFT of the pulse with itself. (See above for what "frequency domain" means in this context.) If you think about sum-frequency generation, the part of the pulse with frequency w1 and the part of the pulse with frequency w2 interact in the second-harmonic crystal to produce some light with frequency w1+w2. For about 25% of the entries in the "frequency-domain outer product form" matrix, the sum-frequency corresponding to the entry is a frequency that is out-of-range of the frequencies that were actually measured in the FROG trace. These entries should not be there, they are an aliasing error. So they are set to zero.
+
+* More implementation details are in the makeFROG program.
+
+---
+
+BIBLIOGRAPHY:
+
+DeLong1996
+http://dx.doi.org/10.1109/3.517026
+http://frog.gatech.edu/Publications/JQE96-7-1.pdf
+K.W. DeLong, D.N. Fittinghoff, R. Trebino, "Practical issues in ultrashort-laser-pulse measurement using frequency-resolved optical gating", IEEE Journal of Quantum Electronics, 1996, Vol. 32, p1253
+
+Kane1998
+http://dx.doi.org/10.1109/2944.686733
+http://www.swsciences.com/research/papers/Kane_1998_IEEE_Real_time_measurements.pdf
+D. Kane, "Real-time measurement of ultrashort laser pulses using principal component generalized projections", IEEE Journal of Selected Topics in Quantum Electronics, 1998, 4, 278.
+
+Kane1999
+http://dx.doi.org/10.1109/3.753647
+http://www.swsciences.com/research/papers/Kane_1999_IEEE_Recent_Progress.pdf
+D. Kane, "Recent progress toward real-time measurement of ultrashort laser pulses", IEEE Journal of Quantum Electronics, Vol. 35, p421, 1999.

@@ -1,0 +1,133 @@
+%Easiest method to use this: Copy all the lines of one of the tests, and paste it into the console.
+
+%% MAKEFROG TEST %%%
+
+%[F, EF] = makeFROG(Pt,domain,antialias)
+%
+%TEST: This should return all zeros (to within numerical accuracy). In the
+%first line, N can be any value. Should test both odd and even.
+%
+%DETAILS: Without anti-aliasing, all time and frequency domain methods
+%should agree with each other. With anti-aliasing, methods 0 and 2 should
+%agree, and 1 and 3 should agree. Methods 2 and 3 are very explicit, so
+%unlikely to be buggy.
+
+N=15;
+a=complex(rand(N,1),rand(N,1));
+[i00 e00]=makeFROG(a,0,0);
+[i01 e01]=makeFROG(a,0,1);
+[i10 e10]=makeFROG(a,1,0);
+[i11 e11]=makeFROG(a,1,1);
+[i20 e20]=makeFROG(a,2,0);
+[i21 e21]=makeFROG(a,2,1);
+[i30 e30]=makeFROG(a,3,0);
+[i31 e31]=makeFROG(a,3,1);
+max(max(abs(e00-e10)))
+max(max(abs(e00-e20)))
+max(max(abs(e00-e30)))
+max(max(abs(e01-e21)))
+max(max(abs(e11-e31)))
+max(max(abs(i00-i10)))
+max(max(abs(i00-i20)))
+max(max(abs(i00-i30)))
+max(max(abs(i01-i21)))
+max(max(abs(i11-i31)))
+
+%%  TEST GUESSPULSE WITH MAKEFROG, WITHOUT ANTI-ALIAS %%%
+
+%[F, EF] = makeFROG(Pt,domain,antialias)
+%Pt = guesspulse(EF,lastPt,domain,antialias,PowerOrSVD)
+
+%TEST: This should return all zeros (to within numerical accuracy). In the
+%first line, N can be any value. Should test both odd and even.
+%
+%DETAILS: If initial guess is already exact, the power-method refinement
+%should not change it, and SVD should exactly reproduce it (apart from an
+%arbitrary complex phase).
+
+N=15;
+a=complex(rand(N,1),rand(N,1));
+a=a/norm(a);
+[i00 e00]=makeFROG(a,0,0);
+[i10 e10]=makeFROG(a,1,0);
+b0000=guesspulse(e00,a,0,0);
+b0010=guesspulse(e00,a,1,0);
+b1000=guesspulse(e10,a,0,0);
+b1010=guesspulse(e10,a,1,0);
+b00001=guesspulse(e00,[],0,0,1);
+b00101=guesspulse(e00,[],1,0,1);
+b10001=guesspulse(e10,[],0,0,1);
+b10101=guesspulse(e10,[],1,0,1);
+clear('i');
+b00001 = b00001 * exp(i*(angle(a(1))-angle(b00001(1))));
+b00101 = b00101 * exp(i*(angle(a(1))-angle(b00101(1))));
+b10001 = b10001 * exp(i*(angle(a(1))-angle(b10001(1))));
+b10101 = b10101 * exp(i*(angle(a(1))-angle(b10101(1))));
+max(max(abs(b0000-a)))
+max(max(abs(b0010-a)))
+max(max(abs(b1000-a)))
+max(max(abs(b1010-a)))
+max(max(abs(b00001-a)))
+max(max(abs(b00101-a)))
+max(max(abs(b10001-a)))
+max(max(abs(b10101-a)))
+
+%%  TEST GUESSPULSE WITH MAKEFROG, WITH ANTI-ALIAS %%%
+
+%[F, EF] = makeFROG(Pt,domain,antialias)
+%Pt = guesspulse(EF,lastPt,domain,antialias,PowerOrSVD)
+
+%TEST: This should return all zeros (to within numerical accuracy). Four
+%plots should appear, and the two lines should be close to each other but
+%it's OK if you can see a small separation. In the first line, N can be any
+%value. Should test both odd and even.
+%
+%DETAILS: The anti-alias routine in makeFROG should delete the same
+%matrix-entries as the one in guesspulse, so doing both should just be
+%redundant and not change anything. Another thing: After anti-aliasing, the matrix
+%is not a perfect outer product, so SVD method result can be a bit
+%different from power method result. They should not be TOO different.
+%(Again, SVD result has arbitrary complex phase.)
+
+N=15;
+a=complex(rand(N,1),rand(N,1));
+a=a/norm(a);
+[i00 e00]=makeFROG(a,0,0);
+[i10 e10]=makeFROG(a,1,0);
+[i01 e01]=makeFROG(a,0,1);
+[i11 e11]=makeFROG(a,1,1);
+b0100=guesspulse(e01,a,0,0);
+b0001=guesspulse(e00,a,0,1);
+b0101=guesspulse(e01,a,0,1);
+b01001=guesspulse(e01,[],0,0,1);
+b00011=guesspulse(e00,[],0,1,1);
+b01011=guesspulse(e01,[],0,1,1);
+clear('i')
+b01001 = b01001 * exp(i*(angle(b0100(1))-angle(b01001(1))));
+b00011 = b00011 * exp(i*(angle(b0100(1))-angle(b00011(1))));
+b01011 = b01011 * exp(i*(angle(b0100(1))-angle(b01011(1))));
+max(max(abs(b0100-b0001)))
+max(max(abs(b0100-b0101)))
+max(max(abs(b01001-b00011)))
+max(max(abs(b01001-b01011)))
+figure
+plot(1:N,abs(b0100),1:N,abs(b01001))
+figure
+plot(1:N,angle(b0100),1:N,angle(b01001))
+b1110=guesspulse(e11,a,1,0);
+b1011=guesspulse(e10,a,1,1);
+b1111=guesspulse(e11,a,1,1);
+b11101=guesspulse(e11,[],1,0,1);
+b10111=guesspulse(e10,[],1,1,1);
+b11111=guesspulse(e11,[],1,1,1);
+b11101 = b11101 * exp(i*(angle(b1110(1))-angle(b11101(1))));
+b10111 = b10111 * exp(i*(angle(b1110(1))-angle(b10111(1))));
+b11111 = b11111 * exp(i*(angle(b1110(1))-angle(b11111(1))));
+max(max(abs(b1110-b1011)))
+max(max(abs(b1110-b1111)))
+max(max(abs(b11101-b10111)))
+max(max(abs(b11101-b11111)))
+figure
+plot(1:N,abs(b1110),1:N,abs(b11101))
+figure
+plot(1:N,angle(b1110),1:N,angle(b11101))

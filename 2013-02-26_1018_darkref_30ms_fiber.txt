@@ -1,0 +1,16 @@
+Integration = 30.000 msec
+Gain = ---------
+Averaging = 1 scan
+TriggerMode =INT_TRIGGER
+TriggerEdge = -----------
+WavelengthRange_Upper = 1000 nm
+WavelengthRange_Lower = 320 nm
+productID = J4079102
+SensorName = S10420-1106
+MeasDate = 2013/2/26
+a0 = 2.083230E+002
+a1 = 3.754784E-001
+a2 = 3.513355E-005
+a3 = -9.499505E-009
+a4 = 3.672274E-012
+a5 = -8.242120E-016
