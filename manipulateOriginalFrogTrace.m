@@ -9,7 +9,7 @@ clear all
 constants; %load physical, mathematical and numerical constants
 setup; %initilized values
 
-showAdvancedFigures = 0;
+showAdvancedFigures = 1;
 
 
 %read frogtrace
@@ -119,6 +119,11 @@ NyquistFrequency = N / frequencyRange / 2;
 [fftFrog_DelayMesh,fftFrog_FrequencyMesh] = meshgrid(fftFrog_Delay,fftFrog_Frequency); 
 filterMatrix = ( (fftFrog_DelayMesh/NyquistDelay).^2 + (fftFrog_FrequencyMesh/NyquistFrequency).^2 <= 1/noiseReduction^2);
 
+%use a nth-order butterworth filter, with the Nyquist as cutoff
+butterworthOrder = 1;
+filterMatrixNormalizedRadius = ( (fftFrog_DelayMesh/NyquistDelay).^2 + (fftFrog_FrequencyMesh/NyquistFrequency).^2) ;
+filterMatrix = sqrt(1./ (1 + filterMatrixNormalizedRadius.^(2 * butterworthOrder)));
+
 % do actual filitering
 fftFrog = fftshift(fft2(frogRaw));
 frogFiltered = real(ifft2(ifftshift(fftFrog .* filterMatrix)));
@@ -150,6 +155,8 @@ if(showAdvancedFigures);
     colormap(mycolormap);
 
 end;
+
+break;
 
 %% place frog trace in the middle with respect to delay
 toMoveTime = sum((-(1035/2):(1035/2)-1) .* sum(frogFiltered).^2)/sum(sum(frogFiltered).^2); %weighted average to find center of peak
