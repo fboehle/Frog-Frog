@@ -111,18 +111,19 @@ frogRaw = imrotate(frogRaw, 1, 'bilinear','crop');
 %% anti aliasing and noise reduction if noiseReduction > 1
 
 % create filter matrix
-noiseReduction = 1;
+noiseReduction = 20;
 fftFrog_Delay = 1 / ccd_delayRange * (-dimensionT/2:dimensionT/2-1);
 fftFrog_Frequency = 1 / ccd_frequencyRange * (-dimensionL/2:dimensionL/2-1);%this is only an approximation as the frog trace is still in the wavelength domain
 NyquistDelay = N / delayRange / 2;
 NyquistFrequency = N / frequencyRange / 2; 
 [fftFrog_DelayMesh,fftFrog_FrequencyMesh] = meshgrid(fftFrog_Delay,fftFrog_Frequency); 
-filterMatrix = ( (fftFrog_DelayMesh/NyquistDelay).^2 + (fftFrog_FrequencyMesh/NyquistFrequency).^2 <= 1/noiseReduction^2);
+%simple low pass filter with sharp cuttof
+%filterMatrix = ( (fftFrog_DelayMesh/NyquistDelay).^2 + (fftFrog_FrequencyMesh/NyquistFrequency).^2 <= 1/noiseReduction^2);
 
 %use a nth-order butterworth filter, with the Nyquist as cutoff
-butterworthOrder = 1;
-filterMatrixNormalizedRadius = ( (fftFrog_DelayMesh/NyquistDelay).^2 + (fftFrog_FrequencyMesh/NyquistFrequency).^2) ;
-filterMatrix = sqrt(1./ (1 + filterMatrixNormalizedRadius.^(2 * butterworthOrder)));
+butterworthOrder = 1; %too low is not good, as it would 
+filterMatrixNormalizedRadius =  noiseReduction * sqrt(( (fftFrog_DelayMesh/NyquistDelay).^2 + (fftFrog_FrequencyMesh/NyquistFrequency).^2)) ;
+filterMatrix = sqrt(1./ (1 + (filterMatrixNormalizedRadius).^(2 * butterworthOrder)));
 
 % do actual filitering
 fftFrog = fftshift(fft2(frogRaw));
@@ -143,7 +144,7 @@ if(showAdvancedFigures);
 
     myfigure('filter difference');
     diff = frogRaw - abs(frogFiltered);
-    H = fspecial('average', [1 1]);
+    H = fspecial('average', [10 10]);
     filt_image = imfilter(diff,H);
     imagesc(filt_image, [-1 1 ]);
 end;
