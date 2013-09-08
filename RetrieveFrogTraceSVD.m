@@ -4,7 +4,7 @@ constants; %load physical, mathematical and numerical constants
 setup; %initilized values
 indexForCircshift;
 
-iterations = 500;
+iterations = 100;
 mov = 0;
 
 numberOfRuns = 1;

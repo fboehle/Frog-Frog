@@ -63,7 +63,7 @@ pixelt = 1:dimensionT;
 lambdalines = [302,313,365,405,436] * n;
 lambdapixel = [256,361,693,945,1143];
 %lambdapixel = [245,352,680,934,1130];
-fitLambda = polyfit(lambdapixel,lambdalines,1); %the spectrometer has alinear relation between the pixel and the wavelength
+fitLambda = polyfit(lambdapixel,lambdalines,1); %the spectrometer has a linear relation between the pixel and the wavelength
 fitLambdaVal = polyval(fitLambda, pixell);
 
 ccd_frequency  = c ./ polyval(fitLambda, pixell);
@@ -104,8 +104,8 @@ background = background / (histogram(maxIndex) + histogram(maxIndex + 1) + histo
 frogRaw = frogRaw - background;
 end
 
-%% rotate it a bit, this is not nessesarily a good idea, but do it after the background substraction!!!
-frogRaw = imrotate(frogRaw, 1, 'bilinear','crop');
+%% rotate it a bit, this is not nessesarily a good idea, but do it in any case after the background substraction!!!
+frogRaw = imrotate(frogRaw, 0.5, 'bilinear','crop');
 
 
 %% anti aliasing and noise reduction if noiseReduction > 1
@@ -157,8 +157,6 @@ if(showAdvancedFigures);
 
 end;
 
-break;
-
 %% place frog trace in the middle with respect to delay
 toMoveTime = sum((-(1035/2):(1035/2)-1) .* sum(frogFiltered).^2)/sum(sum(frogFiltered).^2); %weighted average to find center of peak
 toMoveTime(isnan(toMoveTime)) = 0;
@@ -208,8 +206,43 @@ imagesc(frogRaw);
 colormap(mycolormap);
 
 myfigure('finalFrog')
-imagesc(finalFrog);
+imagesc(tau, frequency + ( c / (350 * n)), finalFrog);
 colormap(mycolormap);
+
+%% calculate center of mass of each row or column of final frog trace
+%(centerofmass of the delay)
+myfigure('centerofmass')
+subplot(1,2,1)
+imagesc(tau, frequency + ( c / (350 * n)), finalFrog);
+colormap(mycolormap);
+CoMdelay = sum(finalFrog .* (ones(length(frequency),1) * tau), 2)./sum(finalFrog, 2);
+hold all;
+scatter(CoMdelay, frequency + ( c / (350 * n)), 'black', 'filled' )
+hold off;
+
+%THIS IS THE IMPORTANT ONE: centerofmass of the frequency
+subplot(1,2,2)
+imagesc(tau, frequency + ( c / (350 * n)), finalFrog);
+colormap(mycolormap);
+CoMfrequency = sum(finalFrog .* (frequency' * ones(1,length(frequency))), 1) ./ sum(finalFrog, 1);
+hold all;
+scatter(tau, CoMfrequency + ( c / (350 * n)), 'black', 'filled' )
+hold off;
+
+%some testing on it
+a = 0.5;
+T = maketform('affine', [1 0 0; a 1 0; 0 0 1] );
+R = makeresampler({'cubic','cubic'},'fill');
+finalFrog = imtransform(finalFrog,T,R, 'Size', [256 256]);
+myfigure('sheared')
+imagesc(tau, frequency + ( c / (350 * n)), finalFrog);
+colormap(mycolormap);
+CoMdelay = sum(finalFrog .* (ones(length(frequency),1) * tau), 2)./sum(finalFrog, 2);
+hold all;
+scatter(CoMdelay, frequency + ( c / (350 * n)), 'black', 'filled' )
+hold off;
+
+
 
 saveimagedata = uint16(finalFrog/max(max(finalFrog))*65000);
 imwrite(saveimagedata, 'generated.tif', 'tif')
