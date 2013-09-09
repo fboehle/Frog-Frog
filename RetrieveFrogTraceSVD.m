@@ -180,6 +180,13 @@ fprintf('Second Order Dispersion: %.3g fs^2\n', spectralPhaseFit(fitOrder-1)/f^2
 fprintf('Thirt Order Dispersion: %.3g fs^3\n', spectralPhaseFit(fitOrder-2)/f^3*6/((2*pi)^3));
 fprintf('Fourth Order Dispersion: %.3g fs^4\n', spectralPhaseFit(fitOrder-3)/f^4*24/((2*pi)^4));
 
+%% display always a positive second order chirp
+if(spectralPhaseFit(fitOrder-1) < 0)
+    angleV = - angleV;
+    spectralPhaseFit = -spectralPhaseFit;
+end
+
+
 %% plot the data
    
 myfigure('Frog Retrieval');

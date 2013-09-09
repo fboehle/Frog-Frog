@@ -16,6 +16,9 @@ showAdvancedFigures = 1;
 %frogRaw = imread('2013-05-29--16-37-49 wedges optimized, 2bar He.frogtrace.tif')';
 %frogRaw = double(frogRaw);
 load('lastDir.mat');
+if(frogRawDIRname == 0) 
+    frogRawDIRname = pwd;
+end
 [frogRawFilename, frogRawDIRname] = uigetfile('*.frogtrace', 'Select the raw FROG trace', frogRawDIRname);
 save('lastDir.mat', 'frogRawDIRname');
 frogRawFullFilename = fullfile(frogRawDIRname, frogRawFilename);
@@ -64,11 +67,11 @@ pixelt = 1:dimensionT;
 
 load('Calibrations/20130906.mat');
 
-lambdalines = [302,313,365,405,436] * n;
-lambdapixel = [256,361,693,945,1143];
-delayfromposition = ([15.4, -4.15, 6.25, 13.38, 27.2, 32.3, 7.8]) * u * 2 / c; 
-delaypixel = [551,862,692,535,368,286,666];
-save('Calibrations/20130906.mat', 'lambdalines', 'lambdapixel', 'delayfromposition', 'delaypixel');
+% lambdalines = [302,313,365,405,436] * n;
+% lambdapixel = [256,361,693,945,1143];
+% delayfromposition = ([ -4.15, 6.25, 7.8, 13.38, 15.4, 27.2, 32.3]) * u * 2 / c; 
+% delaypixel = [862,692,666,535,551,368,286];
+% save('Calibrations/20130906.mat', 'lambdalines', 'lambdapixel', 'delayfromposition', 'delaypixel');
 
 fitLambda = polyfit(lambdapixel,lambdalines,1); %the spectrometer has a linear relation between the pixel and the wavelength
 fitLambdaVal = polyval(fitLambda, pixell);
@@ -124,6 +127,7 @@ fftFrog_Frequency = 1 / ccd_frequencyRange * (-dimensionL/2:dimensionL/2-1);%thi
 NyquistDelay = N / delayRange / 2;
 NyquistFrequency = N / frequencyRange / 2; 
 [fftFrog_DelayMesh,fftFrog_FrequencyMesh] = meshgrid(fftFrog_Delay,fftFrog_Frequency); 
+
 %simple low pass filter with sharp cuttof
 %filterMatrix = ( (fftFrog_DelayMesh/NyquistDelay).^2 + (fftFrog_FrequencyMesh/NyquistFrequency).^2 <= 1/noiseReduction^2);
 
@@ -154,14 +158,6 @@ if(showAdvancedFigures);
     H = fspecial('average', [10 10]);
     filt_image = imfilter(diff,H);
     imagesc(filt_image, [-1 1 ]);
-end;
-
-if(showAdvancedFigures);
-    
-    myfigure('frogFiltered before moving');
-    imagesc(frogFiltered);
-    colormap(mycolormap);
-
 end;
 
 %% place frog trace in the middle with respect to delay
@@ -241,7 +237,7 @@ scatter(tau, CoMfrequency + frequencyOffset, 'black', 'filled' )
 hold off;
 %%
 %some testing on it
-a = 0.2;
+a = -0.0;
 T = maketform('affine', [1 0 0; a 1 0; 0 0 1] );
 R = makeresampler({'cubic','cubic'},'fill');
 shearedFrog = imtransform(finalFrog,T,R);
