@@ -13,7 +13,7 @@ eachEfield = zeros(numberOfRuns, N);
 for numberOfRun = 1:numberOfRuns
 
 %% read the Frog trace
-IFrog = double(imread('generated.tif')) ;
+IFrog = double(imread('generatedsheared.tif')) ;
 %IFrog = IFrog + 0*random('Poisson',5,N,N) ;
 IFrog = IFrog / max(max(IFrog));
 sqrtIFrog = sqrt(IFrog);
@@ -174,7 +174,7 @@ temporalPhaseFit = polyfit(t(borderLower:borderHigher), angleEfield(borderLower:
 fprintf('Second Order Temporal Chirp: %.3g fs^(-2)\n', temporalPhaseFit(fitOrder-1)*f^2);
 
 
-[borderLower, borderHigher] = findBorderIndex(abs(V).^2, 5);
+[borderLower, borderHigher] = findBorderIndex(abs(V).^2, 20);
 spectralPhaseFit = polyfit(frequency(borderLower:borderHigher), angleV(borderLower:borderHigher), fitOrder);
 fprintf('Second Order Dispersion: %.3g fs^2\n', spectralPhaseFit(fitOrder-1)/f^2*2/((2*pi)^2));
 fprintf('Thirt Order Dispersion: %.3g fs^3\n', spectralPhaseFit(fitOrder-2)/f^3*6/((2*pi)^3));

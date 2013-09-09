@@ -2,7 +2,7 @@
 N = 256;
 NRange = (-(N)/2:(N)/2-1);
 N0 = N/2 + 1;
-delayRange = 250*f;
+delayRange = 500*f;
 dt = delayRange/N;
 t = NRange*dt;
 dtau = delayRange/N;

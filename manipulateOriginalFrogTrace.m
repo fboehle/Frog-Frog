@@ -15,7 +15,9 @@ showAdvancedFigures = 1;
 %read frogtrace
 %frogRaw = imread('2013-05-29--16-37-49 wedges optimized, 2bar He.frogtrace.tif')';
 %frogRaw = double(frogRaw);
-[frogRawFilename, frogRawDIRname] = uigetfile('*.frogtrace', 'Select the raw FROG trace');
+load('lastDir.mat');
+[frogRawFilename, frogRawDIRname] = uigetfile('*.frogtrace', 'Select the raw FROG trace', frogRawDIRname);
+save('lastDir.mat', 'frogRawDIRname');
 frogRawFullFilename = fullfile(frogRawDIRname, frogRawFilename);
 frogRawFileID = fopen(frogRawFullFilename, 'r');
 if frogRawFileID == -1
@@ -60,19 +62,24 @@ dimensionT = 1035;
 pixell = 1:dimensionL;
 pixelt = 1:dimensionT;
 
+load('Calibrations/20130906.mat');
+
 lambdalines = [302,313,365,405,436] * n;
 lambdapixel = [256,361,693,945,1143];
-%lambdapixel = [245,352,680,934,1130];
+delayfromposition = ([15.4, -4.15, 6.25, 13.38, 27.2, 32.3, 7.8]) * u * 2 / c; 
+delaypixel = [551,862,692,535,368,286,666];
+save('Calibrations/20130906.mat', 'lambdalines', 'lambdapixel', 'delayfromposition', 'delaypixel');
+
 fitLambda = polyfit(lambdapixel,lambdalines,1); %the spectrometer has a linear relation between the pixel and the wavelength
 fitLambdaVal = polyval(fitLambda, pixell);
 
 ccd_frequency  = c ./ polyval(fitLambda, pixell);
 ccd_frequencyRange = ccd_frequency(length(ccd_frequency)) - ccd_frequency(1);
 
-delayfromposition = (-[37.1,59.2,57.1,51.6,48.1,43.0,40.1,37.5,47.6]) * u * 2 / c; 
-delaypixel = [713,224,269,394,470,581,646,703,483];
+
 delayFit = polyfit(delaypixel, delayfromposition, 1);
 delayFitVal = polyval(delayFit, pixelt);
+
 
 ccd_dt = delayFit(1);
 ccd_delay = (-(length(pixelt)/2)*ccd_dt:ccd_dt:(length(pixelt)/2 - 1) * ccd_dt);
@@ -194,7 +201,11 @@ frogOverTauAndF = frogFiltered .* frogConversionFactor;
 
 %% create the final frogtrace
 [ccdDelayMesh, ccdFrequencyMesh] = meshgrid(ccd_delay, ccd_frequency);
-finalFrog = interp2(ccdDelayMesh, ccdFrequencyMesh, frogOverTauAndF, tau, frequency.' + ( c / (350 * n)));
+%center in frequency
+%frequencyOffset = ( c / (375 * n));
+frequencyOffset = sum(ccd_frequency' .* sum(frogOverTauAndF,2))/sum(sum(frogOverTauAndF,2)); %weighted average to find center of peak
+frequencyOffset(isnan(frequencyOffset)) = 0;
+finalFrog = interp2(ccdDelayMesh, ccdFrequencyMesh, frogOverTauAndF, tau, frequency.' + frequencyOffset);
 finalFrog(isnan(finalFrog)) = 0;
 
 
@@ -206,42 +217,47 @@ imagesc(frogRaw);
 colormap(mycolormap);
 
 myfigure('finalFrog')
-imagesc(tau, frequency + ( c / (350 * n)), finalFrog);
+imagesc(tau, frequency + frequencyOffset, finalFrog);
 colormap(mycolormap);
 
 %% calculate center of mass of each row or column of final frog trace
 %(centerofmass of the delay)
 myfigure('centerofmass')
 subplot(1,2,1)
-imagesc(tau, frequency + ( c / (350 * n)), finalFrog);
+imagesc(tau, frequency + frequencyOffset, finalFrog);
 colormap(mycolormap);
 CoMdelay = sum(finalFrog .* (ones(length(frequency),1) * tau), 2)./sum(finalFrog, 2);
 hold all;
-scatter(CoMdelay, frequency + ( c / (350 * n)), 'black', 'filled' )
+scatter(CoMdelay, frequency + frequencyOffset, 'black', 'filled' )
 hold off;
 
 %THIS IS THE IMPORTANT ONE: centerofmass of the frequency
 subplot(1,2,2)
-imagesc(tau, frequency + ( c / (350 * n)), finalFrog);
+imagesc(tau, frequency + frequencyOffset, finalFrog);
 colormap(mycolormap);
 CoMfrequency = sum(finalFrog .* (frequency' * ones(1,length(frequency))), 1) ./ sum(finalFrog, 1);
 hold all;
-scatter(tau, CoMfrequency + ( c / (350 * n)), 'black', 'filled' )
+scatter(tau, CoMfrequency + frequencyOffset, 'black', 'filled' )
 hold off;
-
+%%
 %some testing on it
-a = 0.5;
+a = 0.2;
 T = maketform('affine', [1 0 0; a 1 0; 0 0 1] );
 R = makeresampler({'cubic','cubic'},'fill');
-finalFrog = imtransform(finalFrog,T,R, 'Size', [256 256]);
+shearedFrog = imtransform(finalFrog,T,R);
+shearedFrog = shearedFrog((1:256) + (size(shearedFrog,1)/2 - 128), (1:256) + floor(size(shearedFrog,2)/2 - 128));
+toMoveTime = sum((-(256/2):(256/2)-1) .* sum(shearedFrog).^2)/sum(sum(shearedFrog).^2); %weighted average to find center of peak
+toMoveTime(isnan(toMoveTime)) = 0;
+shearedFrog = circshift(shearedFrog,[0 -round(toMoveTime)]);
 myfigure('sheared')
-imagesc(tau, frequency + ( c / (350 * n)), finalFrog);
+imagesc(tau, frequency + frequencyOffset, shearedFrog);
 colormap(mycolormap);
-CoMdelay = sum(finalFrog .* (ones(length(frequency),1) * tau), 2)./sum(finalFrog, 2);
+CoMdelay = sum(shearedFrog .* (ones(length(frequency),1) * tau), 2)./sum(shearedFrog, 2);
 hold all;
-scatter(CoMdelay, frequency + ( c / (350 * n)), 'black', 'filled' )
+scatter(CoMdelay, frequency + frequencyOffset, 'black', 'filled' )
 hold off;
-
+saveimagedata = uint16(shearedFrog/max(max(shearedFrog))*65000);
+imwrite(saveimagedata, 'generatedsheared.tif', 'tif')
 
 
 saveimagedata = uint16(finalFrog/max(max(finalFrog))*65000);
