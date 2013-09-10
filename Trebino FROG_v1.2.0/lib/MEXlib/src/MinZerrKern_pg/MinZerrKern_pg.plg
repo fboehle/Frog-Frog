@@ -1,0 +1,495 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Util - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+<h3>
+--------------------Configuration: CalcEsig - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B1.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/CalcEsig.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\ClacEsig\CalcEsig.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B1.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B2.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/CalcEsig.pdb" /machine:I386 /out:"Release/CalcEsig.dll" /implib:"Release/CalcEsig.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\CalcEsig.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B2.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B3.bat" with contents
+[
+@echo off
+copy .\Release\CalcEsig.dll ..\..\bin\CalcEsig.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B3.bat"
+Compiling resources...
+Compiling...
+CalcEsig.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : warning C4275: non dll-interface class 'std::_Complex_base<float>' used as base for dll-interface class 'std::complex<float>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : see declaration of 'complex<float>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : warning C4275: non dll-interface class 'std::_Complex_base<double>' used as base for dll-interface class 'std::complex<double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : see declaration of 'complex<double>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : warning C4275: non dll-interface class 'std::_Complex_base<long double>' used as base for dll-interface class 'std::complex<long double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : see declaration of 'complex<long double>'
+Linking...
+   Creating library Release/CalcEsig.lib and object Release/CalcEsig.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\CalcEsig.dll
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+CalcEsig.dll - 0 error(s), 3 warning(s)
+<h3>
+--------------------Configuration: dZdE_shg - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B7.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/dZdE_shg.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\dZdE_shg\dZdE_shg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B7.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B8.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/dZdE_shg.pdb" /machine:I386 /out:"Release/dZdE_shg.dll" /implib:"Release/dZdE_shg.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\dZdE_shg.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B8.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B9.bat" with contents
+[
+@echo off
+copy .\Release\dZdE_shg.dll ..\..\bin\dZdE_shg.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2B9.bat"
+Compiling resources...
+Compiling...
+dZdE_shg.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : warning C4275: non dll-interface class 'std::_Complex_base<float>' used as base for dll-interface class 'std::complex<float>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : see declaration of 'complex<float>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : warning C4275: non dll-interface class 'std::_Complex_base<double>' used as base for dll-interface class 'std::complex<double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : see declaration of 'complex<double>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : warning C4275: non dll-interface class 'std::_Complex_base<long double>' used as base for dll-interface class 'std::complex<long double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : see declaration of 'complex<long double>'
+Linking...
+   Creating library Release/dZdE_shg.lib and object Release/dZdE_shg.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\dZdE_shg.dll
+        1 file(s) copied.
+<h3>
+--------------------Configuration: Extern - Win32 Help--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2BD.bat" with contents
+[
+@echo off
+doxygen .\extern.dox
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2BD.bat"
+<h3>Output Window</h3>
+Performing Custom Build Step on .\extern.dox
+<h3>
+--------------------Configuration: Gerr - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2BE.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/Gerr.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\Gerr\Gerr.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2BE.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2BF.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/Gerr.pdb" /machine:I386 /out:"Release/Gerr.dll" /implib:"Release/Gerr.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\Gerr.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2BF.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2C0.bat" with contents
+[
+@echo off
+copy .\Release\Gerr.dll ..\..\bin\Gerr.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2C0.bat"
+Compiling resources...
+Compiling...
+Gerr.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : warning C4275: non dll-interface class 'std::_Complex_base<float>' used as base for dll-interface class 'std::complex<float>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : see declaration of 'complex<float>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : warning C4275: non dll-interface class 'std::_Complex_base<double>' used as base for dll-interface class 'std::complex<double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : see declaration of 'complex<double>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : warning C4275: non dll-interface class 'std::_Complex_base<long double>' used as base for dll-interface class 'std::complex<long double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : see declaration of 'complex<long double>'
+Linking...
+   Creating library Release/Gerr.lib and object Release/Gerr.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\Gerr.dll
+        1 file(s) copied.
+<h3>
+--------------------Configuration: MagRepl - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2C4.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/MagRepl.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\MagRepl\MagRepl.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2C4.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2C5.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/MagRepl.pdb" /machine:I386 /out:"Release/MagRepl.dll" /implib:"Release/MagRepl.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\MagRepl.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2C5.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2C6.bat" with contents
+[
+@echo off
+copy .\Release\MagRepl.dll ..\..\bin\MagRepl.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2C6.bat"
+Compiling resources...
+Compiling...
+MagRepl.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : warning C4275: non dll-interface class 'std::_Complex_base<float>' used as base for dll-interface class 'std::complex<float>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : see declaration of 'complex<float>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : warning C4275: non dll-interface class 'std::_Complex_base<double>' used as base for dll-interface class 'std::complex<double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : see declaration of 'complex<double>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : warning C4275: non dll-interface class 'std::_Complex_base<long double>' used as base for dll-interface class 'std::complex<long double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : see declaration of 'complex<long double>'
+Linking...
+   Creating library Release/MagRepl.lib and object Release/MagRepl.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\MagRepl.dll
+        1 file(s) copied.
+<h3>
+--------------------Configuration: MinGerr - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2CA.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/MinGerr.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\MinGerr\MinGerr.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2CA.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2CB.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/MinGerr.pdb" /machine:I386 /out:"Release/MinGerr.dll" /implib:"Release/MinGerr.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\MinGerr.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2CB.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2CC.bat" with contents
+[
+@echo off
+copy .\Release\MinGerr.dll ..\..\bin\MinGerr.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2CC.bat"
+Compiling resources...
+Compiling...
+MinGerr.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : warning C4275: non dll-interface class 'std::_Complex_base<float>' used as base for dll-interface class 'std::complex<float>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : see declaration of 'complex<float>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : warning C4275: non dll-interface class 'std::_Complex_base<double>' used as base for dll-interface class 'std::complex<double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : see declaration of 'complex<double>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : warning C4275: non dll-interface class 'std::_Complex_base<long double>' used as base for dll-interface class 'std::complex<long double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : see declaration of 'complex<long double>'
+Linking...
+   Creating library Release/MinGerr.lib and object Release/MinGerr.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\MinGerr.dll
+        1 file(s) copied.
+<h3>
+--------------------Configuration: mnbrak - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D0.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/mnbrak.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\mnbrak\mnbrak.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D0.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D1.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/mnbrak.pdb" /machine:I386 /out:"Release/mnbrak.dll" /implib:"Release/mnbrak.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\mnbrak.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D1.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D2.bat" with contents
+[
+@echo off
+copy .\Release\mnbrak.dll ..\..\bin\mnbrak.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D2.bat"
+Compiling resources...
+Compiling...
+mnbrak.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : warning C4275: non dll-interface class 'std::_Complex_base<float>' used as base for dll-interface class 'std::complex<float>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : see declaration of 'complex<float>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : warning C4275: non dll-interface class 'std::_Complex_base<double>' used as base for dll-interface class 'std::complex<double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : see declaration of 'complex<double>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : warning C4275: non dll-interface class 'std::_Complex_base<long double>' used as base for dll-interface class 'std::complex<long double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : see declaration of 'complex<long double>'
+Linking...
+   Creating library Release/mnbrak.lib and object Release/mnbrak.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\mnbrak.dll
+        1 file(s) copied.
+<h3>
+--------------------Configuration: Zerr - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D6.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/Zerr.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\Zerr\Zerr.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D6.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D7.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/Zerr.pdb" /machine:I386 /out:"Release/Zerr.dll" /implib:"Release/Zerr.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\Zerr.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D7.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D8.bat" with contents
+[
+@echo off
+copy .\Release\Zerr.dll ..\..\bin\Zerr.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2D8.bat"
+Compiling resources...
+Compiling...
+Zerr.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : warning C4275: non dll-interface class 'std::_Complex_base<float>' used as base for dll-interface class 'std::complex<float>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : see declaration of 'complex<float>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : warning C4275: non dll-interface class 'std::_Complex_base<double>' used as base for dll-interface class 'std::complex<double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : see declaration of 'complex<double>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : warning C4275: non dll-interface class 'std::_Complex_base<long double>' used as base for dll-interface class 'std::complex<long double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : see declaration of 'complex<long double>'
+Linking...
+   Creating library Release/Zerr.lib and object Release/Zerr.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\Zerr.dll
+        1 file(s) copied.
+<h3>
+--------------------Configuration: ZerrKern_shg - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2DC.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/ZerrKern_shg.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\ZerrKern_shg\ZerrKern_shg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2DC.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2DD.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/ZerrKern_shg.pdb" /machine:I386 /out:"Release/ZerrKern_shg.dll" /implib:"Release/ZerrKern_shg.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\ZerrKern_shg.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2DD.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2DE.bat" with contents
+[
+@echo off
+copy .\Release\ZerrKern_shg.dll ..\..\bin\ZerrKern_shg.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2DE.bat"
+Compiling resources...
+Compiling...
+ZerrKern_shg.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : warning C4275: non dll-interface class 'std::_Complex_base<float>' used as base for dll-interface class 'std::complex<float>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : see declaration of 'complex<float>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : warning C4275: non dll-interface class 'std::_Complex_base<double>' used as base for dll-interface class 'std::complex<double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : see declaration of 'complex<double>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : warning C4275: non dll-interface class 'std::_Complex_base<long double>' used as base for dll-interface class 'std::complex<long double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : see declaration of 'complex<long double>'
+Linking...
+   Creating library Release/ZerrKern_shg.lib and object Release/ZerrKern_shg.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\ZerrKern_shg.dll
+        1 file(s) copied.
+<h3>
+--------------------Configuration: CalcEsig - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2E2.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/CalcEsig.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\ClacEsig\CalcEsig.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2E2.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2E3.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/CalcEsig.pdb" /machine:I386 /out:"Release/CalcEsig.dll" /implib:"Release/CalcEsig.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\CalcEsig.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2E3.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2E4.bat" with contents
+[
+@echo off
+copy .\Release\CalcEsig.dll ..\..\bin\CalcEsig.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2E4.bat"
+Compiling resources...
+Compiling...
+CalcEsig.cpp
+Linking...
+   Creating library Release/CalcEsig.lib and object Release/CalcEsig.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\CalcEsig.dll
+        1 file(s) copied.
+<h3>
+--------------------Configuration: ZerrKern_wW_shg - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2E8.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/ZerrKern_wW_shg.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\ZerrKern_wW_shg\ZerrKern_wW_shg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2E8.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2E9.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/ZerrKern_wW_shg.pdb" /machine:I386 /out:"Release/ZerrKern_wW_shg.dll" /implib:"Release/ZerrKern_wW_shg.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\ZerrKern_wW_shg.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2E9.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2EA.bat" with contents
+[
+@echo off
+copy .\Release\ZerrKern_wW_shg.dll ..\..\bin\ZerrKern_wW_shg.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2EA.bat"
+Compiling resources...
+Compiling...
+ZerrKern_wW_shg.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : warning C4275: non dll-interface class 'std::_Complex_base<float>' used as base for dll-interface class 'std::complex<float>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : see declaration of 'complex<float>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : warning C4275: non dll-interface class 'std::_Complex_base<double>' used as base for dll-interface class 'std::complex<double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : see declaration of 'complex<double>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : warning C4275: non dll-interface class 'std::_Complex_base<long double>' used as base for dll-interface class 'std::complex<long double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : see declaration of 'complex<long double>'
+Linking...
+   Creating library Release/ZerrKern_wW_shg.lib and object Release/ZerrKern_wW_shg.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\ZerrKern_wW_shg.dll
+        1 file(s) copied.
+<h3>
+--------------------Configuration: CalcEsig_wW - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2EE.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/CalcEsig_wW.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\ClacEsig_wW\CalcEsig_wW.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2EE.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2EF.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/CalcEsig_wW.pdb" /machine:I386 /out:"Release/CalcEsig_wW.dll" /implib:"Release/CalcEsig_wW.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\CalcEsig_wW.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2EF.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2F0.bat" with contents
+[
+@echo off
+copy .\Release\CalcEsig_wW.dll ..\..\bin\CalcEsig_wW.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2F0.bat"
+Compiling resources...
+Compiling...
+CalcEsig_wW.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : warning C4275: non dll-interface class 'std::_Complex_base<float>' used as base for dll-interface class 'std::complex<float>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : see declaration of 'complex<float>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : warning C4275: non dll-interface class 'std::_Complex_base<double>' used as base for dll-interface class 'std::complex<double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : see declaration of 'complex<double>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : warning C4275: non dll-interface class 'std::_Complex_base<long double>' used as base for dll-interface class 'std::complex<long double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : see declaration of 'complex<long double>'
+Linking...
+   Creating library Release/CalcEsig_wW.lib and object Release/CalcEsig_wW.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\CalcEsig_wW.dll
+        1 file(s) copied.
+<h3>
+--------------------Configuration: MinZerrKern_shg - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x409 /fo"Release/mexversion.res" /i "\MATLAB6p1\extern\include" /d "NDEBUG" /d "_AFXDLL" "C:\MATLAB6p1\extern\include\mexversion.rc"" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2F4.tmp" with contents
+[
+/nologo /MD /Ze /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/MinZerrKern_shg.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\MinZerrKern_shg\MinZerrKern_shg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2F4.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2F5.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/MinZerrKern_shg.pdb" /machine:I386 /out:"Release/MinZerrKern_shg.dll" /implib:"Release/MinZerrKern_shg.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\MinZerrKern_shg.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2F5.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2F6.bat" with contents
+[
+@echo off
+copy .\Release\MinZerrKern_shg.dll ..\..\bin\MinZerrKern_shg.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2F6.bat"
+Compiling resources...
+Compiling...
+MinZerrKern_shg.cpp
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : warning C4275: non dll-interface class 'std::_Complex_base<float>' used as base for dll-interface class 'std::complex<float>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(203) : see declaration of 'complex<float>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : warning C4275: non dll-interface class 'std::_Complex_base<double>' used as base for dll-interface class 'std::complex<double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(216) : see declaration of 'complex<double>'
+C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : warning C4275: non dll-interface class 'std::_Complex_base<long double>' used as base for dll-interface class 'std::complex<long double>'
+        C:\Program Files\Microsoft Visual Studio\VC98\INCLUDE\complex(229) : see declaration of 'complex<long double>'
+Linking...
+   Creating library Release/MinZerrKern_shg.lib and object Release/MinZerrKern_shg.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\MinZerrKern_shg.dll
+        1 file(s) copied.
+<h3>
+--------------------Configuration: Doxygen - Win32 Help--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2FA.bat" with contents
+[
+@echo off
+doxygen .\MEXlib.dox
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2FA.bat"
+<h3>Output Window</h3>
+Performing Custom Build Step on .\MEXlib.dox
+
+
+
+<h3>Results</h3>
+Doxygen - 0 error(s), 30 warning(s)
+</pre>
+</body>
+</html>

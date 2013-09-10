@@ -1,0 +1,3 @@
+LIBRARY	MagSq
+EXPORTS
+	mexFunction

@@ -1,0 +1,11 @@
+# Microsoft Developer Studio Generated Dependency File, included by mnbrak.mak
+
+".\mnbrak.cpp" : \
+	"..\..\..\..\..\extern\include\matrix.h"\
+	"..\..\..\..\..\extern\include\mex.h"\
+	"..\..\..\..\..\extern\include\tmwtypes.h"\
+	"..\Util\mexArray.h"\
+	"..\Util\RealFunction.h"\
+	"..\Util\Utility.h"\
+	".\mnbrak.h"\
+	

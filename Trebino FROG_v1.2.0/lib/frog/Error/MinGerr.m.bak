@@ -1,0 +1,26 @@
+%MINGERR Minimizes the G error.
+%	MINGERR(ESIG, ASIG) minimizes the defference between ASIG^2 and |ESIG|^2,
+%	by scaling |ESIG|^2.
+%
+%	[GMIN,X,G0]=MINGERR(...) returns the minimum G, GERR, the scaling, X, and
+%	the raw G, G0.  The raw G is t
+
+%	$Revision: 1.1 $ $Date: 2006-11-11 00:15:30 $
+%
+%	$Log: MinGerr.m,v $
+%	Revision 1.1  2006-11-11 00:15:30  pablo
+%	CVS server re-installation
+%	
+%	Revision 1.6  2002/04/18 20:14:16  zeekec
+%	*** empty log message ***
+%	
+%	Revision 1.5  2002/04/09 19:15:54  zeekec
+%	Removed executable code and updated help for the new mex MinGerr.
+%	
+%	Revision 1.4  2002/04/02 21:15:14  zeekec
+%	Removed extra outputs.
+%	
+%	Revision 1.3  2002/03/25 20:59:21  zeekec
+%	Added help and log
+%	
+

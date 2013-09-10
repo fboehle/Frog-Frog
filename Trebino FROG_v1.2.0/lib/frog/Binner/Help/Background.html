@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta content="HTML Tidy for Cygwin (vers 1st February 2003), see www.w3.org" name="generator" />
+        <title>
+            Background Panel
+        </title>
+        <meta name="Generator" content="TextPad 4.6" />
+        <meta name="Author" content="Erik Zeek" />
+        <link rel="stylesheet" href="docstyle1.css" type="text/css" />
+    </head>
+    <body>
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" summary="Header">
+            <tr class="header" valign="baseline">
+                <td>
+                    <b>Background Panel</b>
+                </td>
+                <td align="right">
+                    <a href="Extract.html"><img src="Images/b_prev.PNG" border="0" alt="Prev" /></a>
+                    &nbsp;&nbsp;&nbsp;<a href="Centering.html"><img src="Images/b_next.PNG" border="0"
+                    alt="Next" /></a>
+                </td>
+            </tr>
+        </table>
+        <h1>
+            Background Panel
+        </h1>
+        <p>
+            This panel allows the removal of the background. The average of a number of pixels from each end
+            of the trace is taken and subtracted from the axis in question. For example, in constant delay
+            subtraction, 5 pixels from the end of each column are averaged and the average is subtracted from
+            the entire column.
+        </p>
+        <table border="0" cellspacing="0" cellpadding="0" width="100%" summary="Extraction Panel">
+            <caption>
+                The Background Panel: No subtraction
+            </caption>
+            <tr align="center" valign="middle">
+                <td>
+                    <img src="Images/Background1.png" alt="Background Panel" />
+                </td>
+            </tr>
+        </table>
+        <p>
+            No change has been made.
+        </p>
+        <dl>
+            <dt>
+                Delay/Frequency Points
+            </dt>
+            <dd>
+                The number of points from each side of the trace to average for subtraction.
+            </dd>
+            <dt>
+                Subtract Const. Delay/Freq.
+            </dt>
+            <dd>
+                Subtract the average from the appropriate dimension.
+            </dd>
+            <dt>
+                Remove Negatives
+            </dt>
+            <dd>
+                Removes the negative values created in the background subtraction.
+            </dd>
+        </dl>
+        <table border="0" cellspacing="0" cellpadding="0" width="100%" summary="Extraction Panel">
+            <caption>
+                The Background Panel: Delay subtraction
+            </caption>
+            <tr align="center" valign="middle">
+                <td>
+                    <img src="Images/Background2.png" alt="Background Panel" />
+                </td>
+            </tr>
+        </table>
+        <p>
+            The delay background has been removed.
+        </p>
+        <table border="0" cellspacing="0" cellpadding="0" width="100%" summary="Extraction Panel">
+            <caption>
+                The Background Panel: Frequency subtraction
+            </caption>
+            <tr align="center" valign="middle">
+                <td>
+                    <img src="Images/Background3.png" alt="Background Panel" />
+                </td>
+            </tr>
+        </table>
+        <p>
+            The frequency background has also been removed.
+        </p>
+        <h2>
+            Note:
+        </h2>
+        <p>
+            Binner does not discard the negative values in the trace until the "Binning" step. It does not
+            display them, but they are still there. Therefore, subtracting multiple times will have no effect
+            (with out changing any parameters). To get around this (and to conform to the commercial code)
+            use the "Remove Negatives" button. It does just what it says and discards any negative values.
+        </p>
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" summary="Footer">
+            <tr class="header" valign="baseline">
+                <td>
+                    <a href="Extract.html"><img src="Images/b_prev.PNG" border="0" alt="Prev" /></a> Extract
+                    Panel
+                </td>
+                <td align="right">
+                    Centering Panel <a href="Centering.html"><img src="Images/b_next.PNG" border="0"
+                    alt="Next" /></a>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta content="HTML Tidy for Cygwin (vers 1st February 2003), see www.w3.org"
+        name="generator" />
+        <title>
+            sigwin (Signal Processing Toolbox)
+        </title><!-- $Revision: 1.1 $  $Date: 2006-11-11 00:13:32 $ -->
+        <!-- DOCNAME: Signal Processing Toolbox -->
+        <!-- CHUNKNAME: sigwin -->
+        <!-- CHAPNAME: sigwin -->
+        <!-- HEADSTUFF -->
+        <link rel="stylesheet" href="docstyle1.css" type="text/css" />
+        <style type="text/css">
+        /*<![CDATA[*/
+        body {
+        background-color: #ffffff;
+        }
+        span.c4 {color: #990000}
+        span.c3 {font-family: sansserif}
+        span.c2 {color: #990000; font-size: 120%}
+        span.c1 {color: #990000; font-size: 172%}
+        /*]]>*/
+        </style>
+    </head>
+    <body>
+        <a name="571034" id="571034"><!-- NAVBARTOP -->
+        </a> 
+        <table border="0" width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+                <td valign="baseline" bgcolor="#FFE4B0">
+                    <b>Signal Processing Toolbox</b>
+                </td>
+                <td valign="baseline" bgcolor="#FFE4B0" align="right">
+                    <a href="sgolayfilt.html"><img src="Images/b_prev.gif" border="0" /></a>
+                    &nbsp;&nbsp;&nbsp; <a href="sinc.html"><img src="Images/b_next.gif"
+                    border="0" /></a>
+                </td>
+            </tr>
+        </table><span class="c1">sigwin</span> <!-- FNAME:sigwin --><a name="571034"
+        id="571034"></a> <!-- SYNCHTO: reftable.html -->
+         <a name="" id=""></a><!-- H2 --><a name="571441" id="571441"></a><br />
+         
+        <p>
+            <a name="571444" id="571444"></a>Construct a window object
+        </p><a name="syntax" id="syntax"></a><!-- H2 --><a name="571445" id="571445"></a> 
+        <p>
+            <span class="c2"><b>Syntax</b></span>
+        </p>
+        <ul class="continued">
+            <li class="continued">
+                <pre>
+<a name="570265" id="570265"></a>w = sigwin.<code><em>window</em></code>(input1,...)
+</pre>
+            </li>
+        </ul><a name="description" id="description"></a><!-- H2 --><a name="570266"
+        id="570266"></a> 
+        <p>
+            <span class="c2"><b>Description</b></span>
+        </p>
+        <p>
+            <a name="570267" id="570267"></a><code>w&nbsp;=&nbsp;sigwin.</code><em>window</em>
+            <a name="570268" id="570268"></a><span class="c3">returns a window object,</span>
+            <code>w</code>, of type <code><em>window</em></code>. You must use a window with
+            <code>sigwin</code>. Each window takes one or more inputs. If you specify a
+            <code>sigwin</code>.<code><em>window</em></code> with no inputs, a default window of
+            length 64 is created.
+        </p><a name="constructors" id="constructors"></a><!-- H3 --><a name="570270"
+        id="570270"></a> 
+        <p>
+            <span class="c4"><b>Constructors</b></span>
+        </p>
+        <p>
+            <a name="570271" id="570271"></a><code><em>Windows</em></code> for <code>sigwin</code>
+            specify the type of window. All windows in the Signal Processing Toolbox are available
+            for use with <code>sigwin</code><span class="c3">. For a complete list, see the</span>
+            <code><a href="window.html">window</a></code> <span class="c3">reference page.</span>
+        </p><a name="methods" id="methods"></a><!-- H3 --><a name="591204" id="591204"></a> 
+        <p>
+            <span class="c4"><b>Methods</b></span>
+        </p>
+        <p>
+            <a name="596136" id="596136"></a>Methods provide ways of performing functions directly
+            on your <code>sigwin</code> object without having to specify the window parameters
+            again. You can apply this method directly on the variable you assigned to your
+            <code>sigwin</code> object.
+        </p><br />
+         
+        <table border="2" cellpadding="4" cellspacing="0">
+            <tr valign="top">
+                <td>
+                    <a name="598015" id="598015"></a><b>Method</b><br />
+                </td>
+                <td>
+                    <a name="598017" id="598017"></a><b>Description</b><br />
+                </td>
+            </tr>
+            <tr valign="top">
+                <td>
+                    <a name="598019" id="598019"></a><code>generate</code><br />
+                </td>
+                <td>
+                    <a name="598021" id="598021"></a>Returns a column vector of values representing
+                    the window.<br />
+                </td>
+            </tr>
+        </table>
+        <table>
+            <tr valign="top">
+                <td></td>
+            </tr>
+        </table><br />
+         <br />
+         <a name="viewing_object_parameters" id="viewing_object_parameters"></a> 
+        <!-- H3 --><a name="596137" id="596137"></a> 
+        <p>
+            <span class="c4"><b>Viewing Object Parameters</b></span>
+        </p>
+        <p>
+            <a name="570500" id="570500"></a>As with any object, you can use <code>get</code> to
+            view a <code>sigwin</code> object's parameters. To see a specific parameter,
+        </p>
+        <ul class="continued">
+            <li class="continued">
+                <pre>
+<a name="570501" id="570501"></a> get(w,'parameter')
+</pre>
+            </li>
+        </ul>
+        <p>
+            <a name="570502" id="570502"></a>or to see all parameters for an object,
+        </p>
+        <ul class="continued">
+            <li class="continued">
+                <pre>
+<a name="570503" id="570503"></a>get(w)
+</pre>
+            </li>
+        </ul><a name="changing_object_parameters" id="changing_object_parameters"></a>
+        <!-- H3 --><a name="570508" id="570508"></a> 
+        <p>
+            <span class="c4"><b>Changing Object Parameters</b></span>
+        </p>
+        <p>
+            <a name="570509" id="570509"></a>To set specific parameters,
+        </p>
+        <ul class="continued">
+            <li class="continued">
+                <pre>
+<a name="570510" id="570510"></a>set(w,'parameter1',value,'parameter2',value,...)
+</pre>
+            </li>
+        </ul>
+        <p>
+            <a name="570511" id="570511"></a>Note that you must use single quotation marks around
+            the parameter name.
+        </p><a name="examples" id="examples"></a><a name="exmpl_sec" id="exmpl_sec"></a> 
+        <!-- H2 --><a name="570520" id="570520"></a> 
+        <p>
+            <span class="c2"><b>Examples</b></span>
+        </p>
+        <p>
+            <a name="570521" id="570521"></a>Create a default Bartlett window and view the results
+            in the Window Visualization Tool (<code><a href="wvtool.html">wvtool</a></code>). See
+            <code><a href="bartlett.html">bartlett</a></code> for information on Bartlett windows:
+        </p>
+        <ul class="continued">
+            <li class="continued">
+                <pre>
+<a name="570522" id="570522"></a>w=sigwin.bartlett
+<a name="583349" id="583349"></a>
+<a name="583340" id="583340"></a>w =
+<a name="583342" id="583342"></a>    length: 64
+<a name="583343" id="583343"></a>      name: 'Bartlett'
+<a name="583370" id="583370"></a>
+<a name="583363" id="583363"></a>wvtool(w)
+<br /><a name="583792" id="583792"></a>
+<img src="sigwin_e.gif" align="bottom" />
+</pre>
+            </li>
+        </ul>
+        <p>
+            <a name="583333" id="583333"></a>Create a 128-point Chebyshev window with 100 dB of
+            sidelobe attenuation. (See <code><a href="chebwin.html">chebwin</a></code> for
+            information on Chebyshev windows.) View the results of this and the above Bartlett
+            window in the Window Design and Analysis Tool
+            (<code><a href="wintool.html">wintool</a></code>):
+        </p>
+        <ul class="continued">
+            <li class="continued">
+                <pre>
+<a name="583372" id="583372"></a>w1=sigwin.chebwin(128,100)
+<a name="583373" id="583373"></a>
+<a name="583779" id="583779"></a>w1 =
+<a name="583780" id="583780"></a>
+<a name="583781" id="583781"></a>            length: 128
+<a name="583782" id="583782"></a>              name: 'Chebyshev'
+<a name="583377" id="583377"></a>    Sidelobe_atten: 100
+<a name="583789" id="583789"></a>
+<a name="583378" id="583378"></a>wintool(w,w1)
+<br /><a name="583262" id="583262"></a>
+<img src="sigwin_a.gif" align="bottom" />
+</pre>
+            </li>
+        </ul>
+        <p>
+            <a name="570541" id="570541"></a>To save the window values in a vector, use:
+        </p>
+        <ul class="continued">
+            <li class="continued">
+                <pre>
+<a name="598419" id="598419"></a>d = generate(w);
+</pre>
+            </li>
+        </ul><a name="see_also" id="see_also"></a><a name="seeal_sec" id="seeal_sec"></a>
+        <!-- H2 --><a name="598408" id="598408"></a> 
+        <p>
+            <span class="c2"><b>See Also</b></span>
+        </p>
+        <p>
+            <a name="570258" id="570258"></a><code><a href="window.html">window</a></code>,
+            <code><a href="wintool.html">wintool</a></code>,
+            <code><a href="wvtool.html">wvtool</a></code>
+        </p><br />
+         
+        <table bgcolor="#FFE4B0" border="0" width="100%" cellpadding="0" cellspacing="0">
+            <tr valign="top">
+                <td align="left" width="20">
+                    <a href="sgolayfilt.html"><img src="b_prev.gif" border="0" align="bottom" />
+                    </a> &nbsp;
+                </td>
+                <td align="left">
+                    &nbsp;sgolayfilt
+                </td>
+                <td>
+                    &nbsp;
+                </td>
+                <td align="right">
+                    sinc&nbsp;
+                </td>
+                <td align="right" width="20">
+                    <a href="sinc.html"><img src="b_next.gif" border="0" align="bottom" /></a>
+                </td>
+            </tr>
+        </table><br />
+         <!-- Copyright 2002 The MathWorks, Inc. -->
+         <!-- Last updated: Fri Nov 08 03:43:12 2002 -->
+        </body>
+</html>

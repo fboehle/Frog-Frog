@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta content="HTML Tidy for Cygwin (vers 1st February 2003), see www.w3.org" name="generator" />
+        <title>
+            Frogger Help
+        </title>
+        <meta name="Generator" content="TextPad 4.6" />
+        <meta name="Author" content="Erik Zeek" />
+        <link rel="stylesheet" href="docstyle1.css" type="text/css" />
+    </head>
+    <body>
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" summary="Header">
+            <tr class="header" valign="baseline">
+                <td>
+                    <b>Frogger Controls</b>
+                </td>
+                <td align="right">
+                    <a href="Frogger.html"><img src="Images/b_prev.PNG" border="0" alt="Prev" /></a>
+                    &nbsp;&nbsp;&nbsp;<a href="Extending.html"><img src="Images/b_next.PNG" border="0"
+                    alt="Next" /></a>
+                </td>
+            </tr>
+        </table>
+        <h1>
+            Frogger Controls Help
+        </h1>
+        <hr width="100%" />
+        <table border="0" cellspacing="0" cellpadding="0" width="100%" summary="Main Panel">
+            <caption>
+                The Main Panel: File loaded.
+            </caption>
+            <tr align="center" valign="middle">
+                <td>
+                    <img src="Images/Controls.png" alt="Main Panel" />
+                </td>
+            </tr>
+        </table>
+        <h2>
+            The Controls.
+        </h2>
+        <p>
+            The first set of controls determine which algorithm is going to be run. These are extensible by
+            the user.
+        </p>
+        <dl>
+            <dt>
+                Type
+            </dt>
+            <dd>
+                The type of FROG being used (e.g. FROG, XFROG, etc.).
+            </dd>
+            <dt>
+                Nonlinearity
+            </dt>
+            <dd>
+                The particular nonlinearity used (e.g. SHG, PG, THG, SFG, OPA, etc.).
+            </dd>
+            <dt>
+                Domain
+            </dt>
+            <dd>
+                The domain of the algorithm (e.g. Time, Frequency)
+            </dd>
+            <dt>
+                Algorithm
+            </dt>
+            <dd>
+                The underlying algorithm of the retrieval (e.g. Z minimize (projection), XFROG, etc.).
+            </dd>
+        </dl>
+        <p>
+            Buttons
+        </p>
+        <dl>
+            <dt>
+                Run
+            </dt>
+            <dd>
+                Starts the algorithm. Disabled when running. Same functionality provided through the Execute
+                menu.
+            </dd>
+            <dt>
+                Stop
+            </dt>
+            <dd>
+                Stops the algorithm. Disabled when not running. Same functionality provided through the
+                Execute menu.
+            </dd>
+            <dt>
+                Extra Information
+            </dt>
+            <dd>
+                If the algorithm needs extra information to run, this button is enabled. For example, XFROG
+                needs the gate pulse in order to run. This button is used to bring up a dialog to select the
+                apropriate gate pulse. However, this can be used in any algorithm that needs extra input from
+                the user.
+            </dd>
+            <dt>
+                Flip Time
+            </dt>
+            <dd>
+                Primarily implemented for SHG FROG. This allows the user to flip the pulse in time (the current,
+                Best G, and Best Z pulses). If the user knows which edge of the pulse is leading, this can fix
+                it. It can also be used to get other nonlinearities out of local minima.
+            </dd>
+            <dt>
+                Flatten Phase
+            </dt>
+            <dd>
+                Provided to kick the algorithm out of local minima.
+            </dd>
+        </dl>
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" summary="Footer">
+            <tr class="header" valign="baseline">
+                <td>
+                    <a href="Frogger.html"><img src="Images/b_prev.PNG" border="0" alt="Prev" /></a> Frogger
+                </td>
+                <td align="right">
+                    Extending Frogger <a href="Extending.html"><img src="Images/b_next.PNG" border="0"
+                    alt="Next" /></a>
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

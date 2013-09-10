@@ -1,0 +1,9 @@
+# Microsoft Developer Studio Generated Dependency File, included by CalcEwx_exp.mak
+
+.\CalcEwx_exp.cpp : \
+	"..\..\..\..\..\extern\include\matrix.h"\
+	"..\..\..\..\..\extern\include\mex.h"\
+	"..\..\..\..\..\extern\include\tmwtypes.h"\
+	"..\Util\mexArray.h"\
+	".\CalcEwx_exp.h"\
+	

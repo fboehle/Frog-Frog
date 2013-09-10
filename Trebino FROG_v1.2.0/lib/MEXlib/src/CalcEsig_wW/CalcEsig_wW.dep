@@ -1,0 +1,9 @@
+# Microsoft Developer Studio Generated Dependency File, included by CalcEsig_wW.mak
+
+.\CalcEsig_wW.cpp : \
+	"..\..\..\..\..\extern\include\matrix.h"\
+	"..\..\..\..\..\extern\include\mex.h"\
+	"..\..\..\..\..\extern\include\tmwtypes.h"\
+	"..\Util\mexArray.h"\
+	".\CalcEsig_wW.h"\
+	

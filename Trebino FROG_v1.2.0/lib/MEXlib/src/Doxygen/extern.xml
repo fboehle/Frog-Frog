@@ -1,0 +1,4669 @@
+<?xml version='1.0' encoding='ISO-8859-1' standalone='yes'?>
+<tagfile>
+  <compound kind="file">
+    <name>convec.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>convec_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>convec</name>
+      <anchor>a0</anchor>
+      <arglist>(double *xr, double *xi, int nx, double *yr, double *yi, int ny, double *zr, double *zi)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a1</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>doubleelement.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>doubleelement_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>NDIMS</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>TOTAL_ELEMENTS</name>
+      <anchor>a1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>dbl_elem</name>
+      <anchor>a2</anchor>
+      <arglist>(unsigned short *x)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a3</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>engdemo.c</name>
+    <path>C:/MATLAB6p5/extern/examples/eng_mat/</path>
+    <filename>engdemo_8c</filename>
+    <includes id="engine_8h" name="engine.h" local="yes">engine.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>BUFSIZE</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>main</name>
+      <anchor>a1</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>engine.h</name>
+    <path>C:/MATLAB6p5/extern/include/</path>
+    <filename>engine_8h</filename>
+    <includes id="matrix_8h" name="matrix.h" local="yes">matrix.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>engOpenV4</name>
+      <anchor>a0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>engGetFull</name>
+      <anchor>a1</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>engPutFull</name>
+      <anchor>a2</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>engGetMatrix</name>
+      <anchor>a3</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>engPutMatrix</name>
+      <anchor>a4</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>engPutArray</name>
+      <anchor>a5</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>engGetArray</name>
+      <anchor>a6</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="typedef">
+      <type>engine</type>
+      <name>Engine</name>
+      <anchor>a7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>engEvalString</name>
+      <anchor>a8</anchor>
+      <arglist>(Engine *ep, const  char *string)</arglist>
+    </member>
+    <member kind="function">
+      <type>Engine *</type>
+      <name>engOpenSingleUse</name>
+      <anchor>a9</anchor>
+      <arglist>(const  char *startcmd, void *reserved, int *retstatus)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>engSetVisible</name>
+      <anchor>a10</anchor>
+      <arglist>(Engine *ep, bool newVal)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>engGetVisible</name>
+      <anchor>a11</anchor>
+      <arglist>(Engine *ep, bool *bVal)</arglist>
+    </member>
+    <member kind="function">
+      <type>Engine *</type>
+      <name>engOpen</name>
+      <anchor>a12</anchor>
+      <arglist>(const  char *startcmd)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>engClose</name>
+      <anchor>a13</anchor>
+      <arglist>(Engine *ep)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>engGetVariable</name>
+      <anchor>a14</anchor>
+      <arglist>(Engine *ep, const  char *name)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>engPutVariable</name>
+      <anchor>a15</anchor>
+      <arglist>(Engine *ep, const  char *var_name, const  mxArray *ap)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>engOutputBuffer</name>
+      <anchor>a16</anchor>
+      <arglist>(Engine *ep, char *buffer, int buflen)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>engwindemo.c</name>
+    <path>C:/MATLAB6p5/extern/examples/eng_mat/</path>
+    <filename>engwindemo_8c</filename>
+    <includes id="engine_8h" name="engine.h" local="yes">engine.h</includes>
+    <member kind="function">
+      <type>int PASCAL</type>
+      <name>WinMain</name>
+      <anchor>a1</anchor>
+      <arglist>(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpszCmdLine, int nCmdShow)</arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>double</type>
+      <name>Areal</name>
+      <anchor>a0</anchor>
+      <arglist>[6]</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>explore.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>explore_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>display_subscript</name>
+      <anchor>a0</anchor>
+      <arglist>(const  mxArray *array_ptr, int index)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>get_characteristics</name>
+      <anchor>a1</anchor>
+      <arglist>(const  mxArray *array_ptr)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxClassID</type>
+      <name>analyze_class</name>
+      <anchor>a2</anchor>
+      <arglist>(const  mxArray *array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_cell</name>
+      <anchor>a3</anchor>
+      <arglist>(const  mxArray *cell_array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_structure</name>
+      <anchor>a4</anchor>
+      <arglist>(const  mxArray *structure_array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_string</name>
+      <anchor>a5</anchor>
+      <arglist>(const  mxArray *string_array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_sparse</name>
+      <anchor>a6</anchor>
+      <arglist>(const  mxArray *array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_int8</name>
+      <anchor>a7</anchor>
+      <arglist>(const  mxArray *array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_uint8</name>
+      <anchor>a8</anchor>
+      <arglist>(const  mxArray *array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_int16</name>
+      <anchor>a9</anchor>
+      <arglist>(const  mxArray *array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_uint16</name>
+      <anchor>a10</anchor>
+      <arglist>(const  mxArray *array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_int32</name>
+      <anchor>a11</anchor>
+      <arglist>(const  mxArray *array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_uint32</name>
+      <anchor>a12</anchor>
+      <arglist>(const  mxArray *array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_single</name>
+      <anchor>a13</anchor>
+      <arglist>(const  mxArray *array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_double</name>
+      <anchor>a14</anchor>
+      <arglist>(const  mxArray *array_ptr)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>analyze_full</name>
+      <anchor>a15</anchor>
+      <arglist>(const  mxArray *numeric_array_ptr)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a16</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>findnz.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>findnz_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>IsNonZero</name>
+      <anchor>a0</anchor>
+      <arglist>(d)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a1</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>fintrf.h</name>
+    <path>C:/MATLAB6p5/extern/include/</path>
+    <filename>fintrf_8h</filename>
+    <member kind="define">
+      <type>#define</type>
+      <name>mwpointer</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MWPOINTER</name>
+      <anchor>a1</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>fort.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>fort_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>double *</type>
+      <name>mat2fort</name>
+      <anchor>a0</anchor>
+      <arglist>(const  mxArray *X, int ldz, int ndz)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>fort2mat</name>
+      <anchor>a1</anchor>
+      <arglist>(double *Z, int ldz, int m, int n)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>fort.h</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>fort_8h</filename>
+    <member kind="function">
+      <type>double *</type>
+      <name>mat2fort</name>
+      <anchor>a0</anchor>
+      <arglist>(const  mxArray *X, int ldz, int ndz)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>fort2mat</name>
+      <anchor>a1</anchor>
+      <arglist>(double *Z, int ldz, int m, int n)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>fulltosparse.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>fulltosparse_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>IsNonZero</name>
+      <anchor>a0</anchor>
+      <arglist>(d)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a1</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mat.h</name>
+    <path>C:/MATLAB6p5/extern/include/</path>
+    <filename>mat_8h</filename>
+    <includes id="matrix_8h" name="matrix.h" local="yes">matrix.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>matPutArray</name>
+      <anchor>a0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>matPutNextArray</name>
+      <anchor>a1</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>matPutArrayAsGlobal</name>
+      <anchor>a2</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>matGetArray</name>
+      <anchor>a3</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>matGetArrayHeader</name>
+      <anchor>a4</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>matGetNextArray</name>
+      <anchor>a5</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>matGetNextArrayHeader</name>
+      <anchor>a6</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>matDeleteArray</name>
+      <anchor>a7</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="typedef">
+      <type>MATFile_tag</type>
+      <name>MATFile</name>
+      <anchor>a8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>MATFile *</type>
+      <name>matCreateMATFile</name>
+      <anchor>a9</anchor>
+      <arglist>(const  char *filename, FILE *fp, const  char *mode)</arglist>
+    </member>
+    <member kind="function">
+      <type>MATFile *</type>
+      <name>matOpen</name>
+      <anchor>a10</anchor>
+      <arglist>(const  char *filename, const  char *mode)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>matClose</name>
+      <anchor>a11</anchor>
+      <arglist>(MATFile *pMF)</arglist>
+    </member>
+    <member kind="function">
+      <type>FILE *</type>
+      <name>matGetFp</name>
+      <anchor>a12</anchor>
+      <arglist>(MATFile *pMF)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>matPutVariable</name>
+      <anchor>a13</anchor>
+      <arglist>(MATFile *pMF, const  char *name, const  mxArray *pA)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>matPutVariableAsGlobal</name>
+      <anchor>a14</anchor>
+      <arglist>(MATFile *pMF, const  char *name, const  mxArray *pA)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>matGetVariable</name>
+      <anchor>a15</anchor>
+      <arglist>(MATFile *pMF, const  char *name)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>matGetNextVariable</name>
+      <anchor>a16</anchor>
+      <arglist>(MATFile *pMF, const  char **varname)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>matGetNextVariableInfo</name>
+      <anchor>a17</anchor>
+      <arglist>(MATFile *pMF, const  char **varname)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>matGetVariableInfo</name>
+      <anchor>a18</anchor>
+      <arglist>(MATFile *pMF, const  char *name)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>matDeleteVariable</name>
+      <anchor>a19</anchor>
+      <arglist>(MATFile *pMF, const  char *name)</arglist>
+    </member>
+    <member kind="function">
+      <type>char **</type>
+      <name>matGetDir</name>
+      <anchor>a20</anchor>
+      <arglist>(MATFile *pMF, int *num)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>matcreat.c</name>
+    <path>C:/MATLAB6p5/extern/examples/eng_mat/</path>
+    <filename>matcreat_8c</filename>
+    <includes id="mat_8h" name="mat.h" local="yes">mat.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>BUFSIZE</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>main</name>
+      <anchor>a1</anchor>
+      <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>matdgns.c</name>
+    <path>C:/MATLAB6p5/extern/examples/eng_mat/</path>
+    <filename>matdgns_8c</filename>
+    <includes id="mat_8h" name="mat.h" local="yes">mat.h</includes>
+    <member kind="function">
+      <type>int</type>
+      <name>diagnose</name>
+      <anchor>a0</anchor>
+      <arglist>(const  char *file)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>main</name>
+      <anchor>a1</anchor>
+      <arglist>(int argc, char **argv)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>matrix.h</name>
+    <path>C:/MATLAB6p5/extern/include/</path>
+    <filename>matrix_8h</filename>
+    <includes id="tmwtypes_8h" name="tmwtypes.h" local="yes">tmwtypes.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxAssert</name>
+      <anchor>a0</anchor>
+      <arglist>(test, message)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxAssertS</name>
+      <anchor>a1</anchor>
+      <arglist>(test, message)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxArray_DEFINED</name>
+      <anchor>a2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxMAXNAM</name>
+      <anchor>a3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MX_DYNAMIC_STRUCT_REF_ERROR</name>
+      <anchor>a4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>DEEP</name>
+      <anchor>a5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>SHALLOW</name>
+      <anchor>a6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxCreateFull</name>
+      <anchor>a7</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxIsFull</name>
+      <anchor>a8</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxIsString</name>
+      <anchor>a9</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxFreeMatrix</name>
+      <anchor>a10</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxCreateScalarDouble</name>
+      <anchor>a11</anchor>
+      <arglist>(d)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxSetLogical</name>
+      <anchor>a12</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxClearLogical</name>
+      <anchor>a13</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxGetName</name>
+      <anchor>a14</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxSetName</name>
+      <anchor>a15</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="typedef">
+      <type>mxArray_tag</type>
+      <name>mxArray</name>
+      <anchor>a16</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>void(*</type>
+      <name>mxFunctionPtr</name>
+      <anchor>a17</anchor>
+      <arglist>)(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[])</arglist>
+    </member>
+    <member kind="typedef">
+      <type>bool</type>
+      <name>mxLogical</name>
+      <anchor>a18</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>uint16_T</type>
+      <name>mxChar</name>
+      <anchor>a19</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>void *(*</type>
+      <name>calloc_proc</name>
+      <anchor>a20</anchor>
+      <arglist>)(size_t nmemb, size_t size)</arglist>
+    </member>
+    <member kind="typedef">
+      <type>void(*</type>
+      <name>free_proc</name>
+      <anchor>a21</anchor>
+      <arglist>)(void *ptr)</arglist>
+    </member>
+    <member kind="typedef">
+      <type>void *(*</type>
+      <name>malloc_proc</name>
+      <anchor>a22</anchor>
+      <arglist>)(size_t size)</arglist>
+    </member>
+    <member kind="typedef">
+      <type>void *(*</type>
+      <name>realloc_proc</name>
+      <anchor>a23</anchor>
+      <arglist>)(void *ptr, size_t size)</arglist>
+    </member>
+    <member kind="enumeration">
+      <name>mxClassID</name>
+      <anchor>a156</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxUNKNOWN_CLASS</name>
+      <anchor>a156a24</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxCELL_CLASS</name>
+      <anchor>a156a25</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxSTRUCT_CLASS</name>
+      <anchor>a156a26</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxLOGICAL_CLASS</name>
+      <anchor>a156a27</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxCHAR_CLASS</name>
+      <anchor>a156a28</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxSPARSE_CLASS</name>
+      <anchor>a156a29</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxDOUBLE_CLASS</name>
+      <anchor>a156a30</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxSINGLE_CLASS</name>
+      <anchor>a156a31</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxINT8_CLASS</name>
+      <anchor>a156a32</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxUINT8_CLASS</name>
+      <anchor>a156a33</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxINT16_CLASS</name>
+      <anchor>a156a34</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxUINT16_CLASS</name>
+      <anchor>a156a35</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxINT32_CLASS</name>
+      <anchor>a156a36</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxUINT32_CLASS</name>
+      <anchor>a156a37</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxINT64_CLASS</name>
+      <anchor>a156a38</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxUINT64_CLASS</name>
+      <anchor>a156a39</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxFUNCTION_CLASS</name>
+      <anchor>a156a40</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxOPAQUE_CLASS</name>
+      <anchor>a156a41</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxOBJECT_CLASS</name>
+      <anchor>a156a42</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumeration">
+      <name>mxComplexity</name>
+      <anchor>a157</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxREAL</name>
+      <anchor>a157a43</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>mxCOMPLEX</name>
+      <anchor>a157a44</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>mxMalloc</name>
+      <anchor>a45</anchor>
+      <arglist>(size_t n)</arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>mxCalloc</name>
+      <anchor>a46</anchor>
+      <arglist>(size_t n, size_t size)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxFree</name>
+      <anchor>a47</anchor>
+      <arglist>(void *ptr)</arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>mxRealloc</name>
+      <anchor>a48</anchor>
+      <arglist>(void *ptr, size_t size)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxClassID</type>
+      <name>mxGetClassID</name>
+      <anchor>a49</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>mxGetData</name>
+      <anchor>a50</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetData</name>
+      <anchor>a51</anchor>
+      <arglist>(mxArray *pa, void *newdata)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsNumeric</name>
+      <anchor>a52</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsCell</name>
+      <anchor>a53</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsLogical</name>
+      <anchor>a54</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsChar</name>
+      <anchor>a55</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsStruct</name>
+      <anchor>a56</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsOpaque</name>
+      <anchor>a57</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsFunctionHandle</name>
+      <anchor>a58</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsObject</name>
+      <anchor>a59</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>mxGetImagData</name>
+      <anchor>a60</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetImagData</name>
+      <anchor>a61</anchor>
+      <arglist>(mxArray *pa, void *newdata)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsComplex</name>
+      <anchor>a62</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsSparse</name>
+      <anchor>a63</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsDouble</name>
+      <anchor>a64</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsSingle</name>
+      <anchor>a65</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsInt8</name>
+      <anchor>a66</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsUint8</name>
+      <anchor>a67</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsInt16</name>
+      <anchor>a68</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsUint16</name>
+      <anchor>a69</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsInt32</name>
+      <anchor>a70</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsUint32</name>
+      <anchor>a71</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsInt64</name>
+      <anchor>a72</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsUint64</name>
+      <anchor>a73</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>double *</type>
+      <name>mxGetPr</name>
+      <anchor>a74</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetPr</name>
+      <anchor>a75</anchor>
+      <arglist>(mxArray *pa, double *pr)</arglist>
+    </member>
+    <member kind="function">
+      <type>double *</type>
+      <name>mxGetPi</name>
+      <anchor>a76</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetPi</name>
+      <anchor>a77</anchor>
+      <arglist>(mxArray *pa, double *pi)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxChar *</type>
+      <name>mxGetChars</name>
+      <anchor>a78</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetUserBits</name>
+      <anchor>a79</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetUserBits</name>
+      <anchor>a80</anchor>
+      <arglist>(mxArray *pa, int value)</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>mxGetScalar</name>
+      <anchor>a81</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsFromGlobalWS</name>
+      <anchor>a82</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetFromGlobalWS</name>
+      <anchor>a83</anchor>
+      <arglist>(mxArray *pa, bool global)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetNumberOfDimensions</name>
+      <anchor>a84</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>const  int *</type>
+      <name>mxGetDimensions</name>
+      <anchor>a85</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetM</name>
+      <anchor>a86</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetM</name>
+      <anchor>a87</anchor>
+      <arglist>(mxArray *pa, int m)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetN</name>
+      <anchor>a88</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsEmpty</name>
+      <anchor>a89</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>int *</type>
+      <name>mxGetIr</name>
+      <anchor>a90</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetIr</name>
+      <anchor>a91</anchor>
+      <arglist>(mxArray *pa, int *newir)</arglist>
+    </member>
+    <member kind="function">
+      <type>int *</type>
+      <name>mxGetJc</name>
+      <anchor>a92</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetJc</name>
+      <anchor>a93</anchor>
+      <arglist>(mxArray *pa, int *newjc)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetNzmax</name>
+      <anchor>a94</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetNzmax</name>
+      <anchor>a95</anchor>
+      <arglist>(mxArray *pa, int nzmax)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetNumberOfElements</name>
+      <anchor>a96</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetElementSize</name>
+      <anchor>a97</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxCalcSingleSubscript</name>
+      <anchor>a98</anchor>
+      <arglist>(const  mxArray *pa, int nsubs, const  int *subs)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetNumberOfFields</name>
+      <anchor>a99</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxGetCell</name>
+      <anchor>a100</anchor>
+      <arglist>(const  mxArray *pa, int i)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetCell</name>
+      <anchor>a101</anchor>
+      <arglist>(mxArray *pa, int i, mxArray *value)</arglist>
+    </member>
+    <member kind="function">
+      <type>const  char *</type>
+      <name>mxGetFieldNameByNumber</name>
+      <anchor>a102</anchor>
+      <arglist>(const  mxArray *pa, int n)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetFieldNumber</name>
+      <anchor>a103</anchor>
+      <arglist>(const  mxArray *pa, const  char *name)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxGetFieldByNumber</name>
+      <anchor>a104</anchor>
+      <arglist>(const  mxArray *pa, int i, int fieldnum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetFieldByNumber</name>
+      <anchor>a105</anchor>
+      <arglist>(mxArray *pa, int i, int fieldnum, mxArray *value)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxGetField</name>
+      <anchor>a106</anchor>
+      <arglist>(const  mxArray *pa, int i, const  char *fieldname)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetField</name>
+      <anchor>a107</anchor>
+      <arglist>(mxArray *pa, int i, const  char *fieldname, mxArray *value)</arglist>
+    </member>
+    <member kind="function">
+      <type>const  char *</type>
+      <name>mxGetClassName</name>
+      <anchor>a108</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsClass</name>
+      <anchor>a109</anchor>
+      <arglist>(const  mxArray *pa, const  char *name)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetScalarDoubleFlag</name>
+      <anchor>a110</anchor>
+      <arglist>(mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxClearScalarDoubleFlag</name>
+      <anchor>a111</anchor>
+      <arglist>(mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsScalarDoubleFlagSet</name>
+      <anchor>a112</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetScalarDoubleFlagIfAppropiate</name>
+      <anchor>a113</anchor>
+      <arglist>(mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetDataPrivateFlag</name>
+      <anchor>a114</anchor>
+      <arglist>(mxArray *pa, bool val)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsDataPrivate</name>
+      <anchor>a115</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateNumericMatrix</name>
+      <anchor>a116</anchor>
+      <arglist>(int m, int n, mxClassID classid, int cmplx_flag)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetN</name>
+      <anchor>a117</anchor>
+      <arglist>(mxArray *pa, int n)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxSetDimensions</name>
+      <anchor>a118</anchor>
+      <arglist>(mxArray *pa, const  int *size, int ndims)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxDestroyArray</name>
+      <anchor>a119</anchor>
+      <arglist>(mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateNumericArray</name>
+      <anchor>a120</anchor>
+      <arglist>(int ndim, const  int *dims, mxClassID classid, mxComplexity flag)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateDoubleMatrix</name>
+      <anchor>a121</anchor>
+      <arglist>(int m, int n, mxComplexity flag)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxLogical *</type>
+      <name>mxGetLogicals</name>
+      <anchor>a122</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateLogicalArray</name>
+      <anchor>a123</anchor>
+      <arglist>(int ndim, const  int *dims)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateLogicalMatrix</name>
+      <anchor>a124</anchor>
+      <arglist>(unsigned int m, unsigned int n)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateLogicalScalar</name>
+      <anchor>a125</anchor>
+      <arglist>(bool value)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsLogicalScalarTrue</name>
+      <anchor>a126</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateDoubleScalar</name>
+      <anchor>a127</anchor>
+      <arglist>(double value)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateSparse</name>
+      <anchor>a128</anchor>
+      <arglist>(int m, int n, int nzmax, mxComplexity flag)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateSparseLogicalMatrix</name>
+      <anchor>a129</anchor>
+      <arglist>(int m, int n, int nzmax)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxGetNChars</name>
+      <anchor>a130</anchor>
+      <arglist>(const  mxArray *pa, char *buf, int nChars)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetString</name>
+      <anchor>a131</anchor>
+      <arglist>(const  mxArray *pa, char *buf, int buflen)</arglist>
+    </member>
+    <member kind="function">
+      <type>char *</type>
+      <name>mxArrayToString</name>
+      <anchor>a132</anchor>
+      <arglist>(const  mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateStringFromNChars</name>
+      <anchor>a133</anchor>
+      <arglist>(const  char *str, int n)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateString</name>
+      <anchor>a134</anchor>
+      <arglist>(const  char *str)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateCharArray</name>
+      <anchor>a135</anchor>
+      <arglist>(int ndim, const  int *dims)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateCharMatrixFromStrings</name>
+      <anchor>a136</anchor>
+      <arglist>(int m, const  char **str)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateCellMatrix</name>
+      <anchor>a137</anchor>
+      <arglist>(int m, int n)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateCellArray</name>
+      <anchor>a138</anchor>
+      <arglist>(int ndim, const  int *dims)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateStructMatrix</name>
+      <anchor>a139</anchor>
+      <arglist>(int m, int n, int nfields, const  char **fieldnames)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateStructArray</name>
+      <anchor>a140</anchor>
+      <arglist>(int ndim, const  int *dims, int nfields, const  char **fieldnames)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxDuplicateArray</name>
+      <anchor>a141</anchor>
+      <arglist>(const  mxArray *in)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxSetClassName</name>
+      <anchor>a142</anchor>
+      <arglist>(mxArray *pa, const  char *classname)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxAddField</name>
+      <anchor>a143</anchor>
+      <arglist>(mxArray *pa, const  char *fieldname)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxRemoveField</name>
+      <anchor>a144</anchor>
+      <arglist>(mxArray *pa, int field)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxResizeArray</name>
+      <anchor>a145</anchor>
+      <arglist>(mxArray *plhs, int nin, int *ldim)</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>mxGetEps</name>
+      <anchor>a146</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>mxGetInf</name>
+      <anchor>a147</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>mxGetNaN</name>
+      <anchor>a148</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsFinite</name>
+      <anchor>a149</anchor>
+      <arglist>(double x)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsInf</name>
+      <anchor>a150</anchor>
+      <arglist>(double x)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsNaN</name>
+      <anchor>a151</anchor>
+      <arglist>(double x)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetAllocFcns</name>
+      <anchor>a152</anchor>
+      <arglist>(calloc_proc callocfcn, free_proc freefcn, realloc_proc reallocfcn, malloc_proc mallocfcn)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxIncRefCount</name>
+      <anchor>a153</anchor>
+      <arglist>(mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxIncrementRefCount</name>
+      <anchor>a154</anchor>
+      <arglist>(mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxDecrementRefCount</name>
+      <anchor>a155</anchor>
+      <arglist>(mxArray *pa)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mex.h</name>
+    <path>C:/MATLAB6p5/extern/include/</path>
+    <filename>mex_8h</filename>
+    <includes id="matrix_8h" name="matrix.h" local="yes">matrix.h</includes>
+    <class kind="struct">_mex_information</class>
+    <class kind="struct">_mexInitTermTableEntry</class>
+    <class kind="struct">_mexLocalFunctionTable</class>
+    <class kind="struct">mexFunctionTableEntry_tag</class>
+    <class kind="struct">mexGlobalTableEntry_Tag</class>
+    <member kind="define">
+      <type>#define</type>
+      <name>cicompare</name>
+      <anchor>a0</anchor>
+      <arglist>(s1, s2)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>cscompare</name>
+      <anchor>a1</anchor>
+      <arglist>(s1, s2)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MEX_INFORMATION_VERSION</name>
+      <anchor>a2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>printf</name>
+      <anchor>a3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexAddFlops</name>
+      <anchor>a4</anchor>
+      <arglist>(x)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexGetGlobal</name>
+      <anchor>a5</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxSetString</name>
+      <anchor>a6</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mxSetDispMode</name>
+      <anchor>a7</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexGetMatrixPtr</name>
+      <anchor>a8</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexGetMatrix</name>
+      <anchor>a9</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexPutMatrix</name>
+      <anchor>a10</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexPutFull</name>
+      <anchor>a11</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexGetFull</name>
+      <anchor>a12</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexGetEps</name>
+      <anchor>a13</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexGetInf</name>
+      <anchor>a14</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexGetNaN</name>
+      <anchor>a15</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexIsFinite</name>
+      <anchor>a16</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexIsInf</name>
+      <anchor>a17</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexIsNaN</name>
+      <anchor>a18</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexPutArray</name>
+      <anchor>a19</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexGetArray</name>
+      <anchor>a20</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>mexGetArrayPtr</name>
+      <anchor>a21</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="typedef">
+      <type>impl_info_tag *</type>
+      <name>MEX_impl_info</name>
+      <anchor>a22</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>mexGlobalTableEntry_Tag</type>
+      <name>mexGlobalTableEntry</name>
+      <anchor>a23</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>mexGlobalTableEntry_Tag *</type>
+      <name>mexGlobalTable</name>
+      <anchor>a24</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>mexFunctionTableEntry_tag</type>
+      <name>mexFunctionTableEntry</name>
+      <anchor>a25</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>mexFunctionTableEntry_tag *</type>
+      <name>mexFunctionTable</name>
+      <anchor>a26</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>_mexLocalFunctionTable</type>
+      <name>_mexLocalFunctionTable</name>
+      <anchor>a27</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>_mexLocalFunctionTable *</type>
+      <name>mexLocalFunctionTable</name>
+      <anchor>a28</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>*</type>
+      <name>mexInitTermTableEntry</name>
+      <anchor>a29</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>*</type>
+      <name>mex_information</name>
+      <anchor>a30</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>mex_information(*</type>
+      <name>fn_mex_file</name>
+      <anchor>a31</anchor>
+      <arglist>)(void)</arglist>
+    </member>
+    <member kind="typedef">
+      <type>void(*</type>
+      <name>fn_clean_up_after_error</name>
+      <anchor>a32</anchor>
+      <arglist>)(void)</arglist>
+    </member>
+    <member kind="typedef">
+      <type>const  char *(*</type>
+      <name>fn_simple_function_to_string</name>
+      <anchor>a33</anchor>
+      <arglist>)(mxFunctionPtr f)</arglist>
+    </member>
+    <member kind="typedef">
+      <type>void(*</type>
+      <name>fn_mex_enter_mex_library</name>
+      <anchor>a34</anchor>
+      <arglist>)(mex_information x)</arglist>
+    </member>
+    <member kind="typedef">
+      <type>fn_mex_enter_mex_library</type>
+      <name>fn_mex_exit_mex_library</name>
+      <anchor>a35</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>mexLocalFunctionTable(*</type>
+      <name>fn_mex_get_local_function_table</name>
+      <anchor>a36</anchor>
+      <arglist>)(void)</arglist>
+    </member>
+    <member kind="typedef">
+      <type>mexLocalFunctionTable(*</type>
+      <name>fn_mex_set_local_function_table</name>
+      <anchor>a37</anchor>
+      <arglist>)(mexLocalFunctionTable)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a38</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexErrMsgTxt</name>
+      <anchor>a39</anchor>
+      <arglist>(const  char *error_msg)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexErrMsgIdAndTxt</name>
+      <anchor>a40</anchor>
+      <arglist>(const  char *identifier, const  char *err_msg,...)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexWarnMsgTxt</name>
+      <anchor>a41</anchor>
+      <arglist>(const  char *warn_msg)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexWarnMsgIdAndTxt</name>
+      <anchor>a42</anchor>
+      <arglist>(const  char *identifier, const  char *warn_msg,...)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mexPrintf</name>
+      <anchor>a43</anchor>
+      <arglist>(const  char *fmt,...)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexMakeArrayPersistent</name>
+      <anchor>a44</anchor>
+      <arglist>(mxArray *pa)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexMakeMemoryPersistent</name>
+      <anchor>a45</anchor>
+      <arglist>(void *ptr)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexGetFunctionHandle</name>
+      <anchor>a46</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexCallMATLABFunction</name>
+      <anchor>a47</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexRegisterFunction</name>
+      <anchor>a48</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mexSet</name>
+      <anchor>a49</anchor>
+      <arglist>(double handle, const  char *property, mxArray *value)</arglist>
+    </member>
+    <member kind="function">
+      <type>const  mxArray *</type>
+      <name>mexGet</name>
+      <anchor>a50</anchor>
+      <arglist>(double handle, const  char *property)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mexCallMATLAB</name>
+      <anchor>a51</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, mxArray *prhs[], const  char *fcn_name)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexSetTrapFlag</name>
+      <anchor>a52</anchor>
+      <arglist>(int flag)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexSubsAssign</name>
+      <anchor>a53</anchor>
+      <arglist>(mxArray *plhs, const  mxArray *prhs, const  mxArray *subs[], int nsubs)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mexSubsReference</name>
+      <anchor>a54</anchor>
+      <arglist>(const  mxArray *prhs, const  mxArray *subs[], int nsubs)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexPrintAssertion</name>
+      <anchor>a55</anchor>
+      <arglist>(const  char *test, const  char *fname, int linenum, const  char *message)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mexIsGlobal</name>
+      <anchor>a56</anchor>
+      <arglist>(const  mxArray *pA)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mexPutVariable</name>
+      <anchor>a57</anchor>
+      <arglist>(const  char *workspace, const  char *name, const  mxArray *parray)</arglist>
+    </member>
+    <member kind="function">
+      <type>const  mxArray *</type>
+      <name>mexGetVariablePtr</name>
+      <anchor>a58</anchor>
+      <arglist>(const  char *workspace, const  char *name)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mexGetVariable</name>
+      <anchor>a59</anchor>
+      <arglist>(const  char *workspace, const  char *name)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexLock</name>
+      <anchor>a60</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexUnlock</name>
+      <anchor>a61</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mexIsLocked</name>
+      <anchor>a62</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>const  char *</type>
+      <name>mexFunctionName</name>
+      <anchor>a63</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mexEvalString</name>
+      <anchor>a64</anchor>
+      <arglist>(const  char *str)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mexAtExit</name>
+      <anchor>a65</anchor>
+      <arglist>(void(*exit_fcn)(void))</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexatexit.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexatexit_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>CloseStream</name>
+      <anchor>a1</anchor>
+      <arglist>(void)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a2</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>FILE *</type>
+      <name>fp</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexatexit.cpp</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexatexit_8cpp</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <class kind="class">fileresource</class>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a1</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>fileresource</type>
+      <name>file</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexcallmatlab.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexcallmatlab_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>XR</name>
+      <anchor>a0</anchor>
+      <arglist>(i, j)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>XI</name>
+      <anchor>a1</anchor>
+      <arglist>(i, j)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>fill_array</name>
+      <anchor>a2</anchor>
+      <arglist>(double *xr, double *xi)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>invertd</name>
+      <anchor>a3</anchor>
+      <arglist>(double *xr, double *xi)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a4</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexcpp.cpp</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexcpp_8cpp</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <class kind="class">MyData</class>
+    <member kind="function">
+      <type>void</type>
+      <name>_main</name>
+      <anchor>a0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>mexcpp</name>
+      <anchor>a1</anchor>
+      <arglist>(double num1, double num2)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a2</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexeval.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexeval_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexevalstring.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexevalstring_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexfeval.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexfeval_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexfunction.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexfunction_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexget.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexget_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>RED</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>GREEN</name>
+      <anchor>a1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>BLUE</name>
+      <anchor>a2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a3</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexgetarray.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexgetarray_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a1</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>int</type>
+      <name>mex_count</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexload.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexload_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <includes id="mat_8h" name="mat.h" local="yes">mat.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexlock.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexlock_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mexsettrapflag.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mexsettrapflag_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mwdebug.c</name>
+    <path>C:/MATLAB6p5/extern/src/</path>
+    <filename>mwdebug_8c</filename>
+    <includes id="matrix_8h" name="matrix.h" local="yes">matrix.h</includes>
+    <includes id="mat_8h" name="mat.h" local="yes">mat.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>BEGIN_EXPORT</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>END_EXPORT</name>
+      <anchor>a1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>EXPORT</name>
+      <anchor>a2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>NULL_INPUT</name>
+      <anchor>a3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>ptrprint</name>
+      <anchor>a4</anchor>
+      <arglist>(ptr, func)</arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>mwHandleError</name>
+      <anchor>a6</anchor>
+      <arglist>(const  char *fcn, const  char *errmsg, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>matClose_d</name>
+      <anchor>a7</anchor>
+      <arglist>(MATFile *ph, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>matDeleteVariable_d</name>
+      <anchor>a8</anchor>
+      <arglist>(MATFile *ph, const  char *name, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>matGetVariable_d</name>
+      <anchor>a9</anchor>
+      <arglist>(MATFile *ph, const  char *name, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>matGetVariableInfo_d</name>
+      <anchor>a10</anchor>
+      <arglist>(MATFile *ph, const  char *name, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT char **</type>
+      <name>matGetDir_d</name>
+      <anchor>a11</anchor>
+      <arglist>(MATFile *ph, int *num, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT FILE *</type>
+      <name>matGetFp_d</name>
+      <anchor>a12</anchor>
+      <arglist>(MATFile *ph, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>matGetNextVariable_d</name>
+      <anchor>a13</anchor>
+      <arglist>(MATFile *ph, const  char **pname, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>matGetNextVariableInfo_d</name>
+      <anchor>a14</anchor>
+      <arglist>(MATFile *ph, const  char **pname, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT MATFile *</type>
+      <name>matOpen_d</name>
+      <anchor>a15</anchor>
+      <arglist>(const  char *filename, const  char *mode, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>matPutVariable_d</name>
+      <anchor>a16</anchor>
+      <arglist>(MATFile *ph, const  char *name, const  mxArray *mp, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>matPutVariableAsGlobal_d</name>
+      <anchor>a17</anchor>
+      <arglist>(MATFile *ph, const  char *name, const  mxArray *mp, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>BEGIN_EXPORT END_EXPORT EXPORT void *</type>
+      <name>mxMalloc_d</name>
+      <anchor>a18</anchor>
+      <arglist>(size_t n, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsOpaque_d</name>
+      <anchor>a19</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsObject_d</name>
+      <anchor>a20</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsInt64_d</name>
+      <anchor>a21</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsUint64_d</name>
+      <anchor>a22</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxChar *</type>
+      <name>mxGetChars_d</name>
+      <anchor>a23</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetFromGlobalWS_d</name>
+      <anchor>a24</anchor>
+      <arglist>(mxArray *pa, bool global, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateNumericMatrix_d</name>
+      <anchor>a25</anchor>
+      <arglist>(int m, int n, mxClassID classid, int cmplx_flag, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxLogical *</type>
+      <name>mxGetLogicals_d</name>
+      <anchor>a26</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateLogicalArray_d</name>
+      <anchor>a27</anchor>
+      <arglist>(int ndim, const  int *dims, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateLogicalMatrix_d</name>
+      <anchor>a28</anchor>
+      <arglist>(unsigned int m, unsigned int n, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateLogicalScalar_d</name>
+      <anchor>a29</anchor>
+      <arglist>(bool value, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateDoubleScalar_d</name>
+      <anchor>a30</anchor>
+      <arglist>(double value, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateSparseLogicalMatrix_d</name>
+      <anchor>a31</anchor>
+      <arglist>(int m, int n, int nzmax, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT char *</type>
+      <name>mxArrayToString_d</name>
+      <anchor>a32</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxAddField_d</name>
+      <anchor>a33</anchor>
+      <arglist>(mxArray *pa, const  char *fieldname, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxRemoveField_d</name>
+      <anchor>a34</anchor>
+      <arglist>(mxArray *pa, int field, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsFinite_d</name>
+      <anchor>a35</anchor>
+      <arglist>(double x, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsInf_d</name>
+      <anchor>a36</anchor>
+      <arglist>(double x, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsNaN_d</name>
+      <anchor>a37</anchor>
+      <arglist>(double x, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxCalcSingleSubscript_d</name>
+      <anchor>a38</anchor>
+      <arglist>(const  mxArray *pa, int nsubs, const  int *subs, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void *</type>
+      <name>mxCalloc_d</name>
+      <anchor>a39</anchor>
+      <arglist>(size_t nmemb, size_t size, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateCellArray_d</name>
+      <anchor>a40</anchor>
+      <arglist>(int ndim, const  int *dims, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateCellMatrix_d</name>
+      <anchor>a41</anchor>
+      <arglist>(int m, int n, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateCharArray_d</name>
+      <anchor>a42</anchor>
+      <arglist>(int ndim, const  int *dims, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateCharMatrixFromStrings_d</name>
+      <anchor>a43</anchor>
+      <arglist>(int m, const  char **str, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateNumericArray_d</name>
+      <anchor>a44</anchor>
+      <arglist>(int ndim, const  int *dims, mxClassID classid, mxComplexity flag, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateDoubleMatrix_d</name>
+      <anchor>a45</anchor>
+      <arglist>(int m, int n, mxComplexity flag, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateSparse_d</name>
+      <anchor>a46</anchor>
+      <arglist>(int m, int n, int nzmax, mxComplexity flag, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateString_d</name>
+      <anchor>a47</anchor>
+      <arglist>(const  char *str, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateStructArray_d</name>
+      <anchor>a48</anchor>
+      <arglist>(int ndim, const  int *dims, int nfields, const  char **fieldnames, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxCreateStructMatrix_d</name>
+      <anchor>a49</anchor>
+      <arglist>(int m, int n, int nfields, const  char **fieldnames, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxDestroyArray_d</name>
+      <anchor>a50</anchor>
+      <arglist>(mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxDuplicateArray_d</name>
+      <anchor>a51</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, const  int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxFree_d</name>
+      <anchor>a52</anchor>
+      <arglist>(void *pm, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxGetCell_d</name>
+      <anchor>a53</anchor>
+      <arglist>(const  mxArray *pa, int i, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxClassID</type>
+      <name>mxGetClassID_d</name>
+      <anchor>a54</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT const  char *</type>
+      <name>mxGetClassName_d</name>
+      <anchor>a55</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void *</type>
+      <name>mxGetData_d</name>
+      <anchor>a56</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT const  int *</type>
+      <name>mxGetDimensions_d</name>
+      <anchor>a57</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxGetElementSize_d</name>
+      <anchor>a58</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxGetField_d</name>
+      <anchor>a59</anchor>
+      <arglist>(const  mxArray *pa, int i, const  char *fieldname, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT mxArray *</type>
+      <name>mxGetFieldByNumber_d</name>
+      <anchor>a60</anchor>
+      <arglist>(const  mxArray *pa, int i, int fieldnum, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT const  char *</type>
+      <name>mxGetFieldNameByNumber_d</name>
+      <anchor>a61</anchor>
+      <arglist>(const  mxArray *pa, int n, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxGetFieldNumber_d</name>
+      <anchor>a62</anchor>
+      <arglist>(const  mxArray *pa, const  char *name, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void *</type>
+      <name>mxGetImagData_d</name>
+      <anchor>a63</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int *</type>
+      <name>mxGetIr_d</name>
+      <anchor>a64</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int *</type>
+      <name>mxGetJc_d</name>
+      <anchor>a65</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxGetNumberOfDimensions_d</name>
+      <anchor>a66</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxGetNumberOfElements_d</name>
+      <anchor>a67</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxGetNumberOfFields_d</name>
+      <anchor>a68</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxGetNzmax_d</name>
+      <anchor>a69</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxGetM_d</name>
+      <anchor>a70</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxGetN_d</name>
+      <anchor>a71</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double *</type>
+      <name>mxGetPi_d</name>
+      <anchor>a72</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double *</type>
+      <name>mxGetPr_d</name>
+      <anchor>a73</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double</type>
+      <name>mxGetScalar_d</name>
+      <anchor>a74</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxGetString_d</name>
+      <anchor>a75</anchor>
+      <arglist>(const  mxArray *pa, char *buf, int buflen, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsCell_d</name>
+      <anchor>a76</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsChar_d</name>
+      <anchor>a77</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsClass_d</name>
+      <anchor>a78</anchor>
+      <arglist>(const  mxArray *pa, const  char *name, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsComplex_d</name>
+      <anchor>a79</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsDouble_d</name>
+      <anchor>a80</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsEmpty_d</name>
+      <anchor>a81</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsInt8_d</name>
+      <anchor>a82</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsInt16_d</name>
+      <anchor>a83</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsInt32_d</name>
+      <anchor>a84</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsLogical_d</name>
+      <anchor>a85</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsNumeric_d</name>
+      <anchor>a86</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsSingle_d</name>
+      <anchor>a87</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsSparse_d</name>
+      <anchor>a88</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsStruct_d</name>
+      <anchor>a89</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsUint8_d</name>
+      <anchor>a90</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsUint16_d</name>
+      <anchor>a91</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT bool</type>
+      <name>mxIsUint32_d</name>
+      <anchor>a92</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void *</type>
+      <name>mxRealloc_d</name>
+      <anchor>a93</anchor>
+      <arglist>(void *pm, size_t size, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>BEGIN_EXPORT END_EXPORT EXPORT void</type>
+      <name>mxSetAllocFcns_d</name>
+      <anchor>a94</anchor>
+      <arglist>(calloc_proc callocfcn, free_proc freefcn, realloc_proc reallocfcn, malloc_proc mallocfcn, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>BEGIN_EXPORT END_EXPORT EXPORT void</type>
+      <name>mxSetCell_d</name>
+      <anchor>a95</anchor>
+      <arglist>(mxArray *pa, int i, mxArray *value, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxSetClassName_d</name>
+      <anchor>a96</anchor>
+      <arglist>(mxArray *pa, const  char *classname, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetData_d</name>
+      <anchor>a97</anchor>
+      <arglist>(mxArray *pa, void *Data, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT int</type>
+      <name>mxSetDimensions_d</name>
+      <anchor>a98</anchor>
+      <arglist>(mxArray *pa, const  int *size, int ndims, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetField_d</name>
+      <anchor>a99</anchor>
+      <arglist>(mxArray *pa, int i, const  char *fieldname, mxArray *value, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetFieldByNumber_d</name>
+      <anchor>a100</anchor>
+      <arglist>(mxArray *pa, int i, int fieldnum, mxArray *value, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetImagData_d</name>
+      <anchor>a101</anchor>
+      <arglist>(mxArray *pa, void *ImagData, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetIr_d</name>
+      <anchor>a102</anchor>
+      <arglist>(mxArray *pa, int *ir, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetJc_d</name>
+      <anchor>a103</anchor>
+      <arglist>(mxArray *pa, int *jc, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetM_d</name>
+      <anchor>a104</anchor>
+      <arglist>(mxArray *pa, int m, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetN_d</name>
+      <anchor>a105</anchor>
+      <arglist>(mxArray *pa, int n, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetNzmax_d</name>
+      <anchor>a106</anchor>
+      <arglist>(mxArray *pa, int nzmax, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetPi_d</name>
+      <anchor>a107</anchor>
+      <arglist>(mxArray *pa, double *pi, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>mxSetPr_d</name>
+      <anchor>a108</anchor>
+      <arglist>(mxArray *pa, double *pr, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>char</type>
+      <name>mwErrorBuffer</name>
+      <anchor>a5</anchor>
+      <arglist>[512]</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mwdebug.h</name>
+    <path>C:/MATLAB6p5/extern/include/</path>
+    <filename>mwdebug_8h</filename>
+    <includes id="matrix_8h" name="matrix.h" local="yes">matrix.h</includes>
+    <includes id="mat_8h" name="mat.h" local="yes">mat.h</includes>
+    <member kind="function">
+      <type>int</type>
+      <name>matClose_d</name>
+      <anchor>a0</anchor>
+      <arglist>(MATFile *ph, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>matDeleteVariable_d</name>
+      <anchor>a1</anchor>
+      <arglist>(MATFile *ph, const  char *name, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>matGetVariable_d</name>
+      <anchor>a2</anchor>
+      <arglist>(MATFile *ph, const  char *name, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>matGetVariableInfo_d</name>
+      <anchor>a3</anchor>
+      <arglist>(MATFile *ph, const  char *name, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>char **</type>
+      <name>matGetDir_d</name>
+      <anchor>a4</anchor>
+      <arglist>(MATFile *ph, int *num, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>FILE *</type>
+      <name>matGetFp_d</name>
+      <anchor>a5</anchor>
+      <arglist>(MATFile *ph, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>matGetNextVariable_d</name>
+      <anchor>a6</anchor>
+      <arglist>(MATFile *ph, const  char **pname, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>matGetNextVariableInfo_d</name>
+      <anchor>a7</anchor>
+      <arglist>(MATFile *ph, const  char **pname, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>MATFile *</type>
+      <name>matOpen_d</name>
+      <anchor>a8</anchor>
+      <arglist>(const  char *filename, const  char *mode, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>matPutVariable_d</name>
+      <anchor>a9</anchor>
+      <arglist>(MATFile *ph, const  char *name, const  mxArray *mp, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>matPutVariableAsGlobal_d</name>
+      <anchor>a10</anchor>
+      <arglist>(MATFile *ph, const  char *name, const  mxArray *mp, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>mxMalloc_d</name>
+      <anchor>a11</anchor>
+      <arglist>(size_t n, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsOpaque_d</name>
+      <anchor>a12</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsObject_d</name>
+      <anchor>a13</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsInt64_d</name>
+      <anchor>a14</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsUint64_d</name>
+      <anchor>a15</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxChar *</type>
+      <name>mxGetChars_d</name>
+      <anchor>a16</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetFromGlobalWS_d</name>
+      <anchor>a17</anchor>
+      <arglist>(mxArray *pa, bool global, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateNumericMatrix_d</name>
+      <anchor>a18</anchor>
+      <arglist>(int m, int n, mxClassID classid, int cmplx_flag, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxLogical *</type>
+      <name>mxGetLogicals_d</name>
+      <anchor>a19</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateLogicalArray_d</name>
+      <anchor>a20</anchor>
+      <arglist>(int ndim, const  int *dims, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateLogicalMatrix_d</name>
+      <anchor>a21</anchor>
+      <arglist>(unsigned int m, unsigned int n, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateLogicalScalar_d</name>
+      <anchor>a22</anchor>
+      <arglist>(bool value, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateDoubleScalar_d</name>
+      <anchor>a23</anchor>
+      <arglist>(double value, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateSparseLogicalMatrix_d</name>
+      <anchor>a24</anchor>
+      <arglist>(int m, int n, int nzmax, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>char *</type>
+      <name>mxArrayToString_d</name>
+      <anchor>a25</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxAddField_d</name>
+      <anchor>a26</anchor>
+      <arglist>(mxArray *pa, const  char *fieldname, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxRemoveField_d</name>
+      <anchor>a27</anchor>
+      <arglist>(mxArray *pa, int field, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsFinite_d</name>
+      <anchor>a28</anchor>
+      <arglist>(double x, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsInf_d</name>
+      <anchor>a29</anchor>
+      <arglist>(double x, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsNaN_d</name>
+      <anchor>a30</anchor>
+      <arglist>(double x, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxCalcSingleSubscript_d</name>
+      <anchor>a31</anchor>
+      <arglist>(const  mxArray *pa, int nsubs, const  int *subs, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>mxCalloc_d</name>
+      <anchor>a32</anchor>
+      <arglist>(size_t nmemb, size_t size, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateCellArray_d</name>
+      <anchor>a33</anchor>
+      <arglist>(int ndim, const  int *dims, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateCellMatrix_d</name>
+      <anchor>a34</anchor>
+      <arglist>(int m, int n, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateCharArray_d</name>
+      <anchor>a35</anchor>
+      <arglist>(int ndim, const  int *dims, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateCharMatrixFromStrings_d</name>
+      <anchor>a36</anchor>
+      <arglist>(int m, const  char **str, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateNumericArray_d</name>
+      <anchor>a37</anchor>
+      <arglist>(int ndim, const  int *dims, mxClassID classid, mxComplexity flag, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateDoubleMatrix_d</name>
+      <anchor>a38</anchor>
+      <arglist>(int m, int n, mxComplexity flag, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateSparse_d</name>
+      <anchor>a39</anchor>
+      <arglist>(int m, int n, int nzmax, mxComplexity flag, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateString_d</name>
+      <anchor>a40</anchor>
+      <arglist>(const  char *str, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateStructArray_d</name>
+      <anchor>a41</anchor>
+      <arglist>(int ndim, const  int *dims, int nfields, const  char **fieldnames, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxCreateStructMatrix_d</name>
+      <anchor>a42</anchor>
+      <arglist>(int m, int n, int nfields, const  char **fieldnames, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxDestroyArray_d</name>
+      <anchor>a43</anchor>
+      <arglist>(mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxDuplicateArray_d</name>
+      <anchor>a44</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, const  int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxFree_d</name>
+      <anchor>a45</anchor>
+      <arglist>(void *pm, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxGetCell_d</name>
+      <anchor>a46</anchor>
+      <arglist>(const  mxArray *pa, int i, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxClassID</type>
+      <name>mxGetClassID_d</name>
+      <anchor>a47</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>const  char *</type>
+      <name>mxGetClassName_d</name>
+      <anchor>a48</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>mxGetData_d</name>
+      <anchor>a49</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>const  int *</type>
+      <name>mxGetDimensions_d</name>
+      <anchor>a50</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetElementSize_d</name>
+      <anchor>a51</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxGetField_d</name>
+      <anchor>a52</anchor>
+      <arglist>(const  mxArray *pa, int i, const  char *fieldname, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>mxGetFieldByNumber_d</name>
+      <anchor>a53</anchor>
+      <arglist>(const  mxArray *pa, int i, int fieldnum, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>const  char *</type>
+      <name>mxGetFieldNameByNumber_d</name>
+      <anchor>a54</anchor>
+      <arglist>(const  mxArray *pa, int n, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetFieldNumber_d</name>
+      <anchor>a55</anchor>
+      <arglist>(const  mxArray *pa, const  char *name, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>mxGetImagData_d</name>
+      <anchor>a56</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int *</type>
+      <name>mxGetIr_d</name>
+      <anchor>a57</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int *</type>
+      <name>mxGetJc_d</name>
+      <anchor>a58</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetNumberOfDimensions_d</name>
+      <anchor>a59</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetNumberOfElements_d</name>
+      <anchor>a60</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetNumberOfFields_d</name>
+      <anchor>a61</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetNzmax_d</name>
+      <anchor>a62</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetM_d</name>
+      <anchor>a63</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetN_d</name>
+      <anchor>a64</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>double *</type>
+      <name>mxGetPi_d</name>
+      <anchor>a65</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>double *</type>
+      <name>mxGetPr_d</name>
+      <anchor>a66</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>double</type>
+      <name>mxGetScalar_d</name>
+      <anchor>a67</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxGetString_d</name>
+      <anchor>a68</anchor>
+      <arglist>(const  mxArray *pa, char *buf, int buflen, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsCell_d</name>
+      <anchor>a69</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsChar_d</name>
+      <anchor>a70</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsClass_d</name>
+      <anchor>a71</anchor>
+      <arglist>(const  mxArray *pa, const  char *name, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsComplex_d</name>
+      <anchor>a72</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsDouble_d</name>
+      <anchor>a73</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsEmpty_d</name>
+      <anchor>a74</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsInt8_d</name>
+      <anchor>a75</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsInt16_d</name>
+      <anchor>a76</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsInt32_d</name>
+      <anchor>a77</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsLogical_d</name>
+      <anchor>a78</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsNumeric_d</name>
+      <anchor>a79</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsSingle_d</name>
+      <anchor>a80</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsSparse_d</name>
+      <anchor>a81</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsStruct_d</name>
+      <anchor>a82</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsUint8_d</name>
+      <anchor>a83</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsUint16_d</name>
+      <anchor>a84</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>mxIsUint32_d</name>
+      <anchor>a85</anchor>
+      <arglist>(const  mxArray *pa, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>mxRealloc_d</name>
+      <anchor>a86</anchor>
+      <arglist>(void *pm, size_t size, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetAllocFcns_d</name>
+      <anchor>a87</anchor>
+      <arglist>(calloc_proc callocfcn, free_proc freefcn, realloc_proc reallocfcn, malloc_proc mallocfcn, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetCell_d</name>
+      <anchor>a88</anchor>
+      <arglist>(mxArray *pa, int i, mxArray *value, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxSetClassName_d</name>
+      <anchor>a89</anchor>
+      <arglist>(mxArray *pa, const  char *classname, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetData_d</name>
+      <anchor>a90</anchor>
+      <arglist>(mxArray *pa, void *Data, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>mxSetDimensions_d</name>
+      <anchor>a91</anchor>
+      <arglist>(mxArray *pa, const  int *size, int ndims, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetField_d</name>
+      <anchor>a92</anchor>
+      <arglist>(mxArray *pa, int i, const  char *fieldname, mxArray *value, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetFieldByNumber_d</name>
+      <anchor>a93</anchor>
+      <arglist>(mxArray *pa, int i, int fieldnum, mxArray *value, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetImagData_d</name>
+      <anchor>a94</anchor>
+      <arglist>(mxArray *pa, void *ImagData, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetIr_d</name>
+      <anchor>a95</anchor>
+      <arglist>(mxArray *pa, int *ir, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetJc_d</name>
+      <anchor>a96</anchor>
+      <arglist>(mxArray *pa, int *jc, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetM_d</name>
+      <anchor>a97</anchor>
+      <arglist>(mxArray *pa, int m, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetN_d</name>
+      <anchor>a98</anchor>
+      <arglist>(mxArray *pa, int n, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetNzmax_d</name>
+      <anchor>a99</anchor>
+      <arglist>(mxArray *pa, int nzmax, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetPi_d</name>
+      <anchor>a100</anchor>
+      <arglist>(mxArray *pa, double *pi, const  char *file, int linenum)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mxSetPr_d</name>
+      <anchor>a101</anchor>
+      <arglist>(mxArray *pa, double *pr, const  char *file, int linenum)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxcalcsinglesubscript.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxcalcsinglesubscript_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxcreatecellmatrix.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxcreatecellmatrix_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxcreatecharmatrixfromstr.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxcreatecharmatrixfromstr_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxcreatestructarray.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxcreatestructarray_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <class kind="struct">phonebook</class>
+    <member kind="define">
+      <type>#define</type>
+      <name>NUMBER_OF_STRUCTS</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>NUMBER_OF_FIELDS</name>
+      <anchor>a1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a2</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxgeteps.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxgeteps_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxgetinf.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxgetinf_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxgetnzmax.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxgetnzmax_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxisclass.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxisclass_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxisfinite.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxisfinite_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function" static="yes">
+      <type>int</type>
+      <name>dtoi32</name>
+      <anchor>a0</anchor>
+      <arglist>(double d)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a1</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxislogical.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxislogical_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxmalloc.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxmalloc_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxsetallocfcns.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxsetallocfcns_8c</filename>
+    <includes id="matrix_8h" name="matrix.h" local="yes">matrix.h</includes>
+    <member kind="function">
+      <type>void *</type>
+      <name>my_calloc</name>
+      <anchor>a0</anchor>
+      <arglist>(size_t n, size_t size)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>my_free</name>
+      <anchor>a1</anchor>
+      <arglist>(void *ptr)</arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>my_realloc</name>
+      <anchor>a2</anchor>
+      <arglist>(void *ptr, size_t size)</arglist>
+    </member>
+    <member kind="function">
+      <type>void *</type>
+      <name>my_malloc</name>
+      <anchor>a3</anchor>
+      <arglist>(size_t size)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>main</name>
+      <anchor>a4</anchor>
+      <arglist>(void)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxsetdimensions.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxsetdimensions_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mxsetnzmax.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mx/</path>
+    <filename>mxsetnzmax_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>phonebook.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>phonebook_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>MAXCHARS</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a1</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>revord.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>revord_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>revord</name>
+      <anchor>a0</anchor>
+      <arglist>(char *input_buf, int buflen, char *output_buf)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a1</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>shrlibsample.c</name>
+    <path>C:/MATLAB6p5/extern/examples/shrlib/</path>
+    <filename>shrlibsample_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="no">mex.h</includes>
+    <includes id="shrlibsample_8h" name="shrlibsample.h" local="yes">shrlibsample.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>EXPORT</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>multDoubleArray</name>
+      <anchor>a1</anchor>
+      <arglist>(double *x, int size)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double</type>
+      <name>addMixedTypes</name>
+      <anchor>a2</anchor>
+      <arglist>(short x, int y, double z)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double</type>
+      <name>addDoubleRef</name>
+      <anchor>a3</anchor>
+      <arglist>(double x, double *y, double z)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT char *</type>
+      <name>stringToUpper</name>
+      <anchor>a4</anchor>
+      <arglist>(char *input)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT char *</type>
+      <name>readEnum</name>
+      <anchor>a5</anchor>
+      <arglist>(TEnum1 val)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double</type>
+      <name>addStructFields</name>
+      <anchor>a6</anchor>
+      <arglist>(struct c_struct st)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double *</type>
+      <name>multDoubleRef</name>
+      <anchor>a7</anchor>
+      <arglist>(double *x)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double</type>
+      <name>addStructByRef</name>
+      <anchor>a8</anchor>
+      <arglist>(struct c_struct *st)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>allocateStruct</name>
+      <anchor>a9</anchor>
+      <arglist>(struct c_struct **val)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>deallocateStruct</name>
+      <anchor>a10</anchor>
+      <arglist>(void *ptr)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>multiplyShort</name>
+      <anchor>a11</anchor>
+      <arglist>(short *x, int size)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a12</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>shrlibsample.h</name>
+    <path>C:/MATLAB6p5/extern/examples/shrlib/</path>
+    <filename>shrlibsample_8h</filename>
+    <class kind="struct">c_struct</class>
+    <member kind="typedef">
+      <type>enum Enum1</type>
+      <name>TEnum1</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumeration">
+      <name>Enum1</name>
+      <anchor>a15</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>en1</name>
+      <anchor>a15a1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>en2</name>
+      <anchor>a15a2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="enumvalue">
+      <name>en4</name>
+      <anchor>a15a3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>multDoubleArray</name>
+      <anchor>a4</anchor>
+      <arglist>(double *, int)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double</type>
+      <name>addMixedTypes</name>
+      <anchor>a5</anchor>
+      <arglist>(short, int, double)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double</type>
+      <name>addDoubleRef</name>
+      <anchor>a6</anchor>
+      <arglist>(double, double *, double)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT char *</type>
+      <name>stringToUpper</name>
+      <anchor>a7</anchor>
+      <arglist>(char *)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT char *</type>
+      <name>readEnum</name>
+      <anchor>a8</anchor>
+      <arglist>(TEnum1)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double</type>
+      <name>addStructFields</name>
+      <anchor>a9</anchor>
+      <arglist>(struct c_struct)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double *</type>
+      <name>multDoubleRef</name>
+      <anchor>a10</anchor>
+      <arglist>(double *x)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT double</type>
+      <name>addStructByRef</name>
+      <anchor>a11</anchor>
+      <arglist>(struct c_struct *)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>allocateStruct</name>
+      <anchor>a12</anchor>
+      <arglist>(struct c_struct **)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>deallocateStruct</name>
+      <anchor>a13</anchor>
+      <arglist>(void *ptr)</arglist>
+    </member>
+    <member kind="function">
+      <type>EXPORT void</type>
+      <name>multiplyShort</name>
+      <anchor>a14</anchor>
+      <arglist>(short *, int)</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>sincall.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>sincall_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>MAX</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>fill</name>
+      <anchor>a1</anchor>
+      <arglist>(double *pr, int *pm, int *pn, int max)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a2</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>timestwo.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>timestwo_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>timestwo</name>
+      <anchor>a0</anchor>
+      <arglist>(double y[], double x[])</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a1</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>timestwoalt.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>timestwoalt_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>timestwo_alt</name>
+      <anchor>a0</anchor>
+      <arglist>(double *y, double x)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a1</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>tmwtypes.h</name>
+    <path>C:/MATLAB6p5/extern/include/</path>
+    <filename>tmwtypes_8h</filename>
+    <class kind="struct">creal32_T</class>
+    <class kind="struct">creal64_T</class>
+    <class kind="struct">creal_T</class>
+    <member kind="define">
+      <type>#define</type>
+      <name>LOGICAL_IS_A_TYPE</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>SPARSE_GENERALIZATION</name>
+      <anchor>a1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>FLT_MANT_DIG</name>
+      <anchor>a2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>DBL_MANT_DIG</name>
+      <anchor>a3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>REAL32_T</name>
+      <anchor>a4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>REAL64_T</name>
+      <anchor>a5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>REAL_T</name>
+      <anchor>a6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>TIME_T</name>
+      <anchor>a7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>BOOLEAN_T</name>
+      <anchor>a8</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>CHARACTER_T</name>
+      <anchor>a9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>INTEGER_T</name>
+      <anchor>a10</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>UINTEGER_T</name>
+      <anchor>a11</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>BYTE_T</name>
+      <anchor>a12</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>CREAL32_T</name>
+      <anchor>a13</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>CREAL64_T</name>
+      <anchor>a14</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>CREAL_T</name>
+      <anchor>a15</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MAX_int8_T</name>
+      <anchor>a16</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MIN_int8_T</name>
+      <anchor>a17</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MAX_uint8_T</name>
+      <anchor>a18</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MIN_uint8_T</name>
+      <anchor>a19</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MAX_int16_T</name>
+      <anchor>a20</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MIN_int16_T</name>
+      <anchor>a21</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MAX_uint16_T</name>
+      <anchor>a22</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MIN_uint16_T</name>
+      <anchor>a23</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MAX_int32_T</name>
+      <anchor>a24</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MIN_int32_T</name>
+      <anchor>a25</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MAX_uint32_T</name>
+      <anchor>a26</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MIN_uint32_T</name>
+      <anchor>a27</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>uint64_to_double</name>
+      <anchor>a28</anchor>
+      <arglist>(u)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>false</name>
+      <anchor>a29</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>true</name>
+      <anchor>a30</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>TMW_NAME_LENGTH_MAX</name>
+      <anchor>a31</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>unsigned char</type>
+      <name>uchar_T</name>
+      <anchor>a32</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>unsigned short</type>
+      <name>ushort_T</name>
+      <anchor>a33</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>unsigned long</type>
+      <name>ulong_T</name>
+      <anchor>a34</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>REAL32_T</type>
+      <name>real32_T</name>
+      <anchor>a35</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>REAL64_T</type>
+      <name>real64_T</name>
+      <anchor>a36</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>REAL_T</type>
+      <name>real_T</name>
+      <anchor>a37</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>TIME_T</type>
+      <name>time_T</name>
+      <anchor>a38</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>BOOLEAN_T</type>
+      <name>boolean_T</name>
+      <anchor>a39</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>CHARACTER_T</type>
+      <name>char_T</name>
+      <anchor>a40</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>INTEGER_T</type>
+      <name>int_T</name>
+      <anchor>a41</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>UINTEGER_T</type>
+      <name>uint_T</name>
+      <anchor>a42</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>BYTE_T</type>
+      <name>byte_T</name>
+      <anchor>a43</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="typedef">
+      <type>boolean_T</type>
+      <name>bool</name>
+      <anchor>a44</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>utdu_slv.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>utdu__slv_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <includes id="fort_8h" name="fort.h" local="yes">fort.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>utdu_slv_.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>utdu__slv___8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <includes id="fort_8h" name="fort.h" local="yes">fort.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a0</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>xtimesy.c</name>
+    <path>C:/MATLAB6p5/extern/examples/refbook/</path>
+    <filename>xtimesy_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="function">
+      <type>void</type>
+      <name>xtimesy</name>
+      <anchor>a0</anchor>
+      <arglist>(double x, double *y, double *z, int m, int n)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a1</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>mex/yprime.c</name>
+    <path>C:/MATLAB6p5/extern/examples/mex/</path>
+    <filename>mex_2yprime_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>T_IN</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>Y_IN</name>
+      <anchor>a1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>YP_OUT</name>
+      <anchor>a2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MAX</name>
+      <anchor>a3</anchor>
+      <arglist>(A, B)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MIN</name>
+      <anchor>a4</anchor>
+      <arglist>(A, B)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>PI</name>
+      <anchor>a5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function" static="yes">
+      <type>void</type>
+      <name>yprime</name>
+      <anchor>a8</anchor>
+      <arglist>(double yp[], double *t, double y[])</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a9</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>double</type>
+      <name>mu</name>
+      <anchor>a6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>double</type>
+      <name>mus</name>
+      <anchor>a7</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>shrlib/yprime.c</name>
+    <path>C:/MATLAB6p5/extern/examples/shrlib/</path>
+    <filename>shrlib_2yprime_8c</filename>
+    <includes id="mex_8h" name="mex.h" local="yes">mex.h</includes>
+    <member kind="define">
+      <type>#define</type>
+      <name>T_IN</name>
+      <anchor>a0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>Y_IN</name>
+      <anchor>a1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>YP_OUT</name>
+      <anchor>a2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MAX</name>
+      <anchor>a3</anchor>
+      <arglist>(A, B)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>MIN</name>
+      <anchor>a4</anchor>
+      <arglist>(A, B)</arglist>
+    </member>
+    <member kind="define">
+      <type>#define</type>
+      <name>PI</name>
+      <anchor>a5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>__declspec</name>
+      <anchor>a9</anchor>
+      <arglist>(dllexport) void yprimefcn(double yp[]</arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>double</type>
+      <name>mu</name>
+      <anchor>a6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" static="yes">
+      <type>double</type>
+      <name>mus</name>
+      <anchor>a7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>double *</type>
+      <name>t</name>
+      <anchor>a8</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="file">
+    <name>yprime.h</name>
+    <path>C:/MATLAB6p5/extern/examples/shrlib/</path>
+    <filename>yprime_8h</filename>
+    <member kind="function">
+      <type>void</type>
+      <name>yprimefcn</name>
+      <anchor>a0</anchor>
+      <arglist>(double *yp, double *t, double *y)</arglist>
+    </member>
+    <member kind="function">
+      <type>mxArray *</type>
+      <name>better_yprime</name>
+      <anchor>a1</anchor>
+      <arglist>(double t, mxArray *Y_IN)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>mexFunction</name>
+      <anchor>a2</anchor>
+      <arglist>(int nlhs, mxArray *plhs[], int nrhs, const  mxArray *prhs[])</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>_mex_information</name>
+    <filename>struct__mex__information.html</filename>
+    <member kind="variable">
+      <type>int</type>
+      <name>version</name>
+      <anchor>o0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>file_function_table_length</name>
+      <anchor>o1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>mexFunctionTable</type>
+      <name>file_function_table</name>
+      <anchor>o2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>global_variable_table_length</name>
+      <anchor>o3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>mexGlobalTable</type>
+      <name>global_variable_table</name>
+      <anchor>o4</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>npaths</name>
+      <anchor>o5</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>const  char **</type>
+      <name>paths</name>
+      <anchor>o6</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>init_term_table_length</name>
+      <anchor>o7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>mexInitTermTableEntry</type>
+      <name>init_term_table</name>
+      <anchor>o8</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>_mexInitTermTableEntry</name>
+    <filename>struct__mexInitTermTableEntry.html</filename>
+    <member kind="variable">
+      <type>void(*</type>
+      <name>initialize</name>
+      <anchor>o0</anchor>
+      <arglist>)(void)</arglist>
+    </member>
+    <member kind="variable">
+      <type>void(*</type>
+      <name>terminate</name>
+      <anchor>o1</anchor>
+      <arglist>)(void)</arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>_mexLocalFunctionTable</name>
+    <filename>struct__mexLocalFunctionTable.html</filename>
+    <member kind="variable">
+      <type>size_t</type>
+      <name>length</name>
+      <anchor>o0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>mexFunctionTable</type>
+      <name>entries</name>
+      <anchor>o1</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>c_struct</name>
+    <filename>structc__struct.html</filename>
+    <member kind="variable">
+      <type>double</type>
+      <name>p1</name>
+      <anchor>o0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>short</type>
+      <name>p2</name>
+      <anchor>o1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>long</type>
+      <name>p3</name>
+      <anchor>o2</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>creal32_T</name>
+    <filename>structcreal32__T.html</filename>
+    <member kind="variable">
+      <type>real32_T</type>
+      <name>re</name>
+      <anchor>o0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>real32_T</type>
+      <name>im</name>
+      <anchor>o1</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>creal64_T</name>
+    <filename>structcreal64__T.html</filename>
+    <member kind="variable">
+      <type>real64_T</type>
+      <name>re</name>
+      <anchor>o0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>real64_T</type>
+      <name>im</name>
+      <anchor>o1</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>creal_T</name>
+    <filename>structcreal__T.html</filename>
+    <member kind="variable">
+      <type>real_T</type>
+      <name>re</name>
+      <anchor>o0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>real_T</type>
+      <name>im</name>
+      <anchor>o1</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>fileresource</name>
+    <filename>classfileresource.html</filename>
+    <member kind="function">
+      <type></type>
+      <name>fileresource</name>
+      <anchor>a0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~fileresource</name>
+      <anchor>a1</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable">
+      <type>FILE *</type>
+      <name>fp</name>
+      <anchor>o0</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>mexFunctionTableEntry_tag</name>
+    <filename>structmexFunctionTableEntry__tag.html</filename>
+    <member kind="variable">
+      <type>const  char *</type>
+      <name>name</name>
+      <anchor>o0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>mxFunctionPtr</type>
+      <name>f</name>
+      <anchor>o1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>nargin</name>
+      <anchor>o2</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>int</type>
+      <name>nargout</name>
+      <anchor>o3</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>_mexLocalFunctionTable *</type>
+      <name>local_function_table</name>
+      <anchor>o4</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>mexGlobalTableEntry_Tag</name>
+    <filename>structmexGlobalTableEntry__Tag.html</filename>
+    <member kind="variable">
+      <type>const  char *</type>
+      <name>name</name>
+      <anchor>o0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>mxArray **</type>
+      <name>variable</name>
+      <anchor>o1</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>MyData</name>
+    <filename>classMyData.html</filename>
+    <member kind="function">
+      <type>void</type>
+      <name>display</name>
+      <anchor>a0</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>set_data</name>
+      <anchor>a1</anchor>
+      <arglist>(double v1, double v2)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>MyData</name>
+      <anchor>a2</anchor>
+      <arglist>(double v1=0, double v2=0)</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~MyData</name>
+      <anchor>a3</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>double</type>
+      <name>val1</name>
+      <anchor>r0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>double</type>
+      <name>val2</name>
+      <anchor>r1</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="struct">
+    <name>phonebook</name>
+    <filename>structphonebook.html</filename>
+    <member kind="variable">
+      <type>const  char *</type>
+      <name>name</name>
+      <anchor>o0</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable">
+      <type>double</type>
+      <name>phone</name>
+      <anchor>o1</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+</tagfile>

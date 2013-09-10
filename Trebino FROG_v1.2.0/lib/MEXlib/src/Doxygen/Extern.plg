@@ -1,0 +1,24 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Extern - Win32 Help--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSPCD9.bat" with contents
+[
+@echo off
+doxygen .\extern.dox
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSPCD9.bat"
+<h3>Output Window</h3>
+Performing Custom Build Step on .\extern.dox
+
+
+
+<h3>Results</h3>
+Extern - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

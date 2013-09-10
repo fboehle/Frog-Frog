@@ -1,0 +1,3 @@
+LIBRARY	CalcEsig_wW
+EXPORTS
+	mexFunction

@@ -7,12 +7,12 @@ indexForCircshift;
 mov = 0;
 
 
-FWHM = 30 * f;
+FWHM = 7 * f;
 tw = FWHM / 2.3548;
-omega0 = 2 * pi * c /(800 * n); %central wavelength
+omega0 = 0* 2 * pi * c /(800 * n); %central wavelength
 A0 = 1; %peak amplitude
-a = 0 / f^2 ; %chirp parameter
-a2 = 0;
+a = 0.00 / f^2 ; %chirp parameter
+a2 = 0.0;
 a3 = 0;
 phi = 0 + 0 * t/tw +  t.^2 * a + a2 * t.^3/tw.^3 + a3 * t.^4/tw.^4; %phase
 A = A0 * exp(-t.^2/(4 * tw.^2)) .* exp( 1i * phi ); %complex amplitude
@@ -20,7 +20,7 @@ E = A .* exp(1i * omega0 * t); %electromagnetic field
 
 
 V = fftshift(fft(ifftshift(E)));
-lambda = c ./ frequency;
+
 
 
 myfigure('original Efield')
@@ -60,3 +60,23 @@ saveimagedata = uint16(IFrog/max(max(IFrog))*65000);
 imwrite(saveimagedata, 'generated.tif', 'tif')
 
 
+%% from Trebino
+n = length(E);
+tic
+P = E(:);
+G = E(:);
+
+A = [G(n / 2 + 1 : +1 : end); zeros(n / 2 - 0, 1)];
+B = [G(n / 2 + 1 : -1 :   1); zeros(n / 2 - 1, 1)];
+
+% mEg = toeplitz(A, B);
+% 
+% mE = P * ones(1, n);
+% 
+% E = mE .* mEg;
+
+Esig = (P * ones(1, n)) .* toeplitz(A, B);
+toc
+myfigure('Trebino Esig');
+imagesc(abs(Esig));
+colorbar;

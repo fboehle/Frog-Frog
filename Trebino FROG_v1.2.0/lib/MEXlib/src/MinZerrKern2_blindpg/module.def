@@ -1,0 +1,3 @@
+LIBRARY	MinZerrKern2_blindpg
+EXPORTS
+	mexFunction

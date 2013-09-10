@@ -1,0 +1,2375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta content="HTML Tidy for Cygwin (vers 1st February 2003), see www.w3.org" name="generator" />
+        <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
+        <meta name="Generator" content="Microsoft Word 10 (filtered)" />
+        <title>
+            Frogger Source
+        </title>
+        <style type="text/css">
+        /*<![CDATA[*/
+        /* Font Definitions */
+        @font-face
+        {font-family:Helvetica;
+        panose-1:2 11 6 4 2 2 2 2 2 4;}
+        @font-face
+        {font-family:Courier;
+        panose-1:2 7 4 9 2 2 5 2 4 4;}
+        @font-face
+        {font-family:"Tms Rmn";
+        panose-1:2 2 6 3 4 5 5 2 3 4;}
+        @font-face
+        {font-family:Helv;
+        panose-1:2 11 6 4 2 2 2 3 2 4;}
+        @font-face
+        {font-family:"New York";
+        panose-1:2 4 5 3 6 5 6 2 3 4;}
+        @font-face
+        {font-family:System;
+        panose-1:0 0 0 0 0 0 0 0 0 0;}
+        @font-face
+        {font-family:Wingdings;
+        panose-1:5 0 0 0 0 0 0 0 0 0;}
+        @font-face
+        {font-family:"MS Mincho";
+        panose-1:2 2 6 9 4 2 5 8 3 4;}
+        @font-face
+        {font-family:Batang;
+        panose-1:2 3 6 0 0 1 1 1 1 1;}
+        @font-face
+        {font-family:SimSun;
+        panose-1:2 1 6 0 3 1 1 1 1 1;}
+        @font-face
+        {font-family:PMingLiU;
+        panose-1:2 1 6 1 0 1 1 1 1 1;}
+        @font-face
+        {font-family:"MS Gothic";
+        panose-1:2 11 6 9 7 2 5 8 2 4;}
+        @font-face
+        {font-family:Dotum;
+        panose-1:2 11 6 0 0 1 1 1 1 1;}
+        @font-face
+        {font-family:SimHei;
+        panose-1:2 1 6 0 3 1 1 1 1 1;}
+        @font-face
+        {font-family:MingLiU;
+        panose-1:2 1 6 9 0 1 1 1 1 1;}
+        @font-face
+        {font-family:Mincho;
+        panose-1:2 2 6 9 4 3 5 8 3 5;}
+        @font-face
+        {font-family:Gulim;
+        panose-1:2 11 6 0 0 1 1 1 1 1;}
+        @font-face
+        {font-family:Century;
+        panose-1:2 4 6 4 5 5 5 2 3 4;}
+        @font-face
+        {font-family:"Angsana New";
+        panose-1:2 2 6 3 5 4 5 2 3 4;}
+        @font-face
+        {font-family:"Cordia New";
+        panose-1:2 11 3 4 2 2 2 2 2 4;}
+        @font-face
+        {font-family:Mangal;
+        panose-1:0 0 4 0 0 0 0 0 0 0;}
+        @font-face
+        {font-family:Latha;
+        panose-1:0 0 4 0 0 0 0 0 0 0;}
+        @font-face
+        {font-family:Sylfaen;
+        panose-1:1 10 5 2 5 3 6 3 3 3;}
+        @font-face
+        {font-family:Vrinda;
+        panose-1:0 0 4 0 0 0 0 0 0 0;}
+        @font-face
+        {font-family:Raavi;
+        panose-1:0 0 4 0 0 0 0 0 0 0;}
+        @font-face
+        {font-family:Shruti;
+        panose-1:0 0 4 0 0 0 0 0 0 0;}
+        @font-face
+        {font-family:Sendnya;
+        panose-1:0 0 4 0 0 0 0 0 0 0;}
+        @font-face
+        {font-family:Gautami;
+        panose-1:0 0 4 0 0 0 0 0 0 0;}
+        @font-face
+        {font-family:Tunga;
+        panose-1:0 0 4 0 0 0 0 0 0 0;}
+        @font-face
+        {font-family:"Estrangella Edessa";
+        panose-1:0 0 0 0 0 0 0 0 0 0;}
+        @font-face
+        {font-family:"Arial Unicode MS";
+        panose-1:2 11 6 4 2 2 2 2 2 4;}
+        @font-face
+        {font-family:Tahoma;
+        panose-1:2 11 6 4 3 5 4 4 2 4;}
+        @font-face
+        {font-family:"\@Batang";
+        panose-1:2 3 6 0 0 1 1 1 1 1;}
+        /* Style Definitions */
+        p.MsoNormal, li.MsoNormal, div.MsoNormal
+        {margin:0in;
+        margin-bottom:.0001pt;
+        font-size:12.0pt;
+        font-family:"Times New Roman";}
+        p.Papers, li.Papers, div.Papers
+        {margin-top:10.0pt;
+        margin-right:0in;
+        margin-bottom:10.0pt;
+        margin-left:0in;
+        font-size:10.0pt;
+        font-family:Arial;}
+        span.msoIns
+        {text-decoration:underline;
+        color:teal;}
+        span.msoDel
+        {text-decoration:line-through;
+        color:red;}
+        @page Section1
+        {size:8.5in 11.0in;
+        margin:1.0in 1.25in 1.0in 1.25in;}
+        div.Section1
+        {page:Section1;}
+        /*]]>*/
+        </style>
+        <style type="text/css">
+        /*<![CDATA[*/
+        span.c18 {font-size:10.0pt;font-family:"Courier New";color:#218A21}
+        span.c17 {font-size:10.0pt;font-family:"Courier New";color:blue}
+        span.c16 {font-size:10.0pt;font-family:"Courier New";color:#B50000}
+        span.c15 {font-size:10.0pt;font-family:"Courier New";color:#218A21}
+        span.c14 {font-size:10.0pt;font-family:"Courier New";color:#B50000}
+        span.c13 {font-size:10.0pt;font-family:"Courier New";color:black}
+        span.c12 {font-size:10.0pt;font-family:"Courier New";color:#B50000}
+        span.c11 {font-size:10.0pt;font-family:"Courier New";color:#B50000}
+        span.c10 {font-size:10.0pt;font-family:"Courier New";color:black}
+        span.c9 {font-size:10.0pt;font-family:"Courier New";color:black}
+        span.c8 {font-size:10.0pt;font-family:"Courier New";color:blue}
+        span.c7 {font-size:10.0pt;font-family:"Courier New";color:blue}
+        span.c6 {font-size:10.0pt;font-family:"Courier New";color:black}
+        span.c5 {font-size:10.0pt;font-family:"Courier New";color:#B50000}
+        span.c4 {font-size:10.0pt;font-family:"Courier New";color:#218A21}
+        span.c3 {font-size:10.0pt;font-family:"Courier New";color:#218A21}
+        span.c2 {font-size:10.0pt;font-family:"Courier New";color:black}
+        span.c1 {font-size:10.0pt;font-family:"Courier New";color:blue}
+        /*]]>*/
+        </style>
+    </head>
+    <body lang="EN-US">
+        <div class="Section1">
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>varargout = Frogger(varargin)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% FROGGER is the FROG retrieval program</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% See also: BINNER</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Edit the above text to modify the response to help Frogger</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Last Modified by GUIDE v2.5</span> <span class='c4'>16-Apr-2003</span>
+                <span class='c4'>15:46:32</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%&nbsp;&nbsp;&nbsp;&nbsp; $Id: frogger.m,v 1.23 2003/05/07</span>
+                <span class='c4'>20:14:02</span> <span class='c4'>zeekec Exp $</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Begin initialization code - DO NOT EDIT</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>gui_Singleton = 1;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>gui_State =
+                struct(</span><span class='c5'>'gui_Name'</span><span class='c6'>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                mfilename,</span> <span class='c1'>...</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'gui_Singleton',&nbsp; gui_Singleton,</span>
+                <span class='c7'>...</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'gui_OpeningFcn', @Frogger_OpeningFcn,</span>
+                <span class='c7'>...</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'gui_OutputFcn',&nbsp;
+                @Frogger_OutputFcn,</span> <span class='c7'>...</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'gui_LayoutFcn',&nbsp; [],</span>
+                <span class='c8'>...</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 'gui_Callback',&nbsp;&nbsp; []);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>nargin &amp;
+                isstr(varargin</span><span class='c9'>{1}</span><span class='c9'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gui_State.gui_Callback =
+                str2func(varargin</span><span class='c6'>{1}</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>nargout</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                [varargout</span><span class='c10'>{1:nargout}</span><span class='c9'>] =
+                gui_mainfcn(gui_State, varargin</span><span class='c6'>{:}</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>else</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; gui_mainfcn(gui_State,
+                varargin</span><span class='c6'>{:}</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% End initialization code - DO NOT EDIT</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes just before Frogger is made visible.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Frogger_OpeningFcn(hObject, eventdata,
+                handles, varargin)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% This function has no output args, see OutputFcn.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to figure</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% varargin&nbsp;&nbsp; unrecognized PropertyName/PropertyValue pairs from
+                the</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;command
+                line (see VARARGIN)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Choose default command line output for Frogger</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>handles.output = hObject;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Set the menu accelerators.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Open_MenuItem,</span>
+                <span class='c5'>'Accelerator'</span><span class='c6'>,</span>
+                <span class='c11'>'o'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Save_MenuItem,</span>
+                <span class='c5'>'Accelerator'</span><span class='c6'>,</span>
+                <span class='c11'>'s'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Exit_MenuItem,</span>
+                <span class='c5'>'Accelerator'</span><span class='c6'>,</span>
+                <span class='c11'>'q'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Run_MenuItem,</span>
+                <span class='c5'>'Accelerator'</span><span class='c6'>,</span>
+                <span class='c11'>'r'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Stop_MenuItem,</span>
+                <span class='c5'>'Accelerator'</span><span class='c6'>,</span>
+                <span class='c11'>'x'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.NewPulse_MenuItem,</span>
+                <span class='c5'>'Accelerator'</span><span class='c6'>,</span>
+                <span class='c11'>'n'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Print_MenuItem,</span>
+                <span class='c5'>'Accelerator'</span><span class='c6'>,</span>
+                <span class='c11'>'p'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Setup default preferences.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>pth =
+                fileparts(mfilename(</span><span class='c5'>'fullpath'</span><span class='c6'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>LoadPrefs(pth);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Enumerate the availible algorithms.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>GetAlgos(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Update the controls for the non-linearities.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateClass(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateNonLin(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateDomain(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateAlgo(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Set the colormap to the default. (Probably should have a preference
+                for</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% this.)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>colormap FrogColorMap;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Create a default FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = ShgAlgo;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Create a pulse for the default trace.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>[Et, t, Ew, w] = PulseGenerator(128, @fgaussian, 10, 1.5, 800, [], [], [0,
+                0, 20, 40]);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%</span> <span class='c3'>Center</span> <span class='c3'>the pulse in the
+                same manner the Frogger Alogorithm does.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>Et =
+                center(Et,</span><span class='c12'>'max'</span><span class='c9'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Calculate the FROG trace.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>Esig = CalcEsig(Et,gate_shg(Et));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Continuing the calculation, adding noise and removing the negative</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% values.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>Esig = nonegatives(abs(fft_FROG(Esig)) + 0.0 * rand(size(Esig)));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Calculating the frequency axis.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>w2 = w + w(end/2+1);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Store the values in the FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'EtOrig'</span><span class='c13'>,&nbsp;&nbsp;&nbsp; Et);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'Asig'</span><span class='c13'>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Esig);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'tau'</span><span class='c13'>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                t);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'w2'</span><span class='c13'>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                w2);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'t'</span><span class='c9'>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                t);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Gererate a first guess...</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>[Et, t, Ew, w] = PulseGenerator(128, @frand, 40, 1, 800);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% ...and store it in the FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'Et'</span><span class='c13'>,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Et);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Run one step to get the initial error values.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = RunAlgoKern(FrogObj, handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Initialize the preferences.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>LoadPrefs(
+                mfilename(</span><span class='c5'>'fullpath'</span><span class='c6'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Store the current filename and FrogObj in the AppData.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(hObject,</span>
+                <span class='c5'>'Filename'</span><span class='c6'>,</span>
+                <span class='c11'>''</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(hObject,</span>
+                <span class='c5'>'FrogObj'</span><span class='c6'>, FrogObj);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Update handles structure</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>guidata(hObject, handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Center the GUI on the screen.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>movegui(hObject,</span>
+                <span class='c12'>'center'</span><span class='c9'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Update the plots.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateOriginal(FrogObj, handles.Original_Axes);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateRecon(FrogObj, handles.Recon_Axes, handles.Diff_Axes);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdatePlots(FrogObj, handles.Time_Axes, handles.Spec_Axes,</span>
+                <span class='c7'>...</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; handles.Error_Axes,
+                handles.Status_Text);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Make the controls match the current object.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>SetClass(handles, get(FrogObj,</span>
+                <span class='c5'>'TypeName'</span><span class='c6'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>SetNonLin(handles, get(FrogObj,</span>
+                <span class='c14'>'NonLinName'</span><span class='c6'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>SetDomain(handles, get(FrogObj,</span>
+                <span class='c14'>'DomainName'</span><span class='c6'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>SetAlgo(handles, get(FrogObj,</span>
+                <span class='c5'>'AlgoName'</span><span class='c6'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Make sure that everything matches.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>ReSetAlgo(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Outputs from this function are returned to the command line.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>varargout = Frogger_OutputFcn(hObject,
+                eventdata, handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% varargout&nbsp; cell array for returning output args (see
+                VARARGOUT);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to figure</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp; &nbsp;structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Get default command line output from handles structure</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>varargout</span><span class='c2'>{1}</span> <span class='c2'>=
+                handles.output;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>File_Menu_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to File_Menu (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Open_MenuItem_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Load a binned FROG trace.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Open_MenuItem (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Try to load a trace.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>try</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                [Asig,tau,lam,dtau,lam0,dlam,NumD,NumL,filename] = FrogLoad;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>catch</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c3'>% Exit load function
+                if is didn't work.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; errordlg(lasterr,</span>
+                <span class='c5'>'Error loading FROG file.'</span><span class='c6'>,</span>
+                <span class='c11'>'modal'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c1'>return</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Simple check for a binned trace.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>size(Asig,1) ~= size(Asig,2)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; errordlg(</span><span class='c12'>'Please
+                select a binned trace!'</span><span class='c6'>,</span> <span class='c11'>'File
+                Error'</span><span class='c6'>,</span>
+                <span class='c11'>'modal'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c1'>return</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% We only want the amplitude.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>Asig = sqrt(Asig);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% The array size.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>N = size(Asig,1);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% lam is not the proper frequency array.&nbsp; It assumes that the FROG
+                trace is</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% in constant wavelength spacing.&nbsp; Binner saves the lam0 and dlam
+                values</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% for the frequency array at the center of the trace.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>W0 = ltow(lam0);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>dW = W0 - ltow(lam0 + dlam);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Now we can calculate the angular frequency array for the binned
+                FROG</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% trace.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>w2 = ((-N/2):(N/2-1)) * dW + W0;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Get the current FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = getappdata(handles.Frogger_Main,</span>
+                <span class='c11'>'FrogObj'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Create a new, empty FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = feval(class(FrogObj));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Assign the new values to the FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'Asig'</span><span class='c13'>, Asig);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'tau'</span><span class='c13'>, tau);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span> <span class='c5'>'t'</span><span class='c9'>,
+                tau);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'w2'</span><span class='c13'>, w2);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Set a default new first guess.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'Et'</span><span class='c13'>, frand(tau, tau(floor(end*3/4))));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Run one step to get the proper error values.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = RunAlgoKern(FrogObj, handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Update the plots.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateOriginal(FrogObj, handles.Original_Axes);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateRecon(FrogObj, handles.Recon_Axes, handles.Diff_Axes);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdatePlots(FrogObj, handles.Time_Axes, handles.Spec_Axes,</span>
+                <span class='c7'>...</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; handles.Error_Axes,
+                handles.Status_Text);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Stor the new FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'FrogObj'</span><span class='c6'>, FrogObj);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Clear the dirty bit.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>ClearDirty(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Save the filename.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'Filename'</span><span class='c6'>, filename);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Add the filename to the title bar.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>[X,filename] = fileparts(filename);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Frogger_Main,</span>
+                <span class='c5'>'Name'</span><span class='c13'>, [</span><span class='c14'>'Frogger -
+                '</span><span class='c6'>, filename]);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Save_MenuItem_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Save_MenuItem (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>FroggerSave(handles.Frogger_Main)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c3'>% If the use pressed
+                OK clear the dirty bit.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ClearDirty(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% If we're closing, continue closing.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>getappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'Closing'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Frogger_Main_CloseRequestFcn(handles.Frogger_Main, eventdata, handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Exit_MenuItem_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Exit_MenuItem (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>close(handles.Frogger_Main);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes during object creation, after setting all properties.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>NonLin_Popup_CreateFcn(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to NonLin_Popup (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; empty - handles not created until after all
+                CreateFcns called</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Hint: popupmenu controls usually have a white background on
+                Windows.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See ISPC and COMPUTER.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>ispc</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                set(hObject,</span><span class='c12'>'BackgroundColor'</span><span class='c13'>,</span>
+                <span class='c14'>'white'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>else</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                set(hObject,</span><span class='c12'>'BackgroundColor'</span><span class='c13'>,get(0,</span>
+                <span class='c11'>'defaultUicontrolBackgroundColor'</span><span class='c6'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes on selection change in NonLin_Popup.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>NonLin_Popup_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to NonLin_Popup (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Hints: contents = get(hObject,'String') returns NonLin_Popup contents as
+                cell array</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contents</span><span class='c15'>{get(hObject,'Value')}</span>
+                <span class='c4'>returns selected item from NonLin_Popup</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateDomain(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateAlgo(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>ReSetAlgo(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes during object creation, after setting all properties.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Class_Popup_CreateFcn(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Class_Popup (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; empty - handles not created until after all
+                CreateFcns called</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Hint: popupmenu controls usually have a white background on
+                Windows.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See ISPC and COMPUTER.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>ispc</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                set(hObject,</span><span class='c12'>'BackgroundColor'</span><span class='c13'>,</span>
+                <span class='c14'>'white'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>else</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                set(hObject,</span><span class='c12'>'BackgroundColor'</span><span class='c13'>,get(0,</span>
+                <span class='c11'>'defaultUicontrolBackgroundColor'</span><span class='c6'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes on selection change in Class_Popup.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Class_Popup_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Class_Popup (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Hints: contents = get(hObject,'String') returns Class_Popup contents as
+                cell array</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contents</span><span class='c15'>{get(hObject,'Value')}</span>
+                <span class='c4'>returns selected item from Class_Popup</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateNonLin(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateDomain(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateAlgo(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>ReSetAlgo(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes during object creation, after setting all properties.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Domain_Popup_CreateFcn(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Domain_Popup (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; empty - handles not created until after all
+                CreateFcns called</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Hint: popupmenu controls usually have a white background on
+                Windows.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See ISPC and COMPUTER.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>ispc</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                set(hObject,</span><span class='c12'>'BackgroundColor'</span><span class='c13'>,</span>
+                <span class='c14'>'white'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>else</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                set(hObject,</span><span class='c12'>'BackgroundColor'</span><span class='c13'>,get(0,</span>
+                <span class='c11'>'defaultUicontrolBackgroundColor'</span><span class='c6'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes on selection change in Domain_Popup.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Domain_Popup_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Domain_Popup (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Hints: contents = get(hObject,'String') returns Domain_Popup contents as
+                cell array</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contents</span><span class='c15'>{get(hObject,'Value')}</span>
+                <span class='c4'>returns selected item from Domain_Popup</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateAlgo(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>ReSetAlgo(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes during object creation, after setting all properties.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Algo_Popup_CreateFcn(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Algo_Popup (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; empty - handles not created until after all
+                CreateFcns called</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Hint: popupmenu controls usually have a white background on
+                Windows.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;See ISPC and COMPUTER.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>ispc</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                set(hObject,</span><span class='c12'>'BackgroundColor'</span><span class='c13'>,</span>
+                <span class='c14'>'white'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>else</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                set(hObject,</span><span class='c12'>'BackgroundColor'</span><span class='c13'>,get(0,</span>
+                <span class='c11'>'defaultUicontrolBackgroundColor'</span><span class='c6'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes on selection change in Algo_Popup.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Algo_Popup_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Algo_Popup (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Hints: contents = get(hObject,'String') returns Algo_Popup contents as
+                cell array</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;contents</span><span class='c15'>{get(hObject,'Value')}</span>
+                <span class='c4'>returns selected item from Algo_Popup</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>ReSetAlgo(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Run_Button_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Run_Button (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Enable or disable buttons, menus, and popups.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Stop_Button,</span><span class='c5'>'Enable'</span>
+                <span class='c13'>,</span><span class='c14'>'on'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Run_Button,</span><span class='c5'>'Enable'</span>
+                <span class='c13'>,</span><span class='c14'>'off'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Run_MenuItem,</span><span class='c5'>'Enable'</span>
+                <span class='c13'>,</span><span class='c14'>'off'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Stop_MenuItem,</span><span class='c5'>'Enable'</span>
+                <span class='c13'>,</span><span class='c14'>'on'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.NewPulse_MenuItem,</span><span class='c5'>'Enable'</span>
+                <span class='c13'>,</span><span class='c14'>'off'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Class_Popup,</span>
+                <span class='c5'>'Enable'</span><span class='c13'>,</span>
+                <span class='c14'>'off'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.NonLin_Popup,</span>
+                <span class='c5'>'Enable'</span><span class='c13'>,</span>
+                <span class='c14'>'off'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Domain_Popup,</span>
+                <span class='c5'>'Enable'</span><span class='c13'>,</span>
+                <span class='c14'>'off'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Algo_Popup,</span>
+                <span class='c5'>'Enable'</span><span class='c13'>,</span>
+                <span class='c14'>'off'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Extra_Button,</span>
+                <span class='c5'>'Enable'</span><span class='c13'>,</span>
+                <span class='c14'>'off'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Clear the Stopping bit and set the Running bit.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'Stopping'</span><span class='c6'>, false);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'Running'</span><span class='c6'>, true);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Get the FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj =
+                getappdata(handles.Frogger_Main,</span><span class='c11'>'FrogObj'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Run the algorithm.&nbsp; This function doesn't return until we stop it
+                with</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% the Stop button.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = RunAlgo(FrogObj, handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Store the new FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'FrogObj'</span><span class='c6'>, FrogObj);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Clear the running bit.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'Running'</span><span class='c6'>, false);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% New we're dirty, unsaved data.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>SetDirty(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Re-enable or re-disable buttons, menus, and popups.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Run_Button,</span><span class='c5'>'Enable'</span>
+                <span class='c13'>,</span><span class='c14'>'on'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Stop_Button,</span><span class='c5'>'Enable'</span>
+                <span class='c13'>,</span><span class='c14'>'off'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Run_MenuItem,</span><span class='c5'>'Enable'</span>
+                <span class='c13'>,</span><span class='c14'>'on'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Stop_MenuItem,</span><span class='c5'>'Enable'</span>
+                <span class='c13'>,</span><span class='c14'>'off'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.NewPulse_MenuItem,</span><span class='c5'>'Enable'</span>
+                <span class='c13'>,</span><span class='c14'>'on'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Class_Popup,</span>
+                <span class='c5'>'Enable'</span><span class='c13'>,</span>
+                <span class='c14'>'on'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.NonLin_Popup,</span>
+                <span class='c5'>'Enable'</span><span class='c13'>,</span>
+                <span class='c14'>'on'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Domain_Popup,</span>
+                <span class='c5'>'Enable'</span><span class='c13'>,</span>
+                <span class='c14'>'on'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>set(handles.Algo_Popup,</span>
+                <span class='c5'>'Enable'</span><span class='c13'>,</span>
+                <span class='c14'>'on'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>get(FrogObj,</span>
+                <span class='c12'>'NeedsExtraInfo'</span><span class='c13'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; set(handles.Extra_Button,</span>
+                <span class='c14'>'Enable'</span><span class='c6'>,</span>
+                <span class='c11'>'on'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% If we're closing, continue.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>getappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'Closing'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Frogger_Main_CloseRequestFcn(handles.Frogger_Main, eventdata, handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes on button press in Stop_Button.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Stop_Button_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Stop_Button (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Set the Stopping bit.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'Stopping'</span><span class='c6'>, true);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Edit_Menu_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Edit_Menu (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Pref_MenuItem_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Pref_MenuItem (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>FroggerPrefs</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c3'>% TODO: We should do
+                something here.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% function Untitled_3_Callback(hObject, eventdata, handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Untitled_3 (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Help_Menu_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Help_Menu (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>About_MenuItem_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to About_MenuItem (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>helpdlg(</span><span class='c2'>{</span><span class='c16'>'Frogger'</span>
+                <span class='c2'>,</span> <span class='c16'>'(c) 2002-2003</span> <span class='c12'>Erik
+                Zeek</span><span class='c5'>'</span><span class='c9'>}</span><span class='c9'>,</span>
+                <span class='c5'>'About Frogger'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>NewPulse_MenuItem_Callback(hObject,
+                eventdata, handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Get a new starting guess.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to NewPulse_MenuItem (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Get the FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj =
+                getappdata(handles.Frogger_Main,</span><span class='c11'>'FrogObj'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Get the parameters for the default values.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>N = length(get(FrogObj,</span>
+                <span class='c5'>'Et'</span><span class='c13'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>t = get(FrogObj,</span>
+                <span class='c12'>'t'</span><span class='c9'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>dt = mean(diff(t));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>w1 = get(FrogObj,</span>
+                <span class='c12'>'w1'</span><span class='c9'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>L0 = ltow(w1(floor(end/2)+1));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Get a new pulse, passing in the default values.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>[Et1, T1] = uipulsegen(</span><span class='c5'>'N'</span><span class='c9'>,
+                N,</span> <span class='c5'>'Dt'</span><span class='c13'>, dt,</span>
+                <span class='c11'>'L0'</span><span class='c6'>, L0);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% If the user cancelled, return.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>isempty(Et1)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c1'>return</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Store the new pulse.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% TODO: We don't take into consideration a frequency shift.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'Et'</span><span class='c13'>, spline(T1, Et1, t));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Clear the stuff that depended on the last pulse.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'Esig'</span><span class='c13'>, []);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span> <span class='c5'>'G'</span><span class='c9'>,
+                []);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span> <span class='c5'>'Z'</span><span class='c9'>,
+                []);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'BestG.Et'</span><span class='c6'>, []);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = set(FrogObj,</span>
+                <span class='c5'>'BestZ.Et'</span><span class='c6'>, []);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Run aa single step to initialize everything.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj = RunAlgoKern(FrogObj, handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Store the FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'FrogObj'</span><span class='c6'>, FrogObj);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% New pulse isn't dirty yet.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>ClearDirty(handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Update the plots.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdateRecon(FrogObj, handles.Recon_Axes, handles.Diff_Axes);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>UpdatePlots(FrogObj, handles.Time_Axes, handles.Spec_Axes,</span>
+                <span class='c7'>...</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; handles.Error_Axes,
+                handles.Status_Text);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Execute_Menu_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Execute_Menu (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes when user attempts to close Frogger_Main.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Frogger_Main_CloseRequestFcn(hObject,
+                eventdata, handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Frogger_Main (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Hint: delete(hObject) closes the figure</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Check to see if we're running.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>getappdata(hObject,</span>
+                <span class='c5'>'Running'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c3'>% Check to see if
+                we're already closing.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c1'>if</span>
+                <span class='c2'>getappdata(hObject,</span>
+                <span class='c5'>'Closing'</span><span class='c6'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class='c3'>% The algorithm is not really running.&nbsp; Most likely an error
+                killed</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class='c3'>% it.&nbsp; Should we exit now anyway?</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; X =
+                questdlg(</span><span class='c5'>'Frogger is currently closing. &nbsp;Do you wish to close
+                immediately?'</span><span class='c10'>,</span> <span class='c17'>...</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                'Currently Closing',</span><span class='c11'>'Yes'</span><span class='c6'>,</span>
+                <span class='c11'>'No'</span><span class='c6'>,</span>
+                <span class='c11'>'No'</span><span class='c6'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class='c1'>if</span> <span class='c2'>strcmp(X,</span>
+                <span class='c16'>'Yes'</span><span class='c2'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                delete(hObject);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c3'>% Set the Stopping
+                and Closing bits.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setappdata(hObject,</span>
+                <span class='c5'>'Stopping'</span><span class='c6'>, true);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; setappdata(hObject,</span>
+                <span class='c5'>'Closing'</span><span class='c6'>, true);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c1'>return</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Is there dirty data?</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>if</span> <span class='c2'>getappdata(hObject,</span>
+                <span class='c5'>'Dirty'</span><span class='c13'>)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ans = questdlg(</span><span class='c5'>'There
+                is unsaved data. &nbsp;Do you wish to save it?'</span><span class='c2'>,</span>
+                <span class='c16'>'Dirty Data'</span><span class='c10'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c1'>switch</span>
+                <span class='c2'>ans</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class='c1'>case</span> <span class='c16'>'Yes'</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class='c18'>% Save the data.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                setappdata(hObject,</span> <span class='c11'>'Stopping'</span><span class='c6'>,
+                true);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Save_MenuItem_Callback(hObject, eventdata, handles);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class='c1'>case</span> <span class='c16'>'Cancel'</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class='c18'>% Don't save the data, but don't quit either.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span class='c17'>return</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>end</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% We're all done.&nbsp; Kill FROGGER!!!!!!!!!</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>delete(hObject);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes on button press in FlipTime_Button.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>FlipTime_Button_Callback(hObject,
+                eventdata, handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to FlipTime_Button (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Set the FlipTime flag.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'FlipTime'</span><span class='c6'>, true);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Help_MenuItem_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Help_MenuItem (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>HelpFile =
+                which(</span><span class='c12'>'Frogger.html'</span><span class='c9'>);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>web(HelpFile);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes on button press in Extra_Button.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Extra_Button_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Extra_Button (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Get the extra info for the particular FROG algorithm.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>FrogObj =
+                ExtraInfo(getappdata(handles.Frogger_Main,</span><span class='c11'>'FrogObj'</span>
+                <span class='c6'>));</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Store the new FrogObj.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'FrogObj'</span><span class='c6'>, FrogObj);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% --- Executes on button press in FlatPhase_Button.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>FlatPhase_Button_Callback(hObject,
+                eventdata, handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to FlatPhase_Button (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Set the FlatPhase flag.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>setappdata(handles.Frogger_Main,</span>
+                <span class='c14'>'FlatPhase'</span><span class='c6'>, true);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>Print_MenuItem_Callback(hObject, eventdata,
+                handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to Print_MenuItem (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Print the Frogger dialog.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>printdlg(handles.Frogger_Main);</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>PrintPreView_MenuItem_Callback(hObject,
+                eventdata, handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to PrintPreView_MenuItem (see
+                GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Prieview the Frogger dialog printing.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>printpreview(handles.Frogger_Main)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>%
+                --------------------------------------------------------------------</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c1'>function</span> <span class='c2'>PageSetup_MenuItem_Callback(hObject,
+                eventdata, handles)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% hObject&nbsp;&nbsp;&nbsp; handle to PageSetup_MenuItem (see GCBO)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% eventdata&nbsp; reserved - to be defined in a future version of
+                MATLAB</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% handles&nbsp;&nbsp;&nbsp; structure with handles and user data (see
+                GUIDATA)</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>&nbsp;</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c3'>% Print page setup dialog.</span>
+            </p>
+            <p class="MsoNormal">
+                <span class='c2'>pagesetupdlg(handles.Frogger_Main);</span>
+            </p>
+        </div>
+    </body>
+</html>

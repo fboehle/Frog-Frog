@@ -1,0 +1,3 @@
+LIBRARY	MinZerrKern_shg
+EXPORTS
+	mexFunction

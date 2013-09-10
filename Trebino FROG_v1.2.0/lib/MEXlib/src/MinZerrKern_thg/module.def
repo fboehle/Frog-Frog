@@ -1,0 +1,3 @@
+LIBRARY	MinZerrKern_thg
+EXPORTS
+	mexFunction

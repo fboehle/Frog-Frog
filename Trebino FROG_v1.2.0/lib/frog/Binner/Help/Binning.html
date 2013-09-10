@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta content="HTML Tidy for Cygwin (vers 1st February 2003), see www.w3.org" name="generator" />
+        <title>
+            Binner Help
+        </title>
+        <meta name="Generator" content="TextPad 4.6" />
+        <meta name="Author" content="?" />
+        <meta name="Keywords" content="?" />
+        <meta name="Description" content="?" />
+        <link rel="stylesheet" href="docstyle1.css" type="text/css" />
+    </head>
+    <body>
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" summary="Header">
+            <tr class="header" valign="baseline">
+                <td>
+                    <b>Binning Panel</b>
+                </td>
+                <td align="right">
+                    <a href="Filter.html"><img src="Images/b_prev.PNG" border="0" alt="Prev" /></a>
+                </td>
+            </tr>
+        </table>
+        <h1>
+            Binning Panel
+        </h1>
+        <p>
+            This is where all the real work is done.
+        </p>
+        <p>
+            The FROG algorithms (Frogger, QiuckFROG, ...) can only handle square arrays (at the time of this
+            writing) with constant delay and frequency spacing. Normally measured FROG traces are not square
+            and have constant delay and wavelength spacing on their axes. Binner fixes these problems.
+        </p>
+        <p>
+            This program is a big departure from the Femtosoft code. Femtosoft does not allow rescaling of
+            the delay axis (Well the user can reduce the delay spacing by averaging time slices.). This code
+            allows arbitrary rescaling of all axes.
+        </p>
+        <p>
+            Once the trace is binned simply save it (for Frogger) or export it (for QuickFROG). The export
+            button is the third on the toolbar (It looks like a copy button.). Exporting is a depreciated
+            feature.
+        </p>
+        <table border="0" cellspacing="0" cellpadding="0" width="100%" summary="Binning Panel">
+            <caption>
+                The Binning Panel.
+            </caption>
+            <tr align="center" valign="middle">
+                <td>
+                    <img src="Images/Binning2.png" alt="Binning Panel" />
+                </td>
+            </tr>
+        </table>
+        <dl>
+            <dt>
+                Bandwidth Product
+            </dt>
+            <dd>
+                This is the full time-bandwidth of the current FROG trace. This is the size of the array
+                needed to represent the FROG trace without rescaling the delay axis. After binning this
+                number is meaningless.
+            </dd>
+            <dt>
+                Array Size
+            </dt>
+            <dd>
+                This is the final size of the binned array. Currently an NxN matrix.
+            </dd>
+            <dt>
+                Binned Width (%)
+            </dt>
+            <dd>
+                This is a tricky parameter. This is the percentage of the binned FROG trace that the current
+                FROG trace will occupy. This effectively shrinks the FROG trace and fills the extra space
+                with zeros. This is useful to get the FROG trace isolated in a sea of zeros as well as
+                increase the spectral resolution of the trace.
+            </dd>
+            <dt>
+                Axis Fit
+            </dt>
+            <dd>
+                When binning, how to determine the limits on the axes. The user can either fit the delay or
+                frequency axis or use a fixed value for the spacing. Fitting to an axis, makes the raw FROG
+                trace fit the binned trace, rescaling the axes as necessary.
+            </dd>
+            <dt>
+                Delay/Frequency Spacing
+            </dt>
+            <dd>
+                When fitting to an axis, these controls are indicators of the binned traces spacing. When the
+                axis fit method is "Fixed," the values for the spacing are taken from these controls. The
+                wavelength spacing is based at the center of the trace.
+            </dd>
+        </dl>
+        <table border="0" width="100%" cellpadding="0" cellspacing="0" summary="Footer">
+            <tr class="header" valign="baseline">
+                <td>
+                    <a href="Filter.html"><img src="Images/b_prev.PNG" border="0" alt="Prev" /></a> Filtering
+                    Panel
+                </td>
+            </tr>
+        </table>
+    </body>
+</html>

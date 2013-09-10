@@ -1,0 +1,3 @@
+LIBRARY	ZerrKern_wW_shg
+EXPORTS
+	mexFunction

@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: ZerrKern_wW_shg - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP97.tmp" with contents
+[
+/nologo /MD /W3 /Gm /Gi /GX /ZI /Od /I "C:\MATLAB6p1\extern\include" /D "_DEBUG" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Debug/" /Fp"Debug/ZerrKern_wW_shg.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\ZerrKern_wW_shg\ZerrKern_wW_shg.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP97.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP98.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:yes /pdb:"Debug/ZerrKern_wW_shg.pdb" /debug /machine:I386 /out:"Debug/ZerrKern_wW_shg.dll" /implib:"Debug/ZerrKern_wW_shg.lib" /pdbtype:sept /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Debug\ZerrKern_wW_shg.obj
+.\Debug\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP98.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP99.bat" with contents
+[
+@echo off
+copy .\Debug\ZerrKern_wW_shg.dll ..\..\bin\ZerrKern_wW_shg.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP99.bat"
+Compiling...
+ZerrKern_wW_shg.cpp
+Linking...
+   Creating library Debug/ZerrKern_wW_shg.lib and object Debug/ZerrKern_wW_shg.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Debug\ZerrKern_wW_shg.dll
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+ZerrKern_wW_shg.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

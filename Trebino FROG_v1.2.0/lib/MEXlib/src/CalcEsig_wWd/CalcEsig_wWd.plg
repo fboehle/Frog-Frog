@@ -1,0 +1,42 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: CalcEsig_wWd - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2A6.tmp" with contents
+[
+/nologo /MD /W3 /Gi /GX /O2 /I "C:\MATLAB6p1\extern\include" /D "WIN32" /D "_WINDOWS" /D "_WINDLL" /D "_AFXDLL" /D "_MBCS" /D "_USRDLL" /D "IBMPC" /D "MSVC" /D "MSWIND" /D "__STDC__" /D "MATLAB_MEX_FILE" /D "NDEBUG" /D "ARRAY_ACCESS_INLINING" /FR"Release/" /Fp"Release/CalcEsig_wWd.pch" /YX /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\MATLAB6p1\work\matlablib\MEXlib\src\ClacEsig_wWd\CalcEsig_wWd.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2A6.tmp" 
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2A7.tmp" with contents
+[
+kernel32.lib user32.lib libmx.lib libmex.lib libmatlb.lib libmat.lib /nologo /subsystem:windows /dll /incremental:no /pdb:"Release/CalcEsig_wWd.pdb" /machine:I386 /out:"Release/CalcEsig_wWd.dll" /implib:"Release/CalcEsig_wWd.lib" /libpath:"C:\MATLAB6p1\extern\lib\win32\microsoft\msvc60" /export:"mexFunction" 
+.\Release\CalcEsig_wWd.obj
+.\Release\mexversion.res
+]
+Creating command line "link.exe @C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2A7.tmp"
+Creating temporary file "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2A8.bat" with contents
+[
+@echo off
+copy .\Release\CalcEsig_wWd.dll ..\..\bin\CalcEsig_wWd.dll
+]
+Creating command line "C:\DOCUME~1\zeekec\LOCALS~1\Temp\RSP2A8.bat"
+Compiling...
+CalcEsig_wWd.cpp
+Linking...
+   Creating library Release/CalcEsig_wWd.lib and object Release/CalcEsig_wWd.exp
+<h3>Output Window</h3>
+Performing Custom Build Step on .\Release\CalcEsig_wWd.dll
+        1 file(s) copied.
+
+
+
+<h3>Results</h3>
+CalcEsig_wWd.dll - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
