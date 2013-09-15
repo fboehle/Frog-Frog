@@ -73,6 +73,7 @@ load('Calibrations/20130906.mat');
 % delaypixel = [862,692,666,535,551,368,286];
 % save('Calibrations/20130906.mat', 'lambdalines', 'lambdapixel', 'delayfromposition', 'delaypixel');
 
+
 fitLambda = polyfit(lambdapixel,lambdalines,1); %the spectrometer has a linear relation between the pixel and the wavelength
 fitLambdaVal = polyval(fitLambda, pixell);
 
@@ -82,7 +83,6 @@ ccd_frequencyRange = ccd_frequency(length(ccd_frequency)) - ccd_frequency(1);
 
 delayFit = polyfit(delaypixel, delayfromposition, 1);
 delayFitVal = polyval(delayFit, pixelt);
-
 
 ccd_dt = delayFit(1);
 ccd_delay = (-(length(pixelt)/2)*ccd_dt:ccd_dt:(length(pixelt)/2 - 1) * ccd_dt);
