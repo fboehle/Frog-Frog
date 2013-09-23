@@ -1,3 +1,21 @@
+%*********************************************************
+%	Retrieve the original pulse from a Frogtrace with the most simply
+%	algorithm
+%	
+%	Developement started: end 2012
+%	Author: Frederik Böhle code@fboehle.de
+%
+%*********************************************************
+%   
+%   Description: 
+%
+%   Notes:
+%
+%   Changelog:
+%
+%*********************************************************
+
+
 clear all
 
 constants;

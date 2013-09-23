@@ -1,3 +1,19 @@
+%*********************************************************
+%	Implementation to reshape a frogtrace for the commercial Frog Software 
+%	
+%	Developement started:
+%	Author:
+%
+%*********************************************************
+%   
+%   Description:
+%
+%   Notes:
+%
+%   Changelog:
+%
+%*********************************************************
+
 clear all
 tic
 A=imread('afterXPW_2.bmp') - 16; % read the original image from the FROG camera

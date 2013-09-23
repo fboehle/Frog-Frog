@@ -1,15 +1,24 @@
+%*********************************************************
+%	Full-Width at Half-Maximum (FWHM) of the waveform y(x) 
+%	
+%	Developement started: 
+%	Author: Patrick Egan
+%
+%*********************************************************
+%   
+%   Description: 
+%       Full-Width at Half-Maximum (FWHM) of the waveform y(x)
+%       and its polarity.
+%       The FWHM result in 'width' will be in units of 'x'
+%
+%   Notes:
+%
+%   Changelog:  
+%       Rev 1.2, April 2006
+%
+%*********************************************************
+
 function width = fwhm(x,y)
-
-% function width = fwhm(x,y)
-%
-% Full-Width at Half-Maximum (FWHM) of the waveform y(x)
-% and its polarity.
-% The FWHM result in 'width' will be in units of 'x'
-%
-%
-% Rev 1.2, April 2006 (Patrick Egan)
-
-
 y = y / max(y);
 N = length(y);
 lev50 = 0.5;

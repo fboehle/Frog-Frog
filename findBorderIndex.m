@@ -1,3 +1,19 @@
+%*********************************************************
+%	Full width at specified intensity
+%	
+%	Developement started: 2013
+%	Author: Frederik Böhle code@fboehle.de
+%
+%*********************************************************
+%   
+%   Description: 
+%
+%   Notes:
+%
+%   Changelog:
+%
+%*********************************************************
+
 function [borderLower, borderHigher] = findBorderIndex(Data, percentage)
 
     percentage = percentage / 100;

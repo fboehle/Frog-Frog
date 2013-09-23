@@ -1,6 +1,20 @@
-% the camera has a timespan from -100fs until 100fs: bandwidth 200fs
-%            and a frequency range from about 
+%*********************************************************
+%	Convert the frog camera image to a calibrated frogtrace
+%	
+%	Developement started: end 2012
+%	Author: Frederik Böhle code@fboehle.de
 %
+%*********************************************************
+%   
+%   Description: 
+%
+%   Notes:
+%       the camera has a timespan from -100fs until 100fs: bandwidth 200fs
+%       and a frequency range from about 
+%
+%   Changelog:
+%
+%*********************************************************
 
 clear all
 

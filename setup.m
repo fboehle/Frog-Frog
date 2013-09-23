@@ -1,3 +1,19 @@
+%*********************************************************
+%	Setup parameters for the frogtrace 
+%	
+%	Developement started: end 2012
+%	Author: Frederik Böhle code@fboehle.de
+%
+%*********************************************************
+%   
+%   Description: 
+%
+%   Notes:
+%
+%   Changelog:
+%
+%*********************************************************
+
 
 N = 256;
 NRange = (-(N)/2:(N)/2-1);

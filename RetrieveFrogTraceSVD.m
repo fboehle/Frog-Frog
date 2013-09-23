@@ -1,3 +1,19 @@
+%*********************************************************
+%	Retrieve the original pulse from a Frogtrace with the SVD algorithm. 
+%	
+%	Developement started: end 2012
+%	Author: Frederik Böhle code@fboehle.de
+%
+%*********************************************************
+%   
+%   Description: 
+%
+%   Notes: this is the best implementation so far
+%
+%   Changelog:
+%
+%*********************************************************
+
 clear all
 tTotal = tic;
 constants; %load physical, mathematical and numerical constants

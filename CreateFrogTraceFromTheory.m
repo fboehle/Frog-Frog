@@ -1,3 +1,19 @@
+%*********************************************************
+%	Create a Frogtrace from a give pulse
+%	
+%	Developement started: end 2012
+%	Author: Frederik Böhle code@fboehle.de
+%
+%*********************************************************
+%   
+%   Description: 
+%
+%   Notes:
+%
+%   Changelog:
+%
+%*********************************************************
+
 clear all
 
 constants; %load physical, mathematical and numerical constants

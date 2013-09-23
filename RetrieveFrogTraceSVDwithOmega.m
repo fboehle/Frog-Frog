@@ -1,3 +1,20 @@
+%*********************************************************
+%	TEST Script Retrieve the original pulse from a Frogtrace in the radial 
+%   frequency domain 
+%	
+%	Developement started: end 2012
+%	Author: Frederik Böhle code@fboehle.de
+%
+%*********************************************************
+%   
+%   Description: 
+%
+%   Notes:
+%
+%   Changelog:
+%
+%*********************************************************
+
 clear all
 
 f = 10^(-15);

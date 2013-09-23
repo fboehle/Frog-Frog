@@ -1,3 +1,19 @@
+%*********************************************************
+%	Physical and Mathematical Constants 
+%	
+%	Developement started: end 2012
+%	Author: Frederik Böhle code@fboehle.de
+%
+%*********************************************************
+%   
+%   Description: 
+%
+%   Notes:
+%
+%   Changelog:
+%
+%*********************************************************
+
 f = 10^(-15);
 n = 10^(-9);
 u = 10^(-6);
