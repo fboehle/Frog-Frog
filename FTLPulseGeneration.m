@@ -69,7 +69,7 @@ spectrumRawFullFilename = fullfile(spectrumRawDIRname, spectrumRawFilename);
 
 spectrumRaw = dlmread(spectrumRawFullFilename, ';', [8 1 2850 1]);
 spectrumRawLambda = n * dlmread(spectrumRawFullFilename,';', [8 0 2850 0]);
-avantesCalibrationFactor = interp1(n* dlmread('AvantesCalib.txt', ',', [0 0 1400 0]), dlmread('AvantesCalib.txt', ',', [0 1 1400 1]), spectrumRawLambda, 'linear', 0);
+avantesCalibrationFactor = interp1(n* dlmread('C:\Users\bohle\Dropbox\Diploma Thesis\Spectrometer Calibrations\AvantesCalib.txt', ',', [0 0 1400 0]), dlmread('C:\Users\bohle\Dropbox\Diploma Thesis\Spectrometer Calibrations\AvantesCalib.txt', ',', [0 1 1400 1]), spectrumRawLambda, 'linear', 0);
 spectrumCalibrated =  spectrumRaw .* avantesCalibrationFactor;
 spectrumRawFrequency = c ./ spectrumRawLambda;
 spectrumOverF = spectrumCalibrated .* (spectrumRawLambda * 100000000).^2 / c;
