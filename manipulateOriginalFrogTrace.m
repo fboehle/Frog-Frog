@@ -99,7 +99,7 @@ frogRaw = frogRaw - background;
 end
 
 %% rotate it a bit, this is not nessesarily a good idea, but do it in any case after the background substraction!!!
-frogRaw = imrotate(frogRaw, 0.5, 'bilinear','crop');
+frogRaw = imrotate(frogRaw, 0, 'bilinear','crop');
 
 
 %% anti aliasing and noise reduction if noiseReduction > 1
@@ -190,10 +190,10 @@ finalFrog(isnan(finalFrog)) = 0;
 
 %% mask the final FROG trace
 
-butterworthOrder = 5; %too low is not good, as it would 
+butterworthOrder = 10; %too low is not good, as it would 
 [maskDelayMesh,maskFrequencyMesh] = meshgrid((-(N)/2:(N)/2-1),(-(N)/2:(N)/2-1));
-estimatedFrogSizeDelay = 80;
-estimatedFrogSizeFrequency = 60;
+estimatedFrogSizeDelay = 100;
+estimatedFrogSizeFrequency = 30;
 maskNormalizedRadius = sqrt(( (maskDelayMesh/estimatedFrogSizeDelay).^2 + (maskFrequencyMesh/estimatedFrogSizeFrequency).^2)) ;
 maskMatrix = sqrt(1./ (1 + (maskNormalizedRadius).^(2 * butterworthOrder)));
     
@@ -208,7 +208,7 @@ maskedFinalFrog = finalFrog .* maskMatrix;
     imagesc(abs(finalFrog - maskedFinalFrog),[-1 1 ]);
     
     
-finalFrog = maskedFinalFrog;
+maskedFinalFrog;
  %%
     
 fprintf('Total manipulations time: %f seconds \n', toc(tTotal));
@@ -218,37 +218,37 @@ myfigure('Original Frogtrace');
 imagesc(frogRaw);
 colormap(mycolormap);
 
-myfigure('finalFrog')
-imagesc(tau, frequency + frequencyOffset, finalFrog);
+myfigure('maskedFinalFrog')
+imagesc(tau, frequency + frequencyOffset, maskedFinalFrog);
 colormap(mycolormap);
 
 %% calculate center of mass of each row or column of final frog trace
 %(centerofmass of the delay)
 myfigure('centerofmass')
 subplot(1,2,1)
-imagesc(tau, frequency + frequencyOffset, finalFrog);
+imagesc(tau, frequency + frequencyOffset, maskedFinalFrog);
 colormap(mycolormap);
-CoMdelay = sum(finalFrog .* (ones(length(frequency),1) * tau), 2)./sum(finalFrog, 2);
+CoMdelay = sum(maskedFinalFrog .* (ones(length(frequency),1) * tau), 2)./sum(maskedFinalFrog, 2);
 hold all;
 scatter(CoMdelay, frequency + frequencyOffset, 'black', 'filled' )
 hold off;
 
 %THIS IS THE IMPORTANT ONE: centerofmass of the frequency
 subplot(1,2,2)
-imagesc(tau, frequency + frequencyOffset, finalFrog);
+imagesc(tau, frequency + frequencyOffset, maskedFinalFrog);
 colormap(mycolormap);
-CoMfrequency = sum(finalFrog .* (frequency' * ones(1,length(frequency))), 1) ./ sum(finalFrog, 1);
+CoMfrequency = sum(maskedFinalFrog .* (frequency' * ones(1,length(frequency))), 1) ./ sum(maskedFinalFrog, 1);
 hold all;
 scatter(tau, CoMfrequency + frequencyOffset, 'black', 'filled' )
 hold off;
 %%
 %some testing on it
-a = -0.0;
+a = -0.1;
 T = maketform('affine', [1 0 0; a 1 0; 0 0 1] );
 R = makeresampler({'cubic','cubic'},'fill');
-shearedFrog = imtransform(finalFrog,T,R);
-shearedFrog = shearedFrog((1:256) + (size(shearedFrog,1)/2 - 128), (1:256) + floor(size(shearedFrog,2)/2 - 128));
-toMoveTime = sum((-(256/2):(256/2)-1) .* sum(shearedFrog).^2)/sum(sum(shearedFrog).^2); %weighted average to find center of peak
+shearedFrog = imtransform(maskedFinalFrog,T,R);
+shearedFrog = shearedFrog((1:N) + (size(shearedFrog,1)/2 - N/2), (1:N) + floor(size(shearedFrog,2)/2 - N/2));
+toMoveTime = sum((-(N/2):(N/2)-1) .* sum(shearedFrog).^2)/sum(sum(shearedFrog).^2); %weighted average to find center of peak
 toMoveTime(isnan(toMoveTime)) = 0;
 shearedFrog = circshift(shearedFrog,[0 -round(toMoveTime)]);
 myfigure('sheared')
@@ -262,5 +262,5 @@ saveimagedata = uint16(shearedFrog/max(max(shearedFrog))*65000);
 imwrite(saveimagedata, 'generatedsheared.tif', 'tif')
 
 
-saveimagedata = uint16(finalFrog/max(max(finalFrog))*65000);
+saveimagedata = uint16(maskedFinalFrog/max(max(maskedFinalFrog))*65000);
 imwrite(saveimagedata, 'generated.tif', 'tif')

@@ -48,9 +48,9 @@ ylabel('Wavelength (pixel)');
 xlabel('delay (pixel)');
 colormap(mycolormap);
 
-
-lambdalines = [302,313,365,405,436] * 1e-9;
-lambdapixel = [241,344,676,930,1128];
+%lambdalines = [302.2,312.6,365.0,404.7,435.8] * 1e-9;
+lambdalines = [312.6,365.0,404.7,435.8] * 1e-9; %without 302 nm lime
+lambdapixel = [344,676,930,1128];
 delayfromposition = (-[ 153.6, 145.8, 134.7, 119.6, 104.7, 94.3, 84.3] * 1e-6 ) * 2 / Phys.c + 800e-15; 
 delaypixel = [986,888,736,527,331,191,59];
 
@@ -69,7 +69,7 @@ ccd_dt = delayFit(1);
 ccd_delay = (-(length(pixelt)/2)*ccd_dt:ccd_dt:(length(pixelt)/2 - 1) * ccd_dt);
 ccd_delayRange = ccd_delay(length(ccd_delay)) - ccd_delay(1);
 
-save('Calibrations/20130214.mat', 'lambdalines', 'lambdapixel', 'delayfromposition', 'delaypixel', 'ccd_wavelength', 'ccd_frequency', 'ccd_frequencyRange', 'ccd_delay', 'ccd_delayRange');
+save('Calibrations/20130214without302nmLine.mat', 'lambdalines', 'lambdapixel', 'delayfromposition', 'delaypixel', 'ccd_wavelength', 'ccd_frequency', 'ccd_frequencyRange', 'ccd_delay', 'ccd_delayRange');
 
 %%
 myfigure('calibration of spectrometer')

@@ -20,10 +20,13 @@ constants; %load physical, mathematical and numerical constants
 setup; %initilized values
 indexForCircshift;
 
-iterations = 100;
+iterations = 500;
 mov = 0;
 
-numberOfRuns = 10;
+numberOfRuns = 1;
+usePreviousEfield = 0;
+
+
 eachFrogError = zeros(numberOfRuns, 1);
 eachEfield = zeros(numberOfRuns, N);
 for numberOfRun = 1:numberOfRuns
@@ -46,6 +49,16 @@ sqrtIFrog = sqrt(IFrog);
 Efield = random('Poisson',500,1,N) + 1i*random('Poisson',500,1,N);
 Efield = Efield/max(Efield);
 Egate = Efield ;
+
+%% or use the efield from the previous run
+if(usePreviousEfield)
+load('previousBestEfield.mat');
+
+Efield = previousBestEfield;
+Egate = Efield ;
+end
+
+%%
 
 tStart = tic
 
@@ -208,13 +221,13 @@ end
 myfigure('Frog Retrieval');
 	colormap([0 0 0.515625;0 0 0.53125;0 0 0.546875;0 0 0.5625;0 0 0.578125;0 0 0.59375;0 0 0.609375;0 0 0.625;0 0 0.640625;0 0 0.65625;0 0 0.671875;0 0 0.6875;0 0 0.703125;0 0 0.71875;0 0 0.734375;0 0 0.75;0 0 0.765625;0 0 0.78125;0 0 0.796875;0 0 0.8125;0 0 0.828125;0 0 0.84375;0 0 0.859375;0 0 0.875;0 0 0.890625;0 0 0.90625;0 0 0.921875;0 0 0.9375;0 0 0.953125;0 0 0.96875;0 0 0.984375;0 0 1;0 0.015625 1;0 0.03125 1;0 0.046875 1;0 0.0625 1;0 0.078125 1;0 0.09375 1;0 0.109375 1;0 0.125 1;0 0.140625 1;0 0.15625 1;0 0.171875 1;0 0.1875 1;0 0.203125 1;0 0.21875 1;0 0.234375 1;0 0.25 1;0 0.265625 1;0 0.28125 1;0 0.296875 1;0 0.3125 1;0 0.328125 1;0 0.34375 1;0 0.359375 1;0 0.375 1;0 0.390625 1;0 0.40625 1;0 0.421875 1;0 0.4375 1;0 0.453125 1;0 0.46875 1;0 0.484375 1;0 0.5 1;0 0.515625 1;0 0.53125 1;0 0.546875 1;0 0.5625 1;0 0.578125 1;0 0.59375 1;0 0.609375 1;0 0.625 1;0 0.640625 1;0 0.65625 1;0 0.671875 1;0 0.6875 1;0 0.703125 1;0 0.71875 1;0 0.734375 1;0 0.75 1;0 0.765625 1;0 0.78125 1;0 0.796875 1;0 0.8125 1;0 0.828125 1;0 0.84375 1;0 0.859375 1;0 0.875 1;0 0.890625 1;0 0.90625 1;0 0.921875 1;0 0.9375 1;0 0.953125 1;0 0.96875 1;0 0.984375 1;0 1 1;0.015625 1 0.984375;0.03125 1 0.96875;0.046875 1 0.953125;0.0625 1 0.9375;0.078125 1 0.921875;0.09375 1 0.90625;0.109375 1 0.890625;0.125 1 0.875;0.140625 1 0.859375;0.15625 1 0.84375;0.171875 1 0.828125;0.1875 1 0.8125;0.203125 1 0.796875;0.21875 1 0.78125;0.234375 1 0.765625;0.25 1 0.75;0.265625 1 0.734375;0.28125 1 0.71875;0.296875 1 0.703125;0.3125 1 0.6875;0.328125 1 0.671875;0.34375 1 0.65625;0.359375 1 0.640625;0.375 1 0.625;0.390625 1 0.609375;0.40625 1 0.59375;0.421875 1 0.578125;0.4375 1 0.5625;0.453125 1 0.546875;0.46875 1 0.53125;0.484375 1 0.515625;0.5 1 0.5;0.515625 1 0.484375;0.53125 1 0.46875;0.546875 1 0.453125;0.5625 1 0.4375;0.578125 1 0.421875;0.59375 1 0.40625;0.609375 1 0.390625;0.625 1 0.375;0.640625 1 0.359375;0.65625 1 0.34375;0.671875 1 0.328125;0.6875 1 0.3125;0.703125 1 0.296875;0.71875 1 0.28125;0.734375 1 0.265625;0.75 1 0.25;0.765625 1 0.234375;0.78125 1 0.21875;0.796875 1 0.203125;0.8125 1 0.1875;0.828125 1 0.171875;0.84375 1 0.15625;0.859375 1 0.140625;0.875 1 0.125;0.890625 1 0.109375;0.90625 1 0.09375;0.921875 1 0.078125;0.9375 1 0.0625;0.953125 1 0.046875;0.96875 1 0.03125;0.984375 1 0.015625;1 1 0;1 0.984375 0;1 0.96875 0;1 0.953125 0;1 0.9375 0;1 0.921875 0;1 0.90625 0;1 0.890625 0;1 0.875 0;1 0.859375 0;1 0.84375 0;1 0.828125 0;1 0.8125 0;1 0.796875 0;1 0.78125 0;1 0.765625 0;1 0.75 0;1 0.734375 0;1 0.71875 0;1 0.703125 0;1 0.6875 0;1 0.671875 0;1 0.65625 0;1 0.640625 0;1 0.625 0;1 0.609375 0;1 0.59375 0;1 0.578125 0;1 0.5625 0;1 0.546875 0;1 0.53125 0;1 0.515625 0;1 0.5 0;1 0.484375 0;1 0.46875 0;1 0.453125 0;1 0.4375 0;1 0.421875 0;1 0.40625 0;1 0.390625 0;1 0.375 0;1 0.359375 0;1 0.34375 0;1 0.328125 0;1 0.3125 0;1 0.296875 0;1 0.28125 0;1 0.265625 0;1 0.25 0;1 0.234375 0;1 0.21875 0;1 0.203125 0;1 0.1875 0;1 0.171875 0;1 0.15625 0;1 0.140625 0;1 0.125 0;1 0.109375 0;1 0.09375 0;1 0.078125 0;1 0.0625 0;1 0.046875 0;1 0.03125 0;1 0.015625 0;1 0 0;0.984375 0 0;0.96875 0 0;0.953125 0 0;0.9375 0 0;0.921875 0 0;0.90625 0 0;0.890625 0 0;0.875 0 0;0.859375 0 0;0.84375 0 0;0.828125 0 0;0.8125 0 0;0.796875 0 0;0.78125 0 0;0.765625 0 0;0.75 0 0;0.734375 0 0;0.71875 0 0;0.703125 0 0;0.6875 0 0;0.671875 0 0;0.65625 0 0;0.640625 0 0;0.625 0 0;0.609375 0 0;0.59375 0 0;0.578125 0 0;0.5625 0 0;0.546875 0 0;0.53125 0 0;0.515625 0 0;0.972549021244049 0.972549021244049 0.972549021244049]);
 	ax(1) = subplot(2,2,1);
-		originalTracePlot = imagesc(tau, frequency,IFrog, [0 1]);
-        xlabel('delay (s)');
+		originalTracePlot = imagesc(tau * 1e15, frequency,IFrog, [0 1]);
+        xlabel('delay (fs)');
         ylabel('frequency - \omega_0 (rad/s)');
         title('original FROG trace');
     ax(2) = subplot(2,2,2);
-		retrievedTracePlot = imagesc(tau, frequency,abs(ICalc), [0 1]);
-        xlabel('delay (s)');
+		retrievedTracePlot = imagesc(tau * 1e15, frequency,abs(ICalc), [0 1]);
+        xlabel('delay (fs)');
         ylabel('frequency - \omega_0 (rad/s)');
         title('retrieved FROG trace');
     linkaxes(ax);
@@ -222,9 +235,11 @@ myfigure('Frog Retrieval');
 		[temporalPlot, temporalPlot1, temporalPlot2] = plotyy(t, abs(Efield).^2, t, angleEfield);
 		xlabel('time (s)')
         ylabel('normalized intensity (arb. units)')
+        ylabel(temporalPlot(2), 'phase (rad)');
         %xlim([t(1) t(N)]);
         ylim(temporalPlot(1),[-0.1 1.1]);
         ylim(temporalPlot(2),[-5 5]);
+        set(temporalPlot(2), 'YTick',-4:2:4)
 		%hold(temporalPlot(1), 'on')
 		hold(temporalPlot(2), 'on')
 		temporalPlot3 = plot(t, polyval(temporalPhaseFit, t), 'r', 'Parent', temporalPlot(2));
@@ -237,9 +252,11 @@ myfigure('Frog Retrieval');
 		[spectralPlot, spectralPlot1, spectralPlot2] = plotyy(frequency, abs(V).^2, frequency,angleV);
 		xlabel('frequency - \omega_0 (rad/s)') 
         ylabel('normalized intensity (arb. units)')
+        ylabel(spectralPlot(2), 'phase (rad)');
         %xlim([frequency(1) frequency(N)]);
         ylim(spectralPlot(1),[-0.1 1.1]);
         ylim(spectralPlot(2),[-5 5]);
+        set(spectralPlot(2), 'YTick',-4:2:4)
 		%hold(spectralPlot(1), 'on') %slows drawnow significantly down
 		hold(spectralPlot(2), 'on')
 		spectralPlot3 = plot(frequency, polyval(spectralPhaseFit, frequency), 'r', 'Parent', spectralPlot(2));
@@ -248,9 +265,9 @@ myfigure('Frog Retrieval');
 		set(spectralPlot3,'Color','red','LineWidth',1)
         title('retrieved spectral shape');
         hold off;
-    drawnow;
     
-    
+set(gcf, 'PaperSize', [40 30] , 'PaperPosition', [0 0 40 30]); 
+
     eachFrogError(numberOfRun) = G;
     eachEfield(numberOfRun, :) = Efield;
 end
@@ -258,9 +275,14 @@ end
 
 [minimumfrogerror, indexofminimumfrogerror] = min(eachFrogError);
 fprintf('Minimum Frog Error: %.3f%% \t Index: %d \n ', minimumfrogerror * 100, indexofminimumfrogerror);
+previousBestEfield = eachEfield(indexofminimumfrogerror, :);
+save('previousBestEfield.mat', 'previousBestEfield');
+
+
+
 %%
 
-if(1)
+if(0)
 myfigure('original Frogtrace')
 imagesc(tau, frequency,IFrog, [0 1]);
 title('original Frogtrace')
