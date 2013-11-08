@@ -24,6 +24,7 @@ constants; %load physical, mathematical and numerical constants
 setup; %initilized values
 
 showAdvancedFigures = 1;
+seperateSpectrumAvailable = 0;
 
 
 %read frogtrace
@@ -45,29 +46,30 @@ frogRaw = fread(frogRawFileID, [1376, 1035], 'uint8');
 fclose(frogRawFileID);
 
 %read seperately recorded spectrum
-if(0); %Hamamatsu
-    spectrumIndependent = dlmread('2013-02-14--17-50-33-afterXPW+CMs+wedges(FROG)-inbeamwithpaper.csv', ',', [1 1 2048 1]);
-    spectrumIndependentLambda = n * dlmread('2013-02-14--17-48-33-afterXPW+CMs+wedges(FROG)-more.csv',',', [1 0 2048 0]);
-    spectrumIndependent = spectrumIndependent -  dlmread('2013-02-26_1018_darkref_30ms_fiber.csv', ',', [1 1 2048 1]);
-    spectrumIndependent(spectrumIndependent < 0 ) = 0;
-    spectrumIndependent =  spectrumIndependent .* dlmread('HamamatsuCalibrationwithfactor.txt', '\t', [1 8 2048 8]);
-    spectrumIndependentFrequency = c ./ spectrumIndependentLambda;
-    spectrumIndependent = spectrumIndependent .* (spectrumIndependentLambda * 100000000).^2 / c;
-    frequency2048 = (0:1/2047:1) * c ./ (200*n) ;
-    spectrumIndependent2048 = interp1(spectrumIndependentFrequency, spectrumIndependent, frequency2048, 'linear', 0);
-else; %Avantes
-    spectrumIndependent = dlmread('2013061818juin131930290001_0705014U1.TXT', ';', [8 1 2850 1]);
-    spectrumIndependentLambda = n * dlmread('2013061818juin131930290001_0705014U1.TXT',';', [8 0 2850 0]);
-    spectrumIndependent = spectrumIndependent; %substract dark reference if possible
-    spectrumIndependent(spectrumIndependent < 0 ) = 0;
-    avantesCalibrationFactor = interp1(n* dlmread('AvantesCalib.txt', ',', [0 0 1400 0]), dlmread('AvantesCalib.txt', ',', [0 1 1400 1]), spectrumIndependentLambda, 'linear', 0);
-    spectrumIndependent =  spectrumIndependent .* avantesCalibrationFactor;
-    spectrumIndependentFrequency = c ./ spectrumIndependentLambda;
-    spectrumIndependent = spectrumIndependent .* (spectrumIndependentLambda * 100000000).^2 / c;
-    frequency2048 = (0:1/2047:1) * c ./ (200*n) ;
-    spectrumIndependent2048 = interp1(spectrumIndependentFrequency, spectrumIndependent, frequency2048, 'linear', 0);
-end;  
-    
+if(seperateSpectrumAvailable)
+% if(0); %Hamamatsu
+%     spectrumIndependent = dlmread('2013-02-14--17-50-33-afterXPW+CMs+wedges(FROG)-inbeamwithpaper.csv', ',', [1 1 2048 1]);
+%     spectrumIndependentLambda = n * dlmread('2013-02-14--17-48-33-afterXPW+CMs+wedges(FROG)-more.csv',',', [1 0 2048 0]);
+%     spectrumIndependent = spectrumIndependent -  dlmread('2013-02-26_1018_darkref_30ms_fiber.csv', ',', [1 1 2048 1]);
+%     spectrumIndependent(spectrumIndependent < 0 ) = 0;
+%     spectrumIndependent =  spectrumIndependent .* dlmread('HamamatsuCalibrationwithfactor.txt', '\t', [1 8 2048 8]);
+%     spectrumIndependentFrequency = c ./ spectrumIndependentLambda;
+%     spectrumIndependent = spectrumIndependent .* (spectrumIndependentLambda * 100000000).^2 / c;
+%     frequency2048 = (0:1/2047:1) * c ./ (200*n) ;
+%     spectrumIndependent2048 = interp1(spectrumIndependentFrequency, spectrumIndependent, frequency2048, 'linear', 0);
+% else; %Avantes
+%     spectrumIndependent = dlmread('2013061818juin131930290001_0705014U1.TXT', ';', [8 1 2850 1]);
+%     spectrumIndependentLambda = n * dlmread('2013061818juin131930290001_0705014U1.TXT',';', [8 0 2850 0]);
+%     spectrumIndependent = spectrumIndependent; %substract dark reference if possible
+%     spectrumIndependent(spectrumIndependent < 0 ) = 0;
+%     avantesCalibrationFactor = interp1(n* dlmread('AvantesCalib.txt', ',', [0 0 1400 0]), dlmread('AvantesCalib.txt', ',', [0 1 1400 1]), spectrumIndependentLambda, 'linear', 0);
+%     spectrumIndependent =  spectrumIndependent .* avantesCalibrationFactor;
+%     spectrumIndependentFrequency = c ./ spectrumIndependentLambda;
+%     spectrumIndependent = spectrumIndependent .* (spectrumIndependentLambda * 100000000).^2 / c;
+%     frequency2048 = (0:1/2047:1) * c ./ (200*n) ;
+%     spectrumIndependent2048 = interp1(spectrumIndependentFrequency, spectrumIndependent, frequency2048, 'linear', 0);
+% end;  
+end
     
 %done
 
@@ -79,40 +81,8 @@ dimensionT = 1035;
 pixell = 1:dimensionL;
 pixelt = 1:dimensionT;
 
-load('Calibrations/20130906.mat');
+load('Calibrations/20130214.mat'); % lambdalines, lambdapixel, delayfromposition, delaypixel
 
-% lambdalines = [302,313,365,405,436] * n;
-% lambdapixel = [256,361,693,945,1143];
-% delayfromposition = ([ -4.15, 6.25, 7.8, 13.38, 15.4, 27.2, 32.3]) * u * 2 / c; 
-% delaypixel = [862,692,666,535,551,368,286];
-% save('Calibrations/20130906.mat', 'lambdalines', 'lambdapixel', 'delayfromposition', 'delaypixel');
-
-
-fitLambda = polyfit(lambdapixel,lambdalines,1); %the spectrometer has a linear relation between the pixel and the wavelength
-fitLambdaVal = polyval(fitLambda, pixell);
-
-ccd_frequency  = c ./ polyval(fitLambda, pixell);
-ccd_frequencyRange = ccd_frequency(length(ccd_frequency)) - ccd_frequency(1);
-
-
-delayFit = polyfit(delaypixel, delayfromposition, 1);
-delayFitVal = polyval(delayFit, pixelt);
-
-ccd_dt = delayFit(1);
-ccd_delay = (-(length(pixelt)/2)*ccd_dt:ccd_dt:(length(pixelt)/2 - 1) * ccd_dt);
-ccd_delayRange = ccd_delay(length(ccd_delay)) - ccd_delay(1);
-
-if(showAdvancedFigures);
-
-    myfigure('calibration of spectrometer')
-    plot(lambdapixel, lambdalines, pixell, fitLambdaVal);
-    title('calibration of spectrometer');
-
-    myfigure('calibration of delay');
-    plot(delaypixel, delayfromposition, pixelt, delayFitVal);
-    title('calibration of delay');
-
-end;
 
 tauRange = tau(N) - tau(1);
 frequencyRange = frequency(N) - frequency(1);
@@ -135,7 +105,7 @@ frogRaw = imrotate(frogRaw, 0.5, 'bilinear','crop');
 %% anti aliasing and noise reduction if noiseReduction > 1
 
 % create filter matrix
-noiseReduction = 20;
+noiseReduction = 1;
 fftFrog_Delay = 1 / ccd_delayRange * (-dimensionT/2:dimensionT/2-1);
 fftFrog_Frequency = 1 / ccd_frequencyRange * (-dimensionL/2:dimensionL/2-1);%this is only an approximation as the frog trace is still in the wavelength domain
 NyquistDelay = N / delayRange / 2;
@@ -146,7 +116,7 @@ NyquistFrequency = N / frequencyRange / 2;
 %filterMatrix = ( (fftFrog_DelayMesh/NyquistDelay).^2 + (fftFrog_FrequencyMesh/NyquistFrequency).^2 <= 1/noiseReduction^2);
 
 %use a nth-order butterworth filter, with the Nyquist as cutoff
-butterworthOrder = 1; %too low is not good, as it would 
+butterworthOrder = 3; %too low is not good, as it would 
 filterMatrixNormalizedRadius =  noiseReduction * sqrt(( (fftFrog_DelayMesh/NyquistDelay).^2 + (fftFrog_FrequencyMesh/NyquistFrequency).^2)) ;
 filterMatrix = sqrt(1./ (1 + (filterMatrixNormalizedRadius).^(2 * butterworthOrder)));
 
@@ -191,11 +161,11 @@ end;
 %% convert the frog trace to be dependent of frequency instead of wavelength
 % the intensities need to be corrected with a factor of lambda^2/c
 
-frogConversionFactor = repmat((fitLambdaVal.'.^2 * 10^13), 1, dimensionT);
+frogConversionFactor = repmat((ccd_wavelength.'.^2 * 10^13), 1, dimensionT);
 frogOverTauAndF = frogFiltered .* frogConversionFactor;
 
 %% calculate the frequency marginal
-
+if(seperateSpectrumAvailable)
     marginal_frequency = sum(frogOverTauAndF, 2);
     myfigure('frequency marginal')
     plot(ccd_frequency, marginal_frequency);
@@ -206,7 +176,7 @@ frogOverTauAndF = frogFiltered .* frogConversionFactor;
 
     myfigure('Autoconvoluted Spectra');
     plot(frequency2048, spectrumIndependentAutoconvoluted/max(spectrumIndependentAutoconvoluted), ccd_frequency, marginal_frequency/max(marginal_frequency));
-
+end
 
 
 %% create the final frogtrace
@@ -218,7 +188,29 @@ frequencyOffset(isnan(frequencyOffset)) = 0;
 finalFrog = interp2(ccdDelayMesh, ccdFrequencyMesh, frogOverTauAndF, tau, frequency.' + frequencyOffset);
 finalFrog(isnan(finalFrog)) = 0;
 
+%% mask the final FROG trace
 
+butterworthOrder = 5; %too low is not good, as it would 
+[maskDelayMesh,maskFrequencyMesh] = meshgrid((-(N)/2:(N)/2-1),(-(N)/2:(N)/2-1));
+estimatedFrogSizeDelay = 80;
+estimatedFrogSizeFrequency = 60;
+maskNormalizedRadius = sqrt(( (maskDelayMesh/estimatedFrogSizeDelay).^2 + (maskFrequencyMesh/estimatedFrogSizeFrequency).^2)) ;
+maskMatrix = sqrt(1./ (1 + (maskNormalizedRadius).^(2 * butterworthOrder)));
+    
+    myfigure('maskMatrix');
+    imagesc(abs(maskMatrix));
+    
+
+    
+maskedFinalFrog = finalFrog .* maskMatrix;
+
+    myfigure('maskDifference');
+    imagesc(abs(finalFrog - maskedFinalFrog),[-1 1 ]);
+    
+    
+finalFrog = maskedFinalFrog;
+ %%
+    
 fprintf('Total manipulations time: %f seconds \n', toc(tTotal));
 
 
