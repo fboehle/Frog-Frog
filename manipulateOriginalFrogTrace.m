@@ -81,7 +81,7 @@ dimensionT = 1035;
 pixell = 1:dimensionL;
 pixelt = 1:dimensionT;
 
-load('Calibrations/20130214.mat'); % lambdalines, lambdapixel, delayfromposition, delaypixel
+load('Calibrations/20130529-2.mat'); % lambdalines, lambdapixel, delayfromposition, delaypixel
 
 
 tauRange = tau(N) - tau(1);
@@ -99,7 +99,7 @@ frogRaw = frogRaw - background;
 end
 
 %% rotate it a bit, this is not nessesarily a good idea, but do it in any case after the background substraction!!!
-frogRaw = imrotate(frogRaw, 0, 'bilinear','crop');
+frogRaw = imrotate(frogRaw, 0.8, 'bilinear','crop');
 
 
 %% anti aliasing and noise reduction if noiseReduction > 1
@@ -191,9 +191,12 @@ finalFrog(isnan(finalFrog)) = 0;
 %% mask the final FROG trace
 
 butterworthOrder = 10; %too low is not good, as it would 
+
 [maskDelayMesh,maskFrequencyMesh] = meshgrid((-(N)/2:(N)/2-1),(-(N)/2:(N)/2-1));
-estimatedFrogSizeDelay = 100;
-estimatedFrogSizeFrequency = 30;
+estimatedFrogFrequencyCenter = 30;
+maskFrequencyMesh = maskFrequencyMesh - estimatedFrogFrequencyCenter;
+estimatedFrogSizeDelay = 70;
+estimatedFrogSizeFrequency = 80;
 maskNormalizedRadius = sqrt(( (maskDelayMesh/estimatedFrogSizeDelay).^2 + (maskFrequencyMesh/estimatedFrogSizeFrequency).^2)) ;
 maskMatrix = sqrt(1./ (1 + (maskNormalizedRadius).^(2 * butterworthOrder)));
     
@@ -243,7 +246,7 @@ scatter(tau, CoMfrequency + frequencyOffset, 'black', 'filled' )
 hold off;
 %%
 %some testing on it
-a = -0.1;
+a = -0.0;
 T = maketform('affine', [1 0 0; a 1 0; 0 0 1] );
 R = makeresampler({'cubic','cubic'},'fill');
 shearedFrog = imtransform(maskedFinalFrog,T,R);

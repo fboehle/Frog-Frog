@@ -159,7 +159,6 @@ end
 
 ICalc = ICalc/max(max(ICalc)); %this is actually only the result of the second to last run
 
-fprintf('Time for %d Iterations: %f s, that is %f s per iteration on average.\n',iterations, toc(tStart), toc(tStart)/iterations);
 
 %myfigure('retrieved Efield')
 %plotyy(t, abs(Efield), t, unwrap((angle(Efield)-angle(Efield(N/2))) .* min(round(abs(Efield)*100),1)))
@@ -169,7 +168,6 @@ fprintf('Time for %d Iterations: %f s, that is %f s per iteration on average.\n'
 
 
 fwhmresult = fwhm(t, abs(Efield).^2);
-fprintf('FWHM: %.1f fs\n', fwhmresult / f);
 
 V = fftshift(fft(ifftshift(Efield)));
 V = V/max(abs(V));
@@ -200,11 +198,17 @@ angleEfield = angleEfield - angleEfield(N0);
 fitOrder = 4;
 [borderLower, borderHigher] = findBorderIndex(abs(Efield).^2, 20);
 temporalPhaseFit = polyfit(t(borderLower:borderHigher), angleEfield(borderLower:borderHigher), fitOrder);
-fprintf('Second Order Temporal Chirp: %.3g fs^(-2)\n', temporalPhaseFit(fitOrder-1)*f^2);
 
 
 [borderLower, borderHigher] = findBorderIndex(abs(V).^2, 20);
 spectralPhaseFit = polyfit(frequency(borderLower:borderHigher), angleV(borderLower:borderHigher), fitOrder);
+
+%% print DATA
+fprintf('***********************************\n');
+fprintf('Time for %d Iterations: %f s, that is %f s per iteration on average.\n',iterations, toc(tStart), toc(tStart)/iterations);
+fprintf('Frog Error: %.3f%% \tIteration: %d \n', G * 100, l);
+fprintf('FWHM: %.1f fs\n', fwhmresult / f);
+fprintf('Second Order Temporal Chirp: %.3g fs^(-2)\n', temporalPhaseFit(fitOrder-1)*f^2);
 fprintf('Second Order Dispersion: %.3g fs^2\n', spectralPhaseFit(fitOrder-1)/f^2*2/((2*pi)^2));
 fprintf('Thirt Order Dispersion: %.3g fs^3\n', spectralPhaseFit(fitOrder-2)/f^3*6/((2*pi)^3));
 fprintf('Fourth Order Dispersion: %.3g fs^4\n', spectralPhaseFit(fitOrder-3)/f^4*24/((2*pi)^4));
@@ -250,20 +254,21 @@ myfigure('Frog Retrieval');
         hold off;
     subplot(2,2,4);
 		[spectralPlot, spectralPlot1, spectralPlot2] = plotyy(frequency, abs(V).^2, frequency,angleV);
-		xlabel('frequency - \omega_0 (rad/s)') 
+        xlabel('frequency - \omega_0 (rad/s)') 
         ylabel('normalized intensity (arb. units)')
         ylabel(spectralPlot(2), 'phase (rad)');
         %xlim([frequency(1) frequency(N)]);
         ylim(spectralPlot(1),[-0.1 1.1]);
         ylim(spectralPlot(2),[-5 5]);
         set(spectralPlot(2), 'YTick',-4:2:4)
-		%hold(spectralPlot(1), 'on') %slows drawnow significantly down
+		%hold(spectralPlot(1), 'on') %slows drawnow significantly down  
 		hold(spectralPlot(2), 'on')
 		spectralPlot3 = plot(frequency, polyval(spectralPhaseFit, frequency), 'r', 'Parent', spectralPlot(2));
         set(spectralPlot1,'Color','blue','LineWidth',2)
 		set(spectralPlot2,'Color',[0 0.498 0],'LineWidth',2)
 		set(spectralPlot3,'Color','red','LineWidth',1)
         title('retrieved spectral shape');
+      
         hold off;
     
 set(gcf, 'PaperSize', [40 30] , 'PaperPosition', [0 0 40 30]); 
@@ -272,8 +277,17 @@ set(gcf, 'PaperSize', [40 30] , 'PaperPosition', [0 0 40 30]);
     eachEfield(numberOfRun, :) = Efield;
 end
 
+%%
+spectrum = SpectrumAvantes('D:\Dropbox\Diploma Thesis\HCF FROG EXPERIMENTS\20130527-29 after HCF\2013-05-30--18-12-00 004_0705014U1.TXT');
+myfigure('CompareSpectrum');
+plotyy(frequency, abs(V).^2, spectrum.frequencydomain.frequency - 4e+14,spectrum.frequencydomain.intensity);
+
+
+
+%%
 
 [minimumfrogerror, indexofminimumfrogerror] = min(eachFrogError);
+fprintf('************************************\n');
 fprintf('Minimum Frog Error: %.3f%% \t Index: %d \n ', minimumfrogerror * 100, indexofminimumfrogerror);
 previousBestEfield = eachEfield(indexofminimumfrogerror, :);
 save('previousBestEfield.mat', 'previousBestEfield');
