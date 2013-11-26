@@ -81,7 +81,7 @@ dimensionT = 1035;
 pixell = 1:dimensionL;
 pixelt = 1:dimensionT;
 
-load('Calibrations/20130529-2.mat'); % lambdalines, lambdapixel, delayfromposition, delaypixel
+load('Calibrations/20131122.mat'); % lambdalines, lambdapixel, delayfromposition, delaypixel
 
 
 tauRange = tau(N) - tau(1);
@@ -145,7 +145,7 @@ if(showAdvancedFigures);
 end;
 
 %% place frog trace in the middle with respect to delay
-toMoveTime = sum((-(1035/2):(1035/2)-1) .* sum(frogFiltered).^2)/sum(sum(frogFiltered).^2); %weighted average to find center of peak
+toMoveTime = sum((-(1035/2):(1035/2)-1) .* sum(frogFiltered).^50)/sum(sum(frogFiltered).^50); %weighted average to find center of peak
 toMoveTime(isnan(toMoveTime)) = 0;
 frogFiltered = circshift(frogFiltered,[0 -round(toMoveTime)]);
 
@@ -193,9 +193,9 @@ finalFrog(isnan(finalFrog)) = 0;
 butterworthOrder = 10; %too low is not good, as it would 
 
 [maskDelayMesh,maskFrequencyMesh] = meshgrid((-(N)/2:(N)/2-1),(-(N)/2:(N)/2-1));
-estimatedFrogFrequencyCenter = 30;
-maskFrequencyMesh = maskFrequencyMesh - estimatedFrogFrequencyCenter;
-estimatedFrogSizeDelay = 70;
+estimatedFrogFrequencyCenterOffset = 0; 
+maskFrequencyMesh = maskFrequencyMesh - estimatedFrogFrequencyCenterOffset;
+estimatedFrogSizeDelay = 80;
 estimatedFrogSizeFrequency = 80;
 maskNormalizedRadius = sqrt(( (maskDelayMesh/estimatedFrogSizeDelay).^2 + (maskFrequencyMesh/estimatedFrogSizeFrequency).^2)) ;
 maskMatrix = sqrt(1./ (1 + (maskNormalizedRadius).^(2 * butterworthOrder)));

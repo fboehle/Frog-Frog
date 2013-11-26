@@ -20,11 +20,11 @@ constants; %load physical, mathematical and numerical constants
 setup; %initilized values
 indexForCircshift;
 
-iterations = 500;
+iterations = 200;
 mov = 0;
 
-numberOfRuns = 1;
-usePreviousEfield = 0;
+numberOfRuns = 10;
+usePreviousEfield = 1;
 
 
 eachFrogError = zeros(numberOfRuns, 1);
@@ -32,7 +32,7 @@ eachEfield = zeros(numberOfRuns, N);
 for numberOfRun = 1:numberOfRuns
 
 %% read the Frog trace
-IFrog = double(imread('generatedsheared.tif')) ;
+IFrog = double(imread('generated.tif')) ;
 %IFrog = IFrog + 0*random('Poisson',5,N,N) ;
 IFrog = IFrog / max(max(IFrog));
 sqrtIFrog = sqrt(IFrog);
@@ -60,10 +60,13 @@ end
 
 %%
 
-tStart = tic
+tStart = tic;
 
 
 %% Loop!
+fprintf('Retrieval started!\n ************************************');
+
+
 for l = 1:iterations
 
     
@@ -97,7 +100,7 @@ end
 
 mu = sum(sum(IFrog.*ICalc))/sum(sum(ICalc.^2));
 G = 1/N * sqrt( sum(sum(  (IFrog - mu * ICalc).^2 )));
-fprintf('Frog Error: %.3f%% \tIteration: %d \n', G * 100, l);
+fprintf('\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bFrog Error: %.3f%% \tIteration: %.4d ', G * 100, l);
 if(G<0.001) 
 %    break;
 end
@@ -196,15 +199,15 @@ angleEfield = angleEfield - angleEfield(N0);
 
 
 fitOrder = 4;
-[borderLower, borderHigher] = findBorderIndex(abs(Efield).^2, 20);
+[borderLower, borderHigher] = findBorderIndex(abs(Efield).^2, 10);
 temporalPhaseFit = polyfit(t(borderLower:borderHigher), angleEfield(borderLower:borderHigher), fitOrder);
 
 
-[borderLower, borderHigher] = findBorderIndex(abs(V).^2, 20);
+[borderLower, borderHigher] = findBorderIndex(abs(V).^2, 10);
 spectralPhaseFit = polyfit(frequency(borderLower:borderHigher), angleV(borderLower:borderHigher), fitOrder);
 
 %% print DATA
-fprintf('***********************************\n');
+fprintf('\n***********************************\n');
 fprintf('Time for %d Iterations: %f s, that is %f s per iteration on average.\n',iterations, toc(tStart), toc(tStart)/iterations);
 fprintf('Frog Error: %.3f%% \tIteration: %d \n', G * 100, l);
 fprintf('FWHM: %.1f fs\n', fwhmresult / f);
@@ -212,6 +215,7 @@ fprintf('Second Order Temporal Chirp: %.3g fs^(-2)\n', temporalPhaseFit(fitOrder
 fprintf('Second Order Dispersion: %.3g fs^2\n', spectralPhaseFit(fitOrder-1)/f^2*2/((2*pi)^2));
 fprintf('Thirt Order Dispersion: %.3g fs^3\n', spectralPhaseFit(fitOrder-2)/f^3*6/((2*pi)^3));
 fprintf('Fourth Order Dispersion: %.3g fs^4\n', spectralPhaseFit(fitOrder-3)/f^4*24/((2*pi)^4));
+fprintf('***********************************\n');
 
 %% display always a positive second order chirp
 if(spectralPhaseFit(fitOrder-1) < 0)
@@ -278,9 +282,9 @@ set(gcf, 'PaperSize', [40 30] , 'PaperPosition', [0 0 40 30]);
 end
 
 %%
-spectrum = SpectrumAvantes('D:\Dropbox\Diploma Thesis\HCF FROG EXPERIMENTS\20130527-29 after HCF\2013-05-30--18-12-00 004_0705014U1.TXT');
-myfigure('CompareSpectrum');
-plotyy(frequency, abs(V).^2, spectrum.frequencydomain.frequency - 4e+14,spectrum.frequencydomain.intensity);
+%spectrum = SpectrumAvantes('D:\Dropbox\Diploma Thesis\HCF FROG EXPERIMENTS\20130527-29 after HCF\2013-05-30--18-12-00 004_0705014U1.TXT');
+%myfigure('CompareSpectrum');
+%plotyy(frequency, abs(V).^2, spectrum.frequencydomain.frequency - 4e+14,spectrum.frequencydomain.intensity);
 
 
 

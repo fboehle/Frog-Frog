@@ -48,10 +48,13 @@ ylabel('Wavelength (pixel)');
 xlabel('delay (pixel)');
 colormap(mycolormap);
 
-lambdalines = [302.2,312.6,334.0, 365.0,404.7,435.8] * 1e-9; %with additional 334nm line
-lambdapixel = [258,361,497,693,946,1144];
-delayfromposition = ([45.9,37.1,59.2,57.1,51.6,48.1,43.0,40.1,37.5,47.6] * 1e-6 ) * 2 / Phys.c; 
-delaypixel = [519,713,224,269,394,470,581,646,702,483];
+
+%lambdalines = [302.2,312.6,334.0, 365.0,404.7,435.8] * 1e-9; %with additional 334nm line
+lambdalines = [296.728, 302.150, 313.155, 334.148, 365.015, 404.656, 407.783, 435.833] * 1e-9; % from http://www.oceanoptics.com/technical/hg1.pdf
+lambdapixel = [237,272,341,476,672,924,944,1122];
+
+delayfromposition = ([96.6,89.9,81.9,67.0,57.2,46.2] * 1e-6 ) * 2 / Phys.c; 
+delaypixel = [863,760,641,417,273,108];
 
 
 wavelengthFit = polyfit(lambdapixel,lambdalines,1); %the spectrometer has a linear relation between the pixel and the wavelength
@@ -69,7 +72,7 @@ ccd_delay = (-(length(pixelt)/2)*ccd_dt:ccd_dt:(length(pixelt)/2 - 1) * ccd_dt);
 ccd_delayRange = ccd_delay(length(ccd_delay)) - ccd_delay(1);
 
 if(0)
-    calibrationFileName = 'Calibrations/20130529-2.mat';
+    calibrationFileName = 'Calibrations/20131122.mat';
     if(exist(fullfile(cd, calibrationFileName), 'file') == 2)
         error('!!!File already exists!!!')
     else
@@ -78,7 +81,7 @@ if(0)
 end
 %%
 myfigure('calibration of spectrometer')
-scatter(lambdapixel, lambdalines * 1e9, 'd', 'markerFaceColor', 'b');
+scatter(lambdapixel, lambdalines * 1e9, 'c', 'markerFaceColor', 'b', 'markerEdgeColor', 'none');
 hold all;
 plot(pixell, ccd_wavelength * 1e9);
 hold off;
@@ -95,7 +98,8 @@ legend('Calibration Wavelength', 'linear fit', 'Location', 'northwest');
 myfigure('calibration of delay');
 
 title('Calibration of Delay');
-scatter(delaypixel, delayfromposition * 1e15, 'd', 'markerFaceColor', 'b');
+scatter(delaypixel, delayfromposition * 1e15, 'c', 'markerFaceColor', 'b', 'markerEdgeColor', 'none');
+xlim([0 max(pixelt)]);
 hold all;
 plot(pixelt, delayFitVal * 1e15);
 hold off;
