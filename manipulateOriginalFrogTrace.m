@@ -105,7 +105,7 @@ frogRaw = imrotate(frogRaw, 0.8, 'bilinear','crop');
 %% anti aliasing and noise reduction if noiseReduction > 1
 
 % create filter matrix
-noiseReduction = 1;
+noiseReduction = 1.1;
 fftFrog_Delay = 1 / ccd_delayRange * (-dimensionT/2:dimensionT/2-1);
 fftFrog_Frequency = 1 / ccd_frequencyRange * (-dimensionL/2:dimensionL/2-1);%this is only an approximation as the frog trace is still in the wavelength domain
 NyquistDelay = N / delayRange / 2;
@@ -117,7 +117,7 @@ NyquistFrequency = N / frequencyRange / 2;
 
 %use a nth-order butterworth filter, with the Nyquist as cutoff
 butterworthOrder = 3; %too low is not good, as it would 
-filterMatrixNormalizedRadius =  noiseReduction * sqrt(( (fftFrog_DelayMesh/NyquistDelay).^2 + (fftFrog_FrequencyMesh/NyquistFrequency).^2)) ;
+filterMatrixNormalizedRadius =  sqrt(noiseReduction) * sqrt(( (fftFrog_DelayMesh/NyquistDelay).^2 + (fftFrog_FrequencyMesh/NyquistFrequency).^2)) ;
 filterMatrix = sqrt(1./ (1 + (filterMatrixNormalizedRadius).^(2 * butterworthOrder)));
 
 % do actual filitering
@@ -145,7 +145,7 @@ if(showAdvancedFigures);
 end;
 
 %% place frog trace in the middle with respect to delay
-toMoveTime = sum((-(1035/2):(1035/2)-1) .* sum(frogFiltered).^50)/sum(sum(frogFiltered).^50); %weighted average to find center of peak
+toMoveTime = sum((-(1035/2):(1035/2)-1) .* sum(frogFiltered).^10)/sum(sum(frogFiltered).^10); %weighted average to find center of peak
 toMoveTime(isnan(toMoveTime)) = 0;
 frogFiltered = circshift(frogFiltered,[0 -round(toMoveTime)]);
 
@@ -183,7 +183,7 @@ end
 [ccdDelayMesh, ccdFrequencyMesh] = meshgrid(ccd_delay, ccd_frequency);
 %center in frequency
 %frequencyOffset = ( c / (375 * n));
-frequencyOffset = sum(ccd_frequency' .* sum(frogOverTauAndF,2))/sum(sum(frogOverTauAndF,2)); %weighted average to find center of peak
+frequencyOffset = sum(ccd_frequency' .* sum(frogOverTauAndF,2).^4)/sum(sum(frogOverTauAndF,2).^4); %weighted average to find center of peak
 frequencyOffset(isnan(frequencyOffset)) = 0;
 finalFrog = interp2(ccdDelayMesh, ccdFrequencyMesh, frogOverTauAndF, tau, frequency.' + frequencyOffset);
 finalFrog(isnan(finalFrog)) = 0;
@@ -196,7 +196,7 @@ butterworthOrder = 10; %too low is not good, as it would
 estimatedFrogFrequencyCenterOffset = 0; 
 maskFrequencyMesh = maskFrequencyMesh - estimatedFrogFrequencyCenterOffset;
 estimatedFrogSizeDelay = 80;
-estimatedFrogSizeFrequency = 80;
+estimatedFrogSizeFrequency = 85;
 maskNormalizedRadius = sqrt(( (maskDelayMesh/estimatedFrogSizeDelay).^2 + (maskFrequencyMesh/estimatedFrogSizeFrequency).^2)) ;
 maskMatrix = sqrt(1./ (1 + (maskNormalizedRadius).^(2 * butterworthOrder)));
     

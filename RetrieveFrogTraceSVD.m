@@ -23,8 +23,8 @@ indexForCircshift;
 iterations = 200;
 mov = 0;
 
-numberOfRuns = 10;
-usePreviousEfield = 1;
+numberOfRuns = 20;
+usePreviousEfield = 0;
 
 
 eachFrogError = zeros(numberOfRuns, 1);
