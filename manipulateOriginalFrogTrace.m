@@ -195,8 +195,8 @@ butterworthOrder = 10; %too low is not good, as it would
 [maskDelayMesh,maskFrequencyMesh] = meshgrid((-(N)/2:(N)/2-1),(-(N)/2:(N)/2-1));
 estimatedFrogFrequencyCenterOffset = 0; 
 maskFrequencyMesh = maskFrequencyMesh - estimatedFrogFrequencyCenterOffset;
-estimatedFrogSizeDelay = 80;
-estimatedFrogSizeFrequency = 85;
+estimatedFrogSizeDelay = 60;
+estimatedFrogSizeFrequency = 100;
 maskNormalizedRadius = sqrt(( (maskDelayMesh/estimatedFrogSizeDelay).^2 + (maskFrequencyMesh/estimatedFrogSizeFrequency).^2)) ;
 maskMatrix = sqrt(1./ (1 + (maskNormalizedRadius).^(2 * butterworthOrder)));
     

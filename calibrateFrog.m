@@ -53,8 +53,8 @@ colormap(mycolormap);
 lambdalines = [296.728, 302.150, 313.155, 334.148, 365.015, 404.656, 407.783, 435.833] * 1e-9; % from http://www.oceanoptics.com/technical/hg1.pdf
 lambdapixel = [237,272,341,476,672,924,944,1122];
 
-delayfromposition = ([96.6,89.9,81.9,67.0,57.2,46.2] * 1e-6 ) * 2 / Phys.c; 
-delaypixel = [863,760,641,417,273,108];
+delayfromposition = ([41.0,28.8,18.8,4.8] * 1e-6 ) * 2 / Phys.c; 
+delaypixel = [776,596,447,240];
 
 
 wavelengthFit = polyfit(lambdapixel,lambdalines,1); %the spectrometer has a linear relation between the pixel and the wavelength
@@ -72,7 +72,7 @@ ccd_delay = (-(length(pixelt)/2)*ccd_dt:ccd_dt:(length(pixelt)/2 - 1) * ccd_dt);
 ccd_delayRange = ccd_delay(length(ccd_delay)) - ccd_delay(1);
 
 if(0)
-    calibrationFileName = 'Calibrations/20131122.mat';
+    calibrationFileName = 'Calibrations/20131205.mat';
     if(exist(fullfile(cd, calibrationFileName), 'file') == 2)
         error('!!!File already exists!!!')
     else
