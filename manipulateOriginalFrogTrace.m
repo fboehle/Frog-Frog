@@ -2,7 +2,7 @@
 %	Convert the frog camera image to a calibrated frogtrace
 %	
 %	Developement started: end 2012
-%	Author: Frederik Böhle code@fboehle.de
+%	Author: Frederik Böhle (code@fboehle.de)
 %
 %*********************************************************
 %   
@@ -34,7 +34,7 @@ load('lastDir.mat');
 if(frogRawDIRname == 0) 
     frogRawDIRname = pwd;
 end
-[frogRawFilename, frogRawDIRname] = uigetfile('*.frogtrace', 'Select the raw FROG trace', frogRawDIRname);
+[frogRawFilename, frogRawDIRname] = uigetfile({'*.frogtrace','Frogtraces (*.frogtrace)';'*.*',  'All files (*.*)'}, 'Select the raw FROG trace', frogRawDIRname);
 save('lastDir.mat', 'frogRawDIRname');
 frogRawFullFilename = fullfile(frogRawDIRname, frogRawFilename);
 frogRawFileID = fopen(frogRawFullFilename, 'r');
@@ -81,7 +81,7 @@ dimensionT = 1035;
 pixell = 1:dimensionL;
 pixelt = 1:dimensionT;
 
-load('Calibrations/20131122.mat'); % lambdalines, lambdapixel, delayfromposition, delaypixel
+load('Calibrations/20131205.mat'); % lambdalines, lambdapixel, delayfromposition, delaypixel
 
 
 tauRange = tau(N) - tau(1);
@@ -144,19 +144,23 @@ if(showAdvancedFigures);
     imagesc(filt_image, [-1 1 ]);
 end;
 
-%% place frog trace in the middle with respect to delay
-toMoveTime = sum((-(1035/2):(1035/2)-1) .* sum(frogFiltered).^10)/sum(sum(frogFiltered).^10); %weighted average to find center of peak
-toMoveTime(isnan(toMoveTime)) = 0;
-frogFiltered = circshift(frogFiltered,[0 -round(toMoveTime)]);
-
-if(showAdvancedFigures);
-    
-    myfigure('frogFiltered after moving');
-    imagesc(frogFiltered);
-    colormap(mycolormap);
-
-end;
-
+%% calculate the center of delay and adjust ccd_delay to it
+intDW = sum(frogFiltered);
+intDW = normMinMax(intDW);
+intDW(intDW < 0.1) = 0;
+toMoveTime = sum(ccd_delay .* intDW.^2)/sum(intDW.^2); %weighted average to find center of peak
+ccd_delay = ccd_delay - toMoveTime;
+% toMoveTime(isnan(toMoveTime)) = 0;
+% frogFiltered = circshift(frogFiltered,[0 -round(toMoveTime)]);
+% 
+% if(showAdvancedFigures);
+%     
+%     myfigure('frogFiltered after moving');
+%     imagesc(frogFiltered);
+%     colormap(mycolormap);
+% 
+% end;
+% 
 
 %% convert the frog trace to be dependent of frequency instead of wavelength
 % the intensities need to be corrected with a factor of lambda^2/c
@@ -261,9 +265,13 @@ CoMdelay = sum(shearedFrog .* (ones(length(frequency),1) * tau), 2)./sum(sheared
 hold all;
 scatter(CoMdelay, frequency + frequencyOffset, 'black', 'filled' )
 hold off;
-saveimagedata = uint16(shearedFrog/max(max(shearedFrog))*65000);
-imwrite(saveimagedata, 'generatedsheared.tif', 'tif')
 
+% saveimagedata = uint16(shearedFrog/max(max(shearedFrog))*65000);
+% imwrite(saveimagedata, 'generatedsheared.tif', 'tif')
 
-saveimagedata = uint16(maskedFinalFrog/max(max(maskedFinalFrog))*65000);
-imwrite(saveimagedata, 'generated.tif', 'tif')
+% saveimagedata = uint16(maskedFinalFrog/max(max(maskedFinalFrog))*65000);
+% imwrite(saveimagedata, 'generated.tif', 'tif')
+
+dataTransfer.IFrog = normMax(maskedFinalFrog);
+save('generated.mat', 'dataTransfer');
+

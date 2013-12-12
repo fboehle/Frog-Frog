@@ -2,7 +2,7 @@
 %	Retrieve the original pulse from a Frogtrace with the SVD algorithm. 
 %	
 %	Developement started: end 2012
-%	Author: Frederik Böhle code@fboehle.de
+%	Author: Frederik Böhle (code@fboehle.de)
 %
 %*********************************************************
 %   
@@ -24,7 +24,7 @@ iterations = 200;
 mov = 0;
 
 numberOfRuns = 1;
-usePreviousEfield = 1;
+usePreviousEfield = 0;
 
 
 eachFrogError = zeros(numberOfRuns, 1);
@@ -32,12 +32,12 @@ eachEfield = zeros(numberOfRuns, N);
 for numberOfRun = 1:numberOfRuns
 
 %% read the Frog trace
-IFrog = double(imread('generated.tif')) ;
-%IFrog = IFrog + 0*random('Poisson',5,N,N) ;
-IFrog = IFrog / max(max(IFrog));
+%IFrog = double(imread('generated.tif')) ;
+load('generated.mat');
+IFrog = normMax(dataTransfer.IFrog);
 sqrtIFrog = sqrt(IFrog);
 
-%testspace***
+%% testspace***
 %tToMove = -round(sum((1:N) .* abs(sum(IFrog,2)).^4)/sum(abs(sum(IFrog,2)).^4)-N/2); %weighted average to find center of peak
 %IFrog = circshift(IFrog,[0 0]);
 %IFrog = flipud(IFrog);
@@ -47,15 +47,14 @@ sqrtIFrog = sqrt(IFrog);
 
 %% make a guess for the E Field; in this case, put random noise
 Efield = random('Poisson',500,1,N) + 1i*random('Poisson',500,1,N);
-Efield = Efield/max(Efield);
+Efield = normMax(Efield);
 Egate = Efield ;
 
 %% or use the efield from the previous run
 if(usePreviousEfield)
-load('previousBestEfield.mat');
-
-Efield = previousBestEfield;
-Egate = Efield ;
+    load('previousBestEfield.mat');
+    Efield = previousBestEfield;
+    Egate = Efield ;
 end
 
 %%
@@ -70,58 +69,50 @@ fprintf('Retrieval started!\n ************************************');
 for l = 1:iterations
 
     
-    
-%% In SHG Frog the gate is the Pulse itself
-
-
 %% calculate the signal field
 Esig = Efield.' * Egate + Egate.' * Efield;
-
 %Esig=Esig-tril(Esig,-ceil(N/2))-triu(Esig,ceil(N/2));
-
 Esig = Esig(indexforcircshift);
-
-
 Esig = fliplr(fftshift(Esig,2));
 
 
 %% calculate the theoretical Frog Trace
-ICalcwphase = fftshift(fft((Esig),N,1),1);
-ICalc = abs(ICalcwphase).^2;
+ICalc.amplitude = fftshift(fft((Esig),N,1),1);
+ICalc.intensity = abs(ICalc.amplitude).^2;
 
 if(~mod(l, mov))
-myfigure('retrieved frogtrace')
-imagesc(tau, frequency, abs(ICalc))
-title('retrieved frogtrace')
-colormap(jet(256));
+    myfigure('retrieved frogtrace')
+    imagesc(tau, frequency, ICalc.intensity)
+    title('retrieved frogtrace')
+    colormap(jet(256));
 end
 
 %% calculate the Frog Error
 
-mu = sum(sum(IFrog.*ICalc))/sum(sum(ICalc.^2));
-G = 1/N * sqrt( sum(sum(  (IFrog - mu * ICalc).^2 )));
+mu = sum(sum(IFrog.*ICalc.intensity))/sum(sum(ICalc.intensity.^2));
+G = 1/N * sqrt( sum(sum(  (IFrog - mu * ICalc.intensity).^2 )));
 fprintf('\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\b\bFrog Error: %.3f%% \tIteration: %.4d ', G * 100, l);
 if(G<0.001) 
 %    break;
 end
 
 
-%% replace the magnitude of ICalcwphase with the one from the original
+%% replace the magnitude of ICalc.amplitude with the one from the original
 %  trace without altering the phase
 
-%ICalcwphase = exp(i * angle(ICalcwphase)) .* sqrtIFrog ;
-%ICalc = abs(ICalcwphase).^2;
-ICalcwphase(ICalcwphase == 0) = NaN;
-ICalcwphase = ICalcwphase ./abs(ICalcwphase) .* sqrtIFrog ;
-ICalcwphase(isnan(ICalcwphase)) = 0;
+%ICalc.amplitude = exp(i * angle(ICalc.amplitude)) .* sqrtIFrog ;
+%ICalc = abs(ICalc.amplitude).^2;
+ICalc.amplitude(ICalc.amplitude == 0) = NaN;
+ICalc.amplitude = ICalc.amplitude ./abs(ICalc.amplitude) .* sqrtIFrog ;
+ICalc.amplitude(isnan(ICalc.amplitude)) = 0;
 
 %% do the inverse FT back to the time domain
-Esig = ifft(ifftshift(ICalcwphase,1), N, 1);
+Esig = ifft(ifftshift(ICalc.amplitude,1), N, 1);
 
 if(~mod(l, mov))
-myfigure('Esig')
-imagesc(abs(Esig))
-title('Esig')
+    myfigure('Esig')
+    imagesc(abs(Esig))
+    title('Esig')
 end
 
 
@@ -136,21 +127,21 @@ outerProduct = ifftshift(fliplr(Esig), 2);
 outerProduct = outerProduct(indexforcircshiftback);
 
 
-Efield = (outerProduct * outerProduct') * Efield.';
+Efield = (outerProduct * outerProduct') * Efield.'; %this is an approximation. Should be done an infinite number of times
 Egate = (outerProduct' * outerProduct) * Egate.';
 
-Efield = Efield.' / max(abs(Efield));
-Egate = conj(Egate.') / max(abs(Egate));
+Efield = normMax(Efield.');
+Egate = normMax(conj(Egate.'));
 
 tToMove = -round(sum((-(N)/2:(N)/2-1) .* abs(Efield).^2)/sum(abs(Efield).^2)); %weighted average to find center of peak
 Efield = circshift(Efield,[0 tToMove]);
 Egate = circshift(Egate,[0 tToMove]);
 
 if(~mod(l, mov))
-myfigure('retrieved Efield')
-plotyy( t, abs(Efield), t, unwrap(angle(Efield) .* min(round(abs(Efield)*30),1)))
-title('retrieved Efield')
-drawnow;
+    myfigure('retrieved Efield')
+    plotyy( t, abs(Efield), t, unwrap(angle(Efield) .* min(round(abs(Efield)*30),1)))
+    title('retrieved Efield')
+    drawnow;
 end
 
 %% fit
@@ -160,7 +151,7 @@ end
 
 end
 
-ICalc = ICalc/max(max(ICalc)); %this is actually only the result of the second to last run
+ICalc.intensity = normMax(ICalc.intensity); %this is actually only the result of the second to last run
 
 
 %myfigure('retrieved Efield')
@@ -173,15 +164,18 @@ ICalc = ICalc/max(max(ICalc)); %this is actually only the result of the second t
 fwhmresult = fwhm(t, abs(Efield).^2);
 
 V = fftshift(fft(ifftshift(Efield)));
-V = V/max(abs(V));
+V = normMax(V);
 
 myfigure('Esig')
 imagesc(abs(Esig))
 title('Esig')
 
 myfigure('Retrieval Error')
-    imagesc(ICalc - IFrog, [-0.1 0.1]);
+    imagesc(ICalc.intensity - IFrog, [-0.1 0.1]);
     colorbar;
+    
+myfigure('Retrieval Error Marginal')
+    plot(tau, normMax(sum(IFrog)) - normMax(sum(ICalc.intensity)));
     
 angleV = unwrap(angle(V));
 angleV = angleV - angleV(N0);
@@ -210,11 +204,11 @@ spectralPhaseFit = polyfit(frequency(borderLower:borderHigher), angleV(borderLow
 fprintf('\n***********************************\n');
 fprintf('Time for %d Iterations: %f s, that is %f s per iteration on average.\n',iterations, toc(tStart), toc(tStart)/iterations);
 fprintf('Frog Error: %.3f%% \tIteration: %d \n', G * 100, l);
-fprintf('FWHM: %.1f fs\n', fwhmresult / f);
-fprintf('Second Order Temporal Chirp: %.3g fs^(-2)\n', temporalPhaseFit(fitOrder-1)*f^2);
+%fprintf('Second Order Temporal Chirp: %.3g fs^(-2)\n', temporalPhaseFit(fitOrder-1)*f^2);
 fprintf('Second Order Dispersion: %.3g fs^2\n', spectralPhaseFit(fitOrder-1)/f^2*2/((2*pi)^2));
 fprintf('Thirt Order Dispersion: %.3g fs^3\n', spectralPhaseFit(fitOrder-2)/f^3*6/((2*pi)^3));
 fprintf('Fourth Order Dispersion: %.3g fs^4\n', spectralPhaseFit(fitOrder-3)/f^4*24/((2*pi)^4));
+fprintf('FWHM: %.2f fs\n', fwhmresult / f);
 fprintf('***********************************\n');
 
 %% display always a positive second order chirp
@@ -234,7 +228,7 @@ myfigure('Frog Retrieval');
         ylabel('frequency - \omega_0 (rad/s)');
         title('original FROG trace');
     ax(2) = subplot(2,2,2);
-		retrievedTracePlot = imagesc(tau * 1e15, frequency,abs(ICalc), [0 1]);
+		retrievedTracePlot = imagesc(tau * 1e15, frequency,ICalc.intensity, [0 1]);
         xlabel('delay (fs)');
         ylabel('frequency - \omega_0 (rad/s)');
         title('retrieved FROG trace');
@@ -301,27 +295,20 @@ save('previousBestEfield.mat', 'previousBestEfield');
 %%
 
 if(0)
-myfigure('original Frogtrace')
-imagesc(tau, frequency,IFrog, [0 1]);
-title('original Frogtrace')
-xlabel('delay') 
-ylabel('frequency')
-colormap(jet(256));
+    myfigure('original Frogtrace')
+    imagesc(tau, frequency,IFrog, [0 1]);
+    title('original Frogtrace')
+    xlabel('delay') 
+    ylabel('frequency')
+    colormap(jet(256));
 
-myfigure('retrieved Frogtrace')
-imagesc(tau, frequency,abs(ICalc), [0 1]);
-title('retrieved Frogtrace');
-xlabel('delay') 
-ylabel('frequency')
-colormap(jet(256));
+    myfigure('retrieved Frogtrace')
+    imagesc(tau, frequency,abs(ICalc), [0 1]);
+    title('retrieved Frogtrace');
+    xlabel('delay') 
+    ylabel('frequency')
+    colormap(jet(256));
 end
 
 fprintf('Total execution Time was %f s.\n', toc(tTotal));
 %%
-datafororigin = zeros(N, 6);
-datafororigin(:,1) = t;
-datafororigin(:,2) = abs(Efield).^2.';
-datafororigin(:,3) = angleEfield.';
-datafororigin(:,4) = frequency;
-datafororigin(:,5) = abs(V).^2.';
-datafororigin(:,6) = angleV.';
