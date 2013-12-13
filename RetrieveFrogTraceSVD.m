@@ -34,7 +34,7 @@ for numberOfRun = 1:numberOfRuns
 %% read the Frog trace
 %IFrog = double(imread('generated.tif')) ;
 load('generated.mat');
-IFrog = normMax(dataTransfer.IFrog);
+IFrog = normMax(dataTransfer.IFrog + circshift(fliplr(dataTransfer.IFrog), [0 1]));
 sqrtIFrog = sqrt(IFrog);
 
 %% testspace***
