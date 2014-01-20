@@ -20,12 +20,12 @@ constants; %load physical, mathematical and numerical constants
 setup; %initilized values
 indexForCircshift;
 
-iterations = 200;
+iterations = 20;
 mov = 0;
 
 numberOfRuns = 1;
-usePreviousEfield = 0;
-
+usePreviousEfield = 1;
+seperateSpectrumAvailable = 1;
 
 eachFrogError = zeros(numberOfRuns, 1);
 eachEfield = zeros(numberOfRuns, N);
@@ -34,7 +34,7 @@ for numberOfRun = 1:numberOfRuns
 %% read the Frog trace
 %IFrog = double(imread('generated.tif')) ;
 load('generated.mat');
-IFrog = normMax(dataTransfer.IFrog + circshift(fliplr(dataTransfer.IFrog), [0 1]));
+IFrog = normMax(dataTransfer.finalFrog.intensity);
 sqrtIFrog = sqrt(IFrog);
 
 %% testspace***
@@ -271,6 +271,9 @@ myfigure('Frog Retrieval');
     
 set(gcf, 'PaperSize', [40 30] , 'PaperPosition', [0 0 40 30]); 
 
+%%
+
+
     eachFrogError(numberOfRun) = G;
     eachEfield(numberOfRun, :) = Efield;
 end
@@ -294,6 +297,26 @@ save('previousBestEfield.mat', 'previousBestEfield');
 
 %%
 
+%read seperately recorded spectrum
+if(seperateSpectrumAvailable)
+    load('lastSpectrumFilename.mat');
+    if(spectrumFullFilename == 0) 
+     spectrumFullFilename = pwd;
+    end
+    [spectrumFilename, spectrumDirectory] = uigetfile({'*.csv','Hamamatsu (*.csv)';'*.*',  'All files (*.*)'}, 'Select indepentend spectrum', spectrumFullFilename);
+    spectrumFullFilename = fullfile(spectrumDirectory, spectrumFilename);
+    
+    save('lastSpectrumFilename.mat', 'spectrumFullFilename');
+    
+    spectrumIndependent = SpectrumHamamatsu(spectrumFullFilename);
+
+    myfigure('compare retrieved and measured spectral intensity');
+    plot(frequency + dataTransfer.finalFrog.frequencyOffset/2, abs(V).^2*1e14/trapz(frequency + dataTransfer.finalFrog.frequencyOffset/2,abs(V).^2), spectrumIndependent.frequencydomain.frequency,spectrumIndependent.frequencydomain.intensity*1e14/trapz(-spectrumIndependent.frequencydomain.frequency,spectrumIndependent.frequencydomain.intensity))
+    legend('retrieved spectrum', 'measured spectrum');
+    xlabel('Frequency (Hz)');
+    ylabel('Spectral Intensity (arb. units)')
+end
+
 if(0)
     myfigure('original Frogtrace')
     imagesc(tau, frequency,IFrog, [0 1]);
@@ -310,5 +333,86 @@ if(0)
     colormap(jet(256));
 end
 
+
+myfigure('Retrieved Spectrum')
+		[spectralPlot, spectralPlot1, spectralPlot2] = plotyy(frequency, abs(V).^2, frequency,angleV);
+        xlabel('frequency - \omega_0 (rad/s)') 
+        ylabel('normalized intensity (arb. units)')
+        ylabel(spectralPlot(2), 'phase (rad)');
+        %xlim([frequency(1) frequency(N)]);
+        ylim(spectralPlot(1),[-0.1 1.1]);
+        ylim(spectralPlot(2),[-5 5]);
+        xlim(spectralPlot(1), [-2e14 2e14])
+        xlim(spectralPlot(2), [-2e14 2e14])
+        set(spectralPlot(2), 'YTick',-4:2:4)
+		%hold(spectralPlot(1), 'on') %slows drawnow significantly down  
+		hold(spectralPlot(2), 'on')
+		spectralPlot3 = plot(frequency, polyval(spectralPhaseFit, frequency), 'r', 'Parent', spectralPlot(2));
+        set(spectralPlot1,'Color','blue','LineWidth',2)
+		set(spectralPlot2,'Color',[0 0.498 0],'LineWidth',2)
+		set(spectralPlot3,'Color','red','LineWidth',1)
+        title('retrieved spectral shape');
+        hold off;
+
 fprintf('Total execution Time was %f s.\n', toc(tTotal));
 %%
+
+%% CLEO Figure
+if(seperateSpectrumAvailable)
+myfigure('CLEO Figure');
+	colormap([0 0 0.0;0 0 0.53125;0 0 0.546875;0 0 0.5625;0 0 0.578125;0 0 0.59375;0 0 0.609375;0 0 0.625;0 0 0.640625;0 0 0.65625;0 0 0.671875;0 0 0.6875;0 0 0.703125;0 0 0.71875;0 0 0.734375;0 0 0.75;0 0 0.765625;0 0 0.78125;0 0 0.796875;0 0 0.8125;0 0 0.828125;0 0 0.84375;0 0 0.859375;0 0 0.875;0 0 0.890625;0 0 0.90625;0 0 0.921875;0 0 0.9375;0 0 0.953125;0 0 0.96875;0 0 0.984375;0 0 1;0 0.015625 1;0 0.03125 1;0 0.046875 1;0 0.0625 1;0 0.078125 1;0 0.09375 1;0 0.109375 1;0 0.125 1;0 0.140625 1;0 0.15625 1;0 0.171875 1;0 0.1875 1;0 0.203125 1;0 0.21875 1;0 0.234375 1;0 0.25 1;0 0.265625 1;0 0.28125 1;0 0.296875 1;0 0.3125 1;0 0.328125 1;0 0.34375 1;0 0.359375 1;0 0.375 1;0 0.390625 1;0 0.40625 1;0 0.421875 1;0 0.4375 1;0 0.453125 1;0 0.46875 1;0 0.484375 1;0 0.5 1;0 0.515625 1;0 0.53125 1;0 0.546875 1;0 0.5625 1;0 0.578125 1;0 0.59375 1;0 0.609375 1;0 0.625 1;0 0.640625 1;0 0.65625 1;0 0.671875 1;0 0.6875 1;0 0.703125 1;0 0.71875 1;0 0.734375 1;0 0.75 1;0 0.765625 1;0 0.78125 1;0 0.796875 1;0 0.8125 1;0 0.828125 1;0 0.84375 1;0 0.859375 1;0 0.875 1;0 0.890625 1;0 0.90625 1;0 0.921875 1;0 0.9375 1;0 0.953125 1;0 0.96875 1;0 0.984375 1;0 1 1;0.015625 1 0.984375;0.03125 1 0.96875;0.046875 1 0.953125;0.0625 1 0.9375;0.078125 1 0.921875;0.09375 1 0.90625;0.109375 1 0.890625;0.125 1 0.875;0.140625 1 0.859375;0.15625 1 0.84375;0.171875 1 0.828125;0.1875 1 0.8125;0.203125 1 0.796875;0.21875 1 0.78125;0.234375 1 0.765625;0.25 1 0.75;0.265625 1 0.734375;0.28125 1 0.71875;0.296875 1 0.703125;0.3125 1 0.6875;0.328125 1 0.671875;0.34375 1 0.65625;0.359375 1 0.640625;0.375 1 0.625;0.390625 1 0.609375;0.40625 1 0.59375;0.421875 1 0.578125;0.4375 1 0.5625;0.453125 1 0.546875;0.46875 1 0.53125;0.484375 1 0.515625;0.5 1 0.5;0.515625 1 0.484375;0.53125 1 0.46875;0.546875 1 0.453125;0.5625 1 0.4375;0.578125 1 0.421875;0.59375 1 0.40625;0.609375 1 0.390625;0.625 1 0.375;0.640625 1 0.359375;0.65625 1 0.34375;0.671875 1 0.328125;0.6875 1 0.3125;0.703125 1 0.296875;0.71875 1 0.28125;0.734375 1 0.265625;0.75 1 0.25;0.765625 1 0.234375;0.78125 1 0.21875;0.796875 1 0.203125;0.8125 1 0.1875;0.828125 1 0.171875;0.84375 1 0.15625;0.859375 1 0.140625;0.875 1 0.125;0.890625 1 0.109375;0.90625 1 0.09375;0.921875 1 0.078125;0.9375 1 0.0625;0.953125 1 0.046875;0.96875 1 0.03125;0.984375 1 0.015625;1 1 0;1 0.984375 0;1 0.96875 0;1 0.953125 0;1 0.9375 0;1 0.921875 0;1 0.90625 0;1 0.890625 0;1 0.875 0;1 0.859375 0;1 0.84375 0;1 0.828125 0;1 0.8125 0;1 0.796875 0;1 0.78125 0;1 0.765625 0;1 0.75 0;1 0.734375 0;1 0.71875 0;1 0.703125 0;1 0.6875 0;1 0.671875 0;1 0.65625 0;1 0.640625 0;1 0.625 0;1 0.609375 0;1 0.59375 0;1 0.578125 0;1 0.5625 0;1 0.546875 0;1 0.53125 0;1 0.515625 0;1 0.5 0;1 0.484375 0;1 0.46875 0;1 0.453125 0;1 0.4375 0;1 0.421875 0;1 0.40625 0;1 0.390625 0;1 0.375 0;1 0.359375 0;1 0.34375 0;1 0.328125 0;1 0.3125 0;1 0.296875 0;1 0.28125 0;1 0.265625 0;1 0.25 0;1 0.234375 0;1 0.21875 0;1 0.203125 0;1 0.1875 0;1 0.171875 0;1 0.15625 0;1 0.140625 0;1 0.125 0;1 0.109375 0;1 0.09375 0;1 0.078125 0;1 0.0625 0;1 0.046875 0;1 0.03125 0;1 0.015625 0;1 0 0;0.984375 0 0;0.96875 0 0;0.953125 0 0;0.9375 0 0;0.921875 0 0;0.90625 0 0;0.890625 0 0;0.875 0 0;0.859375 0 0;0.84375 0 0;0.828125 0 0;0.8125 0 0;0.796875 0 0;0.78125 0 0;0.765625 0 0;0.75 0 0;0.734375 0 0;0.71875 0 0;0.703125 0 0;0.6875 0 0;0.671875 0 0;0.65625 0 0;0.640625 0 0;0.625 0 0;0.609375 0 0;0.59375 0 0;0.578125 0 0;0.5625 0 0;0.546875 0 0;0.53125 0 0;0.515625 0 0;0.5 0 0]);
+    ax(1) = subplot(2,2,1);
+		originalTracePlot = imagesc(tau * 1e15, (frequency + dataTransfer.finalFrog.frequencyOffset)* 2*pi*1e-15,IFrog, [0 1]);
+        xlabel('Delay (fs)');
+        ylabel('Frequency (rad/fs)');
+        title('Measured FROG Trace');
+    ax(2) = subplot(2,2,2);
+		retrievedTracePlot = imagesc(tau * 1e15, (frequency + dataTransfer.finalFrog.frequencyOffset) * 2*pi*1e-15,ICalc.intensity, [0 1]);
+        xlabel('Delay (fs)');
+        ylabel('Frequency (rad/fs)');
+        title('Retrieved FROG Trace');
+        colorbar('Eastoutside');
+        s1Pos = get(ax(1),'position');
+        s2Pos = get(ax(2),'position');
+        s2Pos(3:4) = [s1Pos(3:4)];
+        set(ax(2),'position',s2Pos);
+        
+    linkaxes(ax);
+    subplot(2,2,3);
+		[temporalPlot, temporalPlot1, temporalPlot2] = plotyy(t * 1e15, abs(Efield).^2, t * 1e15, angleEfield);
+		xlabel('Time (fs)')
+        ylabel('Intensity (arb. units)')
+        ylabel(temporalPlot(2), 'Phase (rad)');
+        %xlim([t(1) t(N)]);
+        ylim(temporalPlot(1),[-0.1 1.1]);
+        ylim(temporalPlot(2),[-9.6 9.6]);
+        set(temporalPlot(2), 'YTick',-8:4:8)
+		%hold(temporalPlot(1), 'on')
+		hold(temporalPlot(2), 'on')
+        set(temporalPlot1,'Color','blue','LineWidth',1)
+		set(temporalPlot2,'Color','red','LineWidth',1)
+        title('Retrieved Temporal Shape');
+        hold off;
+    subplot(2,2,4);
+		[spectralPlot, spectralPlot1, spectralPlot2] = plotyy((frequency + dataTransfer.finalFrog.frequencyOffset/2)* 2*pi*1e-15, abs(V).^2*1e14/trapz(frequency + dataTransfer.finalFrog.frequencyOffset/2,abs(V).^2), (frequency(abs(V).^2>0.02 * max(abs(V).^2)) + dataTransfer.finalFrog.frequencyOffset/2)* 2*pi*1e-15,angleV(abs(V).^2>0.02 * max(abs(V).^2)));
+        xlabel('Frequency (rad/fs)') 
+        ylabel('Intensity (arb. units)')
+        ylabel(spectralPlot(2), 'Phase (rad)');
+        %xlim([frequency(1) frequency(N)]);
+        ylim(spectralPlot(1),[-0.12 1.32]);
+        ylim(spectralPlot(2),[-3.6 3.6]);
+        set(spectralPlot(1), 'YTick',-0:0.2:1.2)
+        set(spectralPlot(2), 'YTick',-3:1:3)
+		hold(spectralPlot(1), 'on')
+		spectralPlot3 = plot(spectrumIndependent.frequencydomain.frequency * 2*pi*1e-15,spectrumIndependent.frequencydomain.intensity*1e14/trapz(-spectrumIndependent.frequencydomain.frequency,spectrumIndependent.frequencydomain.intensity), 'r', 'Parent', spectralPlot(1))
+        set(spectralPlot1,'Color','blue','LineWidth',1)
+		set(spectralPlot2,'Color','red','LineWidth',1)
+		set(spectralPlot3,'Color',[0 0.498 0],'LineWidth',1)
+        title('Retrieved Spectral Shape');
+        legend('Retrieved Int.', 'Measured Int.', 'Retrieved Phase');
+        uistack(spectralPlot3,'bottom')
+        hold off;
+    
+set(gcf, 'PaperSize', [30 20]*0.9 , 'PaperPosition', [0 0 30 20]*0.9); 
+
+end

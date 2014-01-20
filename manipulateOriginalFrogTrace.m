@@ -24,51 +24,71 @@ constants; %load physical, mathematical and numerical constants
 setup; %initilized values
 
 showAdvancedFigures = 1;
-seperateSpectrumAvailable = 0;
-symmetrize = 1;
+seperateSpectrumAvailable = 1;
+correctMarginal = 1; 
+maskFrogTrace = 1;
+shearFrogTrace = 0;
+symmetrizeFrogTrace = 0;
 
 %read frogtrace
 %frogRaw = imread('2013-05-29--16-37-49 wedges optimized, 2bar He.frogtrace.tif')';
 %frogRaw = double(frogRaw);
-load('lastDir.mat');
-if(frogRawDIRname == 0) 
-    frogRawDIRname = pwd;
+
+load('lastFrogFilename.mat');
+[frogRawFilename, frogRawDIRname] = uigetfile({'*.frogtrace','Frogtraces (*.frogtrace)';'*.*',  'All files (*.*)'}, 'Select the raw FROG trace', frogRawFullFilename);
+
+if(~frogRawFilename)
+    frogRawFullFilename = pwd;
+    save('lastFrogFilename.mat', 'frogRawFullFilename');
+    error('*** No spectrometer file specified! ***')
+else
+    frogRawFullFilename = fullfile(frogRawDIRname, frogRawFilename);
+    save('lastFrogFilename.mat', 'frogRawFullFilename');
 end
-[frogRawFilename, frogRawDIRname] = uigetfile({'*.frogtrace','Frogtraces (*.frogtrace)';'*.*',  'All files (*.*)'}, 'Select the raw FROG trace', frogRawDIRname);
-save('lastDir.mat', 'frogRawDIRname');
-frogRawFullFilename = fullfile(frogRawDIRname, frogRawFilename);
+
 frogRawFileID = fopen(frogRawFullFilename, 'r');
 if frogRawFileID == -1
-    fprintf('*****File not found*****\n');
-    break;
+    error('*****File not found*****\n');
 end;
 frogRaw = fread(frogRawFileID, [1376, 1035], 'uint8');
 fclose(frogRawFileID);
 
 %read seperately recorded spectrum
 if(seperateSpectrumAvailable)
-% if(0); %Hamamatsu
-%     spectrumIndependent = dlmread('2013-02-14--17-50-33-afterXPW+CMs+wedges(FROG)-inbeamwithpaper.csv', ',', [1 1 2048 1]);
-%     spectrumIndependentLambda = n * dlmread('2013-02-14--17-48-33-afterXPW+CMs+wedges(FROG)-more.csv',',', [1 0 2048 0]);
-%     spectrumIndependent = spectrumIndependent -  dlmread('2013-02-26_1018_darkref_30ms_fiber.csv', ',', [1 1 2048 1]);
-%     spectrumIndependent(spectrumIndependent < 0 ) = 0;
-%     spectrumIndependent =  spectrumIndependent .* dlmread('HamamatsuCalibrationwithfactor.txt', '\t', [1 8 2048 8]);
-%     spectrumIndependentFrequency = c ./ spectrumIndependentLambda;
-%     spectrumIndependent = spectrumIndependent .* (spectrumIndependentLambda * 100000000).^2 / c;
-%     frequency2048 = (0:1/2047:1) * c ./ (200*n) ;
-%     spectrumIndependent2048 = interp1(spectrumIndependentFrequency, spectrumIndependent, frequency2048, 'linear', 0);
-% else; %Avantes
-%     spectrumIndependent = dlmread('2013061818juin131930290001_0705014U1.TXT', ';', [8 1 2850 1]);
-%     spectrumIndependentLambda = n * dlmread('2013061818juin131930290001_0705014U1.TXT',';', [8 0 2850 0]);
-%     spectrumIndependent = spectrumIndependent; %substract dark reference if possible
-%     spectrumIndependent(spectrumIndependent < 0 ) = 0;
-%     avantesCalibrationFactor = interp1(n* dlmread('AvantesCalib.txt', ',', [0 0 1400 0]), dlmread('AvantesCalib.txt', ',', [0 1 1400 1]), spectrumIndependentLambda, 'linear', 0);
-%     spectrumIndependent =  spectrumIndependent .* avantesCalibrationFactor;
-%     spectrumIndependentFrequency = c ./ spectrumIndependentLambda;
-%     spectrumIndependent = spectrumIndependent .* (spectrumIndependentLambda * 100000000).^2 / c;
-%     frequency2048 = (0:1/2047:1) * c ./ (200*n) ;
-%     spectrumIndependent2048 = interp1(spectrumIndependentFrequency, spectrumIndependent, frequency2048, 'linear', 0);
-% end;  
+    
+    load('lastSpectrumFilename.mat');
+
+    [spectrumFilename, spectrumDirectory] = uigetfile({'*.csv','Hamamatsu (*.csv)';'*.*',  'All files (*.*)'}, 'Select indepentend spectrum', spectrumFullFilename);
+    
+    if(~spectrumFilename)
+        spectrumFullFilename = pwd;
+        save('lastSpectrumFilename.mat', 'spectrumFullFilename');
+        error('*** No spectrometer file specified! ***')
+    else
+        spectrumFullFilename = fullfile(spectrumDirectory, spectrumFilename);
+        save('lastSpectrumFilename.mat', 'spectrumFullFilename');
+    end
+    
+    
+
+    if(1); %Hamamatsu
+        spectrumIndependent = SpectrumHamamatsu(spectrumFullFilename);
+        
+        frequency2048 = (0:1/2047:1) * c ./ (200*n) ;
+        spectrumIndependent2048 = interp1(spectrumIndependent.frequencydomain.frequency, spectrumIndependent.frequencydomain.intensity, frequency2048, 'linear', 0);
+        
+    else %Avantes
+        spectrumIndependent = dlmread('2013061818juin131930290001_0705014U1.TXT', ';', [8 1 2850 1]);
+        spectrumIndependentLambda = n * dlmread('2013061818juin131930290001_0705014U1.TXT',';', [8 0 2850 0]);
+        spectrumIndependent = spectrumIndependent; %substract dark reference if possible
+        spectrumIndependent(spectrumIndependent < 0 ) = 0;
+        avantesCalibrationFactor = interp1(n* dlmread('AvantesCalib.txt', ',', [0 0 1400 0]), dlmread('AvantesCalib.txt', ',', [0 1 1400 1]), spectrumIndependentLambda, 'linear', 0);
+        spectrumIndependent =  spectrumIndependent .* avantesCalibrationFactor;
+        spectrumIndependentFrequency = c ./ spectrumIndependentLambda;
+        spectrumIndependent = spectrumIndependent .* (spectrumIndependentLambda * 100000000).^2 / c;
+        frequency2048 = (0:1/2047:1) * c ./ (200*n) ;
+        spectrumIndependent2048 = interp1(spectrumIndependentFrequency, spectrumIndependent, frequency2048, 'linear', 0);
+    end;  
 end
     
 %done
@@ -166,19 +186,8 @@ ccd_delay = ccd_delay - toMoveTime;
 frogConversionFactor = repmat((ccd_wavelength.'.^2 * 10^13), 1, dimensionT);
 frogOverTauAndF = frogFiltered .* frogConversionFactor;
 
-%% calculate the frequency marginal
-if(seperateSpectrumAvailable)
-    marginal_frequency = sum(frogOverTauAndF, 2);
-    myfigure('frequency marginal')
-    plot(ccd_frequency, marginal_frequency);
-    
 
-    spectrumIndependentAutoconvoluted = conv(spectrumIndependent2048, spectrumIndependent2048, 'full');
-    spectrumIndependentAutoconvoluted = interp1((0:1/4094:1) * c ./ (100*n), spectrumIndependentAutoconvoluted, frequency2048, 'linear', 0);
 
-    myfigure('Autoconvoluted Spectra');
-    plot(frequency2048, spectrumIndependentAutoconvoluted/max(spectrumIndependentAutoconvoluted), ccd_frequency, marginal_frequency/max(marginal_frequency));
-end
 
 
 %% create the final frogtrace
@@ -187,9 +196,11 @@ end
 %frequencyOffset = ( c / (375 * n));
 frequencyOffset = sum(ccd_frequency' .* sum(frogOverTauAndF,2).^4)/sum(sum(frogOverTauAndF,2).^4); %weighted average to find center of peak
 frequencyOffset(isnan(frequencyOffset)) = 0;
-finalFrog = interp2(ccdDelayMesh, ccdFrequencyMesh, frogOverTauAndF, tau, frequency.' + frequencyOffset);
-finalFrog(isnan(finalFrog)) = 0;
-
+finalFrog.intensity = interp2(ccdDelayMesh, ccdFrequencyMesh, frogOverTauAndF, tau, frequency.' + frequencyOffset);
+finalFrog.intensity(isnan(finalFrog.intensity)) = 0;
+finalFrog.delay = tau;
+finalFrog.frequency = frequency;
+finalFrog.frequencyOffset = frequencyOffset;
 
 
 %% mask the final FROG trace
@@ -197,10 +208,10 @@ finalFrog(isnan(finalFrog)) = 0;
 if(maskFrogTrace)
     butterworthOrder = 10; %too low is not good, as it would 
     [maskDelayMesh,maskFrequencyMesh] = meshgrid((-(N)/2:(N)/2-1),(-(N)/2:(N)/2-1));
-    estimatedFrogFrequencyCenterOffset = 0; 
+    estimatedFrogFrequencyCenterOffset = 5; 
     maskFrequencyMesh = maskFrequencyMesh - estimatedFrogFrequencyCenterOffset;
-    estimatedFrogSizeDelay = 60;
-    estimatedFrogSizeFrequency = 100;
+    estimatedFrogSizeDelay = 110;
+    estimatedFrogSizeFrequency = 70;
     maskNormalizedRadius = sqrt(( (maskDelayMesh/estimatedFrogSizeDelay).^2 + (maskFrequencyMesh/estimatedFrogSizeFrequency).^2)) ;
     maskMatrix = sqrt(1./ (1 + (maskNormalizedRadius).^(2 * butterworthOrder)));
 
@@ -209,13 +220,36 @@ if(maskFrogTrace)
 
 
 
-    maskedFinalFrog = finalFrog .* maskMatrix;
+    maskedFinalFrog = finalFrog.intensity .* maskMatrix;
 
         myfigure('maskDifference');
-        imagesc(abs(finalFrog - maskedFinalFrog),[-1 1 ]);
+        imagesc(abs(finalFrog.intensity - maskedFinalFrog),[-1 1 ]);
 
 
-    finalFrog = maskedFinalFrog;
+    finalFrog.intensity = maskedFinalFrog;
+end
+
+
+%% calculate the frequency marginal
+if(seperateSpectrumAvailable)
+    marginal_frequency = normMax(sum(finalFrog.intensity, 2));
+    myfigure('frequency marginal')
+    plot(frequency, marginal_frequency);
+    
+
+    spectrumIndependentAutoconvoluted = conv(spectrumIndependent2048, spectrumIndependent2048, 'full');
+    spectrumIndependentAutoconvoluted = interp1((0:1/4094:1) * c ./ (100*n), spectrumIndependentAutoconvoluted, frequency2048, 'linear', 0);
+    spectrumIndependentAutoconvoluted = normMax(spectrumIndependentAutoconvoluted);
+    myfigure('Autoconvoluted Spectra');
+    plot(frequency2048, spectrumIndependentAutoconvoluted, frequency + frequencyOffset, marginal_frequency);
+    legend('autoconvoluted spectrum', 'frequency marginal');
+    
+    %and do the correction
+    if(correctMarginal)
+        marginalCorrectionFactor = interp1(frequency2048, spectrumIndependentAutoconvoluted, frequency + frequencyOffset) ./ marginal_frequency';
+        marginalCorrectionFactor(isinf(marginalCorrectionFactor) | isnan(marginalCorrectionFactor)) = 0;
+        finalFrog.intensity = finalFrog.intensity .* meshgrid(marginalCorrectionFactor)';
+    end
 end
 
 %% show some plots
@@ -225,25 +259,25 @@ imagesc(frogRaw);
 colormap(mycolormap);
 
 myfigure('maskedFinalFrog')
-imagesc(tau, frequency + frequencyOffset, finalFrog);
+imagesc(tau, frequency + frequencyOffset, finalFrog.intensity);
 colormap(mycolormap);
 
 %% shearing... calculate center of mass of each row or column of final frog trace
 %(centerofmass of the delay)
 myfigure('centerofmass')
 subplot(1,2,1)
-imagesc(tau, frequency + frequencyOffset, finalFrog);
+imagesc(tau, frequency + frequencyOffset, finalFrog.intensity);
 colormap(mycolormap);
-CoMdelay = sum(finalFrog .* (ones(length(frequency),1) * tau), 2)./sum(finalFrog, 2);
+CoMdelay = sum(finalFrog.intensity .* (ones(length(frequency),1) * tau), 2)./sum(finalFrog.intensity, 2);
 hold all;
 scatter(CoMdelay, frequency + frequencyOffset, 'black', 'filled' )
 hold off;
 
 %THIS IS THE IMPORTANT ONE: centerofmass of the frequency
 subplot(1,2,2)
-imagesc(tau, frequency + frequencyOffset, finalFrog);
+imagesc(tau, frequency + frequencyOffset, finalFrog.intensity);
 colormap(mycolormap);
-CoMfrequency = sum(finalFrog .* (frequency' * ones(1,length(frequency))), 1) ./ sum(finalFrog, 1);
+CoMfrequency = sum(finalFrog.intensity .* (frequency' * ones(1,length(frequency))), 1) ./ sum(finalFrog.intensity, 1);
 hold all;
 scatter(tau, CoMfrequency + frequencyOffset, 'black', 'filled' )
 hold off;
@@ -253,7 +287,7 @@ if(shearFrogTrace)
     a = -0.0;
     T = maketform('affine', [1 0 0; a 1 0; 0 0 1] );
     R = makeresampler({'cubic','cubic'},'fill');
-    shearedFrog = imtransform(finalFrog,T,R);
+    shearedFrog = imtransform(finalFrog.intensity,T,R);
     shearedFrog = shearedFrog((1:N) + (size(shearedFrog,1)/2 - N/2), (1:N) + floor(size(shearedFrog,2)/2 - N/2));
     toMoveTime = sum((-(N/2):(N/2)-1) .* sum(shearedFrog).^2)/sum(sum(shearedFrog).^2); %weighted average to find center of peak
     toMoveTime(isnan(toMoveTime)) = 0;
@@ -272,18 +306,22 @@ if(shearFrogTrace)
     % saveimagedata = uint16(maskedFinalFrog/max(max(maskedFinalFrog))*65000);
     % imwrite(saveimagedata, 'generated.tif', 'tif')
     
-    finalFrog = shearedFrog;
+    finalFrog.intensity = shearedFrog;
 end
 
 %% symmetrize
 
-if(symmetrize)
-    finalFrog = normMax(finalFrog + circshift(fliplr(finalFrog), [0 1]));
+if(symmetrizeFrogTrace)
+    finalFrog.intensity = normMax(finalFrog.intensity + circshift(fliplr(finalFrog.intensity), [0 1]));
 end
 
 
+%% normalize
+
+finalFrog.intensity = normMax(finalFrog.intensity);
+
 %% save data
 
-dataTransfer.IFrog = normMax(finalFrog);
+dataTransfer.finalFrog = finalFrog;
 save('generated.mat', 'dataTransfer');
 
