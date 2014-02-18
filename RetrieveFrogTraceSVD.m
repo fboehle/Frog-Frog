@@ -357,62 +357,103 @@ myfigure('Retrieved Spectrum')
 fprintf('Total execution Time was %f s.\n', toc(tTotal));
 %%
 
-%% CLEO Figure
+%% Optics Letter Figure
 if(seperateSpectrumAvailable)
-myfigure('CLEO Figure');
+myfigure('Optics Letter Figure');
 	colormap([0 0 0.0;0 0 0.53125;0 0 0.546875;0 0 0.5625;0 0 0.578125;0 0 0.59375;0 0 0.609375;0 0 0.625;0 0 0.640625;0 0 0.65625;0 0 0.671875;0 0 0.6875;0 0 0.703125;0 0 0.71875;0 0 0.734375;0 0 0.75;0 0 0.765625;0 0 0.78125;0 0 0.796875;0 0 0.8125;0 0 0.828125;0 0 0.84375;0 0 0.859375;0 0 0.875;0 0 0.890625;0 0 0.90625;0 0 0.921875;0 0 0.9375;0 0 0.953125;0 0 0.96875;0 0 0.984375;0 0 1;0 0.015625 1;0 0.03125 1;0 0.046875 1;0 0.0625 1;0 0.078125 1;0 0.09375 1;0 0.109375 1;0 0.125 1;0 0.140625 1;0 0.15625 1;0 0.171875 1;0 0.1875 1;0 0.203125 1;0 0.21875 1;0 0.234375 1;0 0.25 1;0 0.265625 1;0 0.28125 1;0 0.296875 1;0 0.3125 1;0 0.328125 1;0 0.34375 1;0 0.359375 1;0 0.375 1;0 0.390625 1;0 0.40625 1;0 0.421875 1;0 0.4375 1;0 0.453125 1;0 0.46875 1;0 0.484375 1;0 0.5 1;0 0.515625 1;0 0.53125 1;0 0.546875 1;0 0.5625 1;0 0.578125 1;0 0.59375 1;0 0.609375 1;0 0.625 1;0 0.640625 1;0 0.65625 1;0 0.671875 1;0 0.6875 1;0 0.703125 1;0 0.71875 1;0 0.734375 1;0 0.75 1;0 0.765625 1;0 0.78125 1;0 0.796875 1;0 0.8125 1;0 0.828125 1;0 0.84375 1;0 0.859375 1;0 0.875 1;0 0.890625 1;0 0.90625 1;0 0.921875 1;0 0.9375 1;0 0.953125 1;0 0.96875 1;0 0.984375 1;0 1 1;0.015625 1 0.984375;0.03125 1 0.96875;0.046875 1 0.953125;0.0625 1 0.9375;0.078125 1 0.921875;0.09375 1 0.90625;0.109375 1 0.890625;0.125 1 0.875;0.140625 1 0.859375;0.15625 1 0.84375;0.171875 1 0.828125;0.1875 1 0.8125;0.203125 1 0.796875;0.21875 1 0.78125;0.234375 1 0.765625;0.25 1 0.75;0.265625 1 0.734375;0.28125 1 0.71875;0.296875 1 0.703125;0.3125 1 0.6875;0.328125 1 0.671875;0.34375 1 0.65625;0.359375 1 0.640625;0.375 1 0.625;0.390625 1 0.609375;0.40625 1 0.59375;0.421875 1 0.578125;0.4375 1 0.5625;0.453125 1 0.546875;0.46875 1 0.53125;0.484375 1 0.515625;0.5 1 0.5;0.515625 1 0.484375;0.53125 1 0.46875;0.546875 1 0.453125;0.5625 1 0.4375;0.578125 1 0.421875;0.59375 1 0.40625;0.609375 1 0.390625;0.625 1 0.375;0.640625 1 0.359375;0.65625 1 0.34375;0.671875 1 0.328125;0.6875 1 0.3125;0.703125 1 0.296875;0.71875 1 0.28125;0.734375 1 0.265625;0.75 1 0.25;0.765625 1 0.234375;0.78125 1 0.21875;0.796875 1 0.203125;0.8125 1 0.1875;0.828125 1 0.171875;0.84375 1 0.15625;0.859375 1 0.140625;0.875 1 0.125;0.890625 1 0.109375;0.90625 1 0.09375;0.921875 1 0.078125;0.9375 1 0.0625;0.953125 1 0.046875;0.96875 1 0.03125;0.984375 1 0.015625;1 1 0;1 0.984375 0;1 0.96875 0;1 0.953125 0;1 0.9375 0;1 0.921875 0;1 0.90625 0;1 0.890625 0;1 0.875 0;1 0.859375 0;1 0.84375 0;1 0.828125 0;1 0.8125 0;1 0.796875 0;1 0.78125 0;1 0.765625 0;1 0.75 0;1 0.734375 0;1 0.71875 0;1 0.703125 0;1 0.6875 0;1 0.671875 0;1 0.65625 0;1 0.640625 0;1 0.625 0;1 0.609375 0;1 0.59375 0;1 0.578125 0;1 0.5625 0;1 0.546875 0;1 0.53125 0;1 0.515625 0;1 0.5 0;1 0.484375 0;1 0.46875 0;1 0.453125 0;1 0.4375 0;1 0.421875 0;1 0.40625 0;1 0.390625 0;1 0.375 0;1 0.359375 0;1 0.34375 0;1 0.328125 0;1 0.3125 0;1 0.296875 0;1 0.28125 0;1 0.265625 0;1 0.25 0;1 0.234375 0;1 0.21875 0;1 0.203125 0;1 0.1875 0;1 0.171875 0;1 0.15625 0;1 0.140625 0;1 0.125 0;1 0.109375 0;1 0.09375 0;1 0.078125 0;1 0.0625 0;1 0.046875 0;1 0.03125 0;1 0.015625 0;1 0 0;0.984375 0 0;0.96875 0 0;0.953125 0 0;0.9375 0 0;0.921875 0 0;0.90625 0 0;0.890625 0 0;0.875 0 0;0.859375 0 0;0.84375 0 0;0.828125 0 0;0.8125 0 0;0.796875 0 0;0.78125 0 0;0.765625 0 0;0.75 0 0;0.734375 0 0;0.71875 0 0;0.703125 0 0;0.6875 0 0;0.671875 0 0;0.65625 0 0;0.640625 0 0;0.625 0 0;0.609375 0 0;0.59375 0 0;0.578125 0 0;0.5625 0 0;0.546875 0 0;0.53125 0 0;0.515625 0 0;0.5 0 0]);
     ax(1) = subplot(2,2,1);
 		originalTracePlot = imagesc(tau * 1e15, (frequency + dataTransfer.finalFrog.frequencyOffset)* 2*pi*1e-15,IFrog, [0 1]);
         xlabel('Delay (fs)');
-        ylabel('Frequency (rad/fs)');
+        ylabel('Ang. freq. (rad/fs)');
         title('Measured FROG Trace');
+        set(gca, 'TickDir', 'out');
+        set(ax(1) ,'box','off','color','none')
+        
     ax(2) = subplot(2,2,2);
 		retrievedTracePlot = imagesc(tau * 1e15, (frequency + dataTransfer.finalFrog.frequencyOffset) * 2*pi*1e-15,ICalc.intensity, [0 1]);
         xlabel('Delay (fs)');
-        ylabel('Frequency (rad/fs)');
+        ylabel('Ang. freq. (rad/fs)');
         title('Retrieved FROG Trace');
         colorbar('Eastoutside');
         s1Pos = get(ax(1),'position');
         s2Pos = get(ax(2),'position');
         s2Pos(3:4) = [s1Pos(3:4)];
-        set(ax(2),'position',s2Pos);
-        
-    linkaxes(ax);
-    subplot(2,2,3);
+        set(ax(2),'position',s2Pos);     
+        set(gca, 'TickDir', 'out');
+        linkaxes(ax);
+        xlim([-65 65]);
+        ylim([3.85 6.65 ]);
+        set(ax(2) ,'box','off','color','none')
+    
+   subplot3H = subplot(2,2,3);
+        axes('Position',get(gca,'Position'),'box','on','xtick',[],'ytick',[]);
+        axes(subplot3H)
+
+
 		[temporalPlot, temporalPlot1, temporalPlot2] = plotyy(t * 1e15, abs(Efield).^2, t * 1e15, angleEfield);
 		xlabel('Time (fs)')
         ylabel('Intensity (arb. units)')
         ylabel(temporalPlot(2), 'Phase (rad)');
-        %xlim([t(1) t(N)]);
-        ylim(temporalPlot(1),[-0.1 1.1]);
-        ylim(temporalPlot(2),[-9.6 9.6]);
+        xlim(temporalPlot(1),[-15 25]);
+        xlim(temporalPlot(2),[-15 25]);
+        ylim(temporalPlot(1),[0 1.1]);
+        ylim(temporalPlot(2),[-8 9.6]);
         set(temporalPlot(2), 'YTick',-8:4:8)
 		%hold(temporalPlot(1), 'on')
 		hold(temporalPlot(2), 'on')
-        set(temporalPlot1,'Color','blue','LineWidth',1)
-		set(temporalPlot2,'Color','red','LineWidth',1)
+        set(temporalPlot1,'Color','blue','LineWidth',1.5)
+		set(temporalPlot2,'Color','red','LineWidth',1.5)
         title('Retrieved Temporal Shape');
         hold off;
-    subplot(2,2,4);
-		[spectralPlot, spectralPlot1, spectralPlot2] = plotyy((frequency + dataTransfer.finalFrog.frequencyOffset/2)* 2*pi*1e-15, abs(V).^2*1e14/trapz(frequency + dataTransfer.finalFrog.frequencyOffset/2,abs(V).^2), (frequency(abs(V).^2>0.02 * max(abs(V).^2)) + dataTransfer.finalFrog.frequencyOffset/2)* 2*pi*1e-15,angleV(abs(V).^2>0.02 * max(abs(V).^2)));
-        xlabel('Frequency (rad/fs)') 
+        set(temporalPlot(1), 'TickDir', 'out');
+        set(temporalPlot(2), 'TickDir', 'out');
+        set(subplot3H,'box','off','color','none')
+
+        
+    subplot4H = subplot(2,2,4);
+        axes('Position',get(gca,'Position'),'box','on','xtick',[],'ytick',[]);
+        axes(subplot4H)
+        
+    frog.wavelengthdomain.l = c./( (frequency + dataTransfer.finalFrog.frequencyOffset/2) );
+    frog.wavelengthdomain.I = abs(V).^2 * c ./ (frog.wavelengthdomain.l.^2);
+    frog.wavelengthdomain.phase =  angleV;
+    goodIndizes = (frog.wavelengthdomain.l < 1500e-9 & frog.wavelengthdomain.l > 300e-9);
+        
+    frog.wavelengthdomain.I = frog.wavelengthdomain.I(goodIndizes);
+    frog.wavelengthdomain.phase = frog.wavelengthdomain.phase(goodIndizes);
+    frog.wavelengthdomain.l = frog.wavelengthdomain.l(goodIndizes);  %DO THIS LAST
+    
+    frog.wavelengthdomain.phase(frog.wavelengthdomain.I < 0.02 * max(frog.wavelengthdomain.I)) = NaN;
+    frog.wavelengthdomain.I = frog.wavelengthdomain.I * 1.9e-7 ./ -( trapz(frog.wavelengthdomain.l,frog.wavelengthdomain.I));
+    
+    
+		[spectralPlot, spectralPlot1, spectralPlot2] = plotyy(frog.wavelengthdomain.l*1e9,frog.wavelengthdomain.I ,frog.wavelengthdomain.l*1e9, frog.wavelengthdomain.phase);
+        xlabel('Wavelength (nm)') 
         ylabel('Intensity (arb. units)')
         ylabel(spectralPlot(2), 'Phase (rad)');
-        %xlim([frequency(1) frequency(N)]);
-        ylim(spectralPlot(1),[-0.12 1.32]);
-        ylim(spectralPlot(2),[-3.6 3.6]);
+        xlim(spectralPlot(1),[500 1050]);
+        xlim(spectralPlot(2),[500 1050]);
+        ylim(spectralPlot(1),[-0.0 1.32]);
+        ylim(spectralPlot(2),[-3.0 3.6]);
         set(spectralPlot(1), 'YTick',-0:0.2:1.2)
         set(spectralPlot(2), 'YTick',-3:1:3)
-		hold(spectralPlot(1), 'on')
-		spectralPlot3 = plot(spectrumIndependent.frequencydomain.frequency * 2*pi*1e-15,spectrumIndependent.frequencydomain.intensity*1e14/trapz(-spectrumIndependent.frequencydomain.frequency,spectrumIndependent.frequencydomain.intensity), 'r', 'Parent', spectralPlot(1))
-        set(spectralPlot1,'Color','blue','LineWidth',1)
-		set(spectralPlot2,'Color','red','LineWidth',1)
+		
+        hold(spectralPlot(1), 'on')
+		spectralPlot3 = plot(spectrumIndependent.wavelengthdomain.wavelength * 1e9,spectrumIndependent.wavelengthdomain.intensity * 1.9e-7 ./ trapz(spectrumIndependent.wavelengthdomain.wavelength,spectrumIndependent.wavelengthdomain.intensity), 'r', 'Parent', spectralPlot(1));
+        set(spectralPlot1,'Color','blue','LineWidth',1.5)
+		set(spectralPlot2,'Color','red','LineWidth',1.5)
 		set(spectralPlot3,'Color',[0 0.498 0],'LineWidth',1)
         title('Retrieved Spectral Shape');
-        legend('Retrieved Int.', 'Measured Int.', 'Retrieved Phase');
+        h_legend = legend('Retrieved Int.', 'Measured Int.', 'Retrieved Phase', 'Location', 'NorthWest');
+        set(h_legend,'FontSize',10);
+        
+        
         uistack(spectralPlot3,'bottom')
         hold off;
-    
-set(gcf, 'PaperSize', [30 20]*0.9 , 'PaperPosition', [0 0 30 20]*0.9); 
+        set(spectralPlot(1), 'TickDir', 'out');
+        set(spectralPlot(2), 'TickDir', 'out');
+        set(subplot4H,'box','off','color','none')
+
+        set(gcf, 'PaperSize', [30 20]*0.9 , 'PaperPosition', [0 0 30 20]*0.9); 
 
 end
