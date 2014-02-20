@@ -10,17 +10,18 @@
 %
 %   Notes:
 %
-%   Changelog:
+%   Changelog: 19/02/2014 Return the figure handle
 %
 %*********************************************************
 
 
-function  myfigure(objectname)
+function  handle = myfigure(objectname)
 
     object = findobj('Name', objectname);
     if(object)
         set(0,'CurrentFigure',object);
+        handle = gcf;
     else
-        figure('Name', objectname,'NumberTitle','off');
+        handle = figure('Name', objectname,'NumberTitle','off');
     end
 end
