@@ -1,0 +1,49 @@
+﻿Build started 04/03/2015 10:40:45.
+     1>Project "C:\Users\pco\Dropbox\FrogComputer\FrogProg\TestCamerCLI\TestCamerCLI.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Debug\TestCamerCLI.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Debug\TestCamerCLI.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Debug\TestCamerCLI.pch" /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt cameracontrol.cpp imageprocessing.cpp TestCamerCLI.cpp utilities.cpp
+         utilities.cpp
+         TestCamerCLI.cpp
+         imageprocessing.cpp
+         cameracontrol.cpp
+     1>c:\program files\microsoft visual studio 10.0\vc\include\xutility(2227): warning C4996: 'std::_Copy_impl': Function call with parameters that may be unsafe - this call relies on the caller to check that the passed values are correct. To disable this warning, use -D_SCL_SECURE_NO_WARNINGS. See documentation on how to use Visual C++ 'Checked Iterators'
+                 c:\program files\microsoft visual studio 10.0\vc\include\xutility(2212) : see declaration of 'std::_Copy_impl'
+                 c:\users\pco\dropbox\frogcomputer\frogprog\testcamercli\cameracontrol.cpp(115) : see reference to function template instantiation '_OutIt std::copy<char*,char*>(_InIt,_InIt,_OutIt)' being compiled
+                 with
+                 [
+                     _OutIt=char *,
+                     _InIt=char *
+                 ]
+         Generating Code...
+       ManifestResourceCompile:
+         c:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\TestCamerCLI.exe.embed.manifest.res" Debug\TestCamerCLI_manifest.rc 
+       Link:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\pco\Dropbox\FrogComputer\FrogProg\Debug\TestCamerCLI.exe" /INCREMENTAL /NOLOGO Euresys/multicam.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\TestCamerCLI.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\pco\Dropbox\FrogComputer\FrogProg\Debug\TestCamerCLI.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\pco\Dropbox\FrogComputer\FrogProg\Debug\TestCamerCLI.lib" /MACHINE:X86 Debug\TestCamerCLI.exe.embed.manifest.res
+         Debug\cameracontrol.obj
+         Debug\imageprocessing.obj
+         Debug\stdafx.obj
+         Debug\TestCamerCLI.obj
+         Debug\utilities.obj
+       Manifest:
+         c:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /out:"Debug\TestCamerCLI.exe.embed.manifest" /manifest Debug\TestCamerCLI.exe.intermediate.manifest
+         c:\Program Files\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /nologo /fo"Debug\TestCamerCLI.exe.embed.manifest.res" Debug\TestCamerCLI_manifest.rc 
+       LinkEmbedManifest:
+         C:\Program Files\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\pco\Dropbox\FrogComputer\FrogProg\Debug\TestCamerCLI.exe" /INCREMENTAL /NOLOGO Euresys/multicam.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Debug\TestCamerCLI.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\pco\Dropbox\FrogComputer\FrogProg\Debug\TestCamerCLI.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\pco\Dropbox\FrogComputer\FrogProg\Debug\TestCamerCLI.lib" /MACHINE:X86 Debug\TestCamerCLI.exe.embed.manifest.res
+         Debug\cameracontrol.obj
+         Debug\imageprocessing.obj
+         Debug\stdafx.obj
+         Debug\TestCamerCLI.obj
+         Debug\utilities.obj
+         TestCamerCLI.vcxproj -> C:\Users\pco\Dropbox\FrogComputer\FrogProg\Debug\TestCamerCLI.exe
+       FinalizeBuildStatus:
+         Deleting file "Debug\TestCamerCLI.unsuccessfulbuild".
+         Touching "Debug\TestCamerCLI.lastbuildstate".
+     1>Done Building Project "C:\Users\pco\Dropbox\FrogComputer\FrogProg\TestCamerCLI\TestCamerCLI.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.52
