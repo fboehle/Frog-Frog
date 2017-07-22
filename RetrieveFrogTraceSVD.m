@@ -166,15 +166,15 @@ fwhmresult = fwhm(t, abs(Efield).^2);
 V = fftshift(fft(ifftshift(Efield)));
 V = normMax(V);
 
-myfigure('Esig')
+myFigure('Esig')
 imagesc(abs(Esig))
 title('Esig')
 
-myfigure('Retrieval Error')
+myFigure('Retrieval Error')
     imagesc(ICalc.intensity - IFrog, [-0.1 0.1]);
     colorbar;
     
-myfigure('Retrieval Error Marginal')
+myFigure('Retrieval Error Marginal')
     plot(tau, normMax(sum(IFrog)) - normMax(sum(ICalc.intensity)));
     
 angleV = unwrap(angle(V));
@@ -220,7 +220,7 @@ end
 
 %% plot the data
    
-myfigure('Frog Retrieval');
+myFigure('Frog Retrieval');
 	colormap([0 0 0.515625;0 0 0.53125;0 0 0.546875;0 0 0.5625;0 0 0.578125;0 0 0.59375;0 0 0.609375;0 0 0.625;0 0 0.640625;0 0 0.65625;0 0 0.671875;0 0 0.6875;0 0 0.703125;0 0 0.71875;0 0 0.734375;0 0 0.75;0 0 0.765625;0 0 0.78125;0 0 0.796875;0 0 0.8125;0 0 0.828125;0 0 0.84375;0 0 0.859375;0 0 0.875;0 0 0.890625;0 0 0.90625;0 0 0.921875;0 0 0.9375;0 0 0.953125;0 0 0.96875;0 0 0.984375;0 0 1;0 0.015625 1;0 0.03125 1;0 0.046875 1;0 0.0625 1;0 0.078125 1;0 0.09375 1;0 0.109375 1;0 0.125 1;0 0.140625 1;0 0.15625 1;0 0.171875 1;0 0.1875 1;0 0.203125 1;0 0.21875 1;0 0.234375 1;0 0.25 1;0 0.265625 1;0 0.28125 1;0 0.296875 1;0 0.3125 1;0 0.328125 1;0 0.34375 1;0 0.359375 1;0 0.375 1;0 0.390625 1;0 0.40625 1;0 0.421875 1;0 0.4375 1;0 0.453125 1;0 0.46875 1;0 0.484375 1;0 0.5 1;0 0.515625 1;0 0.53125 1;0 0.546875 1;0 0.5625 1;0 0.578125 1;0 0.59375 1;0 0.609375 1;0 0.625 1;0 0.640625 1;0 0.65625 1;0 0.671875 1;0 0.6875 1;0 0.703125 1;0 0.71875 1;0 0.734375 1;0 0.75 1;0 0.765625 1;0 0.78125 1;0 0.796875 1;0 0.8125 1;0 0.828125 1;0 0.84375 1;0 0.859375 1;0 0.875 1;0 0.890625 1;0 0.90625 1;0 0.921875 1;0 0.9375 1;0 0.953125 1;0 0.96875 1;0 0.984375 1;0 1 1;0.015625 1 0.984375;0.03125 1 0.96875;0.046875 1 0.953125;0.0625 1 0.9375;0.078125 1 0.921875;0.09375 1 0.90625;0.109375 1 0.890625;0.125 1 0.875;0.140625 1 0.859375;0.15625 1 0.84375;0.171875 1 0.828125;0.1875 1 0.8125;0.203125 1 0.796875;0.21875 1 0.78125;0.234375 1 0.765625;0.25 1 0.75;0.265625 1 0.734375;0.28125 1 0.71875;0.296875 1 0.703125;0.3125 1 0.6875;0.328125 1 0.671875;0.34375 1 0.65625;0.359375 1 0.640625;0.375 1 0.625;0.390625 1 0.609375;0.40625 1 0.59375;0.421875 1 0.578125;0.4375 1 0.5625;0.453125 1 0.546875;0.46875 1 0.53125;0.484375 1 0.515625;0.5 1 0.5;0.515625 1 0.484375;0.53125 1 0.46875;0.546875 1 0.453125;0.5625 1 0.4375;0.578125 1 0.421875;0.59375 1 0.40625;0.609375 1 0.390625;0.625 1 0.375;0.640625 1 0.359375;0.65625 1 0.34375;0.671875 1 0.328125;0.6875 1 0.3125;0.703125 1 0.296875;0.71875 1 0.28125;0.734375 1 0.265625;0.75 1 0.25;0.765625 1 0.234375;0.78125 1 0.21875;0.796875 1 0.203125;0.8125 1 0.1875;0.828125 1 0.171875;0.84375 1 0.15625;0.859375 1 0.140625;0.875 1 0.125;0.890625 1 0.109375;0.90625 1 0.09375;0.921875 1 0.078125;0.9375 1 0.0625;0.953125 1 0.046875;0.96875 1 0.03125;0.984375 1 0.015625;1 1 0;1 0.984375 0;1 0.96875 0;1 0.953125 0;1 0.9375 0;1 0.921875 0;1 0.90625 0;1 0.890625 0;1 0.875 0;1 0.859375 0;1 0.84375 0;1 0.828125 0;1 0.8125 0;1 0.796875 0;1 0.78125 0;1 0.765625 0;1 0.75 0;1 0.734375 0;1 0.71875 0;1 0.703125 0;1 0.6875 0;1 0.671875 0;1 0.65625 0;1 0.640625 0;1 0.625 0;1 0.609375 0;1 0.59375 0;1 0.578125 0;1 0.5625 0;1 0.546875 0;1 0.53125 0;1 0.515625 0;1 0.5 0;1 0.484375 0;1 0.46875 0;1 0.453125 0;1 0.4375 0;1 0.421875 0;1 0.40625 0;1 0.390625 0;1 0.375 0;1 0.359375 0;1 0.34375 0;1 0.328125 0;1 0.3125 0;1 0.296875 0;1 0.28125 0;1 0.265625 0;1 0.25 0;1 0.234375 0;1 0.21875 0;1 0.203125 0;1 0.1875 0;1 0.171875 0;1 0.15625 0;1 0.140625 0;1 0.125 0;1 0.109375 0;1 0.09375 0;1 0.078125 0;1 0.0625 0;1 0.046875 0;1 0.03125 0;1 0.015625 0;1 0 0;0.984375 0 0;0.96875 0 0;0.953125 0 0;0.9375 0 0;0.921875 0 0;0.90625 0 0;0.890625 0 0;0.875 0 0;0.859375 0 0;0.84375 0 0;0.828125 0 0;0.8125 0 0;0.796875 0 0;0.78125 0 0;0.765625 0 0;0.75 0 0;0.734375 0 0;0.71875 0 0;0.703125 0 0;0.6875 0 0;0.671875 0 0;0.65625 0 0;0.640625 0 0;0.625 0 0;0.609375 0 0;0.59375 0 0;0.578125 0 0;0.5625 0 0;0.546875 0 0;0.53125 0 0;0.515625 0 0;0.972549021244049 0.972549021244049 0.972549021244049]);
 	ax(1) = subplot(2,2,1);
 		originalTracePlot = imagesc(tau * 1e15, frequency,IFrog, [0 1]);
@@ -310,7 +310,7 @@ if(seperateSpectrumAvailable)
     
     spectrumIndependent = SpectrumHamamatsu(spectrumFullFilename);
 
-    myfigure('compare retrieved and measured spectral intensity');
+    myFigure('compare retrieved and measured spectral intensity');
     plot(frequency + dataTransfer.finalFrog.frequencyOffset/2, abs(V).^2*1e14/trapz(frequency + dataTransfer.finalFrog.frequencyOffset/2,abs(V).^2), spectrumIndependent.frequencydomain.frequency,spectrumIndependent.frequencydomain.intensity*1e14/trapz(-spectrumIndependent.frequencydomain.frequency,spectrumIndependent.frequencydomain.intensity))
     legend('retrieved spectrum', 'measured spectrum');
     xlabel('Frequency (Hz)');
@@ -318,14 +318,14 @@ if(seperateSpectrumAvailable)
 end
 
 if(0)
-    myfigure('original Frogtrace')
+    myFigure('original Frogtrace')
     imagesc(tau, frequency,IFrog, [0 1]);
     title('original Frogtrace')
     xlabel('delay') 
     ylabel('frequency')
     colormap(jet(256));
 
-    myfigure('retrieved Frogtrace')
+    myFigure('retrieved Frogtrace')
     imagesc(tau, frequency,abs(ICalc), [0 1]);
     title('retrieved Frogtrace');
     xlabel('delay') 
@@ -334,7 +334,7 @@ if(0)
 end
 
 
-myfigure('Retrieved Spectrum')
+myFigure('Retrieved Spectrum')
 		[spectralPlot, spectralPlot1, spectralPlot2] = plotyy(frequency, abs(V).^2, frequency,angleV);
         xlabel('frequency - \omega_0 (rad/s)') 
         ylabel('normalized intensity (arb. units)')
@@ -359,13 +359,11 @@ fprintf('Total execution Time was %f s.\n', toc(tTotal));
 
 %% Optics Letter Figure
 if(seperateSpectrumAvailable)
-myfigure('Optics Letter Figure');
-    set(gcf, 'defaultAxesFontSize', 6);
-    set(gcf, 'defaultTextFontSize', 6);
-    set(gcf, 'defaultAxesTickLength', [0.02 6]);
-    set(gcf, 'defaultAxesLineWidth', 0.5);
-	colormap([0 0 0.0;0 0 0.53125;0 0 0.546875;0 0 0.5625;0 0 0.578125;0 0 0.59375;0 0 0.609375;0 0 0.625;0 0 0.640625;0 0 0.65625;0 0 0.671875;0 0 0.6875;0 0 0.703125;0 0 0.71875;0 0 0.734375;0 0 0.75;0 0 0.765625;0 0 0.78125;0 0 0.796875;0 0 0.8125;0 0 0.828125;0 0 0.84375;0 0 0.859375;0 0 0.875;0 0 0.890625;0 0 0.90625;0 0 0.921875;0 0 0.9375;0 0 0.953125;0 0 0.96875;0 0 0.984375;0 0 1;0 0.015625 1;0 0.03125 1;0 0.046875 1;0 0.0625 1;0 0.078125 1;0 0.09375 1;0 0.109375 1;0 0.125 1;0 0.140625 1;0 0.15625 1;0 0.171875 1;0 0.1875 1;0 0.203125 1;0 0.21875 1;0 0.234375 1;0 0.25 1;0 0.265625 1;0 0.28125 1;0 0.296875 1;0 0.3125 1;0 0.328125 1;0 0.34375 1;0 0.359375 1;0 0.375 1;0 0.390625 1;0 0.40625 1;0 0.421875 1;0 0.4375 1;0 0.453125 1;0 0.46875 1;0 0.484375 1;0 0.5 1;0 0.515625 1;0 0.53125 1;0 0.546875 1;0 0.5625 1;0 0.578125 1;0 0.59375 1;0 0.609375 1;0 0.625 1;0 0.640625 1;0 0.65625 1;0 0.671875 1;0 0.6875 1;0 0.703125 1;0 0.71875 1;0 0.734375 1;0 0.75 1;0 0.765625 1;0 0.78125 1;0 0.796875 1;0 0.8125 1;0 0.828125 1;0 0.84375 1;0 0.859375 1;0 0.875 1;0 0.890625 1;0 0.90625 1;0 0.921875 1;0 0.9375 1;0 0.953125 1;0 0.96875 1;0 0.984375 1;0 1 1;0.015625 1 0.984375;0.03125 1 0.96875;0.046875 1 0.953125;0.0625 1 0.9375;0.078125 1 0.921875;0.09375 1 0.90625;0.109375 1 0.890625;0.125 1 0.875;0.140625 1 0.859375;0.15625 1 0.84375;0.171875 1 0.828125;0.1875 1 0.8125;0.203125 1 0.796875;0.21875 1 0.78125;0.234375 1 0.765625;0.25 1 0.75;0.265625 1 0.734375;0.28125 1 0.71875;0.296875 1 0.703125;0.3125 1 0.6875;0.328125 1 0.671875;0.34375 1 0.65625;0.359375 1 0.640625;0.375 1 0.625;0.390625 1 0.609375;0.40625 1 0.59375;0.421875 1 0.578125;0.4375 1 0.5625;0.453125 1 0.546875;0.46875 1 0.53125;0.484375 1 0.515625;0.5 1 0.5;0.515625 1 0.484375;0.53125 1 0.46875;0.546875 1 0.453125;0.5625 1 0.4375;0.578125 1 0.421875;0.59375 1 0.40625;0.609375 1 0.390625;0.625 1 0.375;0.640625 1 0.359375;0.65625 1 0.34375;0.671875 1 0.328125;0.6875 1 0.3125;0.703125 1 0.296875;0.71875 1 0.28125;0.734375 1 0.265625;0.75 1 0.25;0.765625 1 0.234375;0.78125 1 0.21875;0.796875 1 0.203125;0.8125 1 0.1875;0.828125 1 0.171875;0.84375 1 0.15625;0.859375 1 0.140625;0.875 1 0.125;0.890625 1 0.109375;0.90625 1 0.09375;0.921875 1 0.078125;0.9375 1 0.0625;0.953125 1 0.046875;0.96875 1 0.03125;0.984375 1 0.015625;1 1 0;1 0.984375 0;1 0.96875 0;1 0.953125 0;1 0.9375 0;1 0.921875 0;1 0.90625 0;1 0.890625 0;1 0.875 0;1 0.859375 0;1 0.84375 0;1 0.828125 0;1 0.8125 0;1 0.796875 0;1 0.78125 0;1 0.765625 0;1 0.75 0;1 0.734375 0;1 0.71875 0;1 0.703125 0;1 0.6875 0;1 0.671875 0;1 0.65625 0;1 0.640625 0;1 0.625 0;1 0.609375 0;1 0.59375 0;1 0.578125 0;1 0.5625 0;1 0.546875 0;1 0.53125 0;1 0.515625 0;1 0.5 0;1 0.484375 0;1 0.46875 0;1 0.453125 0;1 0.4375 0;1 0.421875 0;1 0.40625 0;1 0.390625 0;1 0.375 0;1 0.359375 0;1 0.34375 0;1 0.328125 0;1 0.3125 0;1 0.296875 0;1 0.28125 0;1 0.265625 0;1 0.25 0;1 0.234375 0;1 0.21875 0;1 0.203125 0;1 0.1875 0;1 0.171875 0;1 0.15625 0;1 0.140625 0;1 0.125 0;1 0.109375 0;1 0.09375 0;1 0.078125 0;1 0.0625 0;1 0.046875 0;1 0.03125 0;1 0.015625 0;1 0 0;0.984375 0 0;0.96875 0 0;0.953125 0 0;0.9375 0 0;0.921875 0 0;0.90625 0 0;0.890625 0 0;0.875 0 0;0.859375 0 0;0.84375 0 0;0.828125 0 0;0.8125 0 0;0.796875 0 0;0.78125 0 0;0.765625 0 0;0.75 0 0;0.734375 0 0;0.71875 0 0;0.703125 0 0;0.6875 0 0;0.671875 0 0;0.65625 0 0;0.640625 0 0;0.625 0 0;0.609375 0 0;0.59375 0 0;0.578125 0 0;0.5625 0 0;0.546875 0 0;0.53125 0 0;0.515625 0 0;0.5 0 0]);
-        ax(1) = axes('Position',[0.11 0.6 0.3 0.35]);
+f = myFigure('Thesis Figure');
+clf;
+    colormap(ColorMaps.whiteJet(1024))
+	%colormap([0 0 0.0;0 0 0.53125;0 0 0.546875;0 0 0.5625;0 0 0.578125;0 0 0.59375;0 0 0.609375;0 0 0.625;0 0 0.640625;0 0 0.65625;0 0 0.671875;0 0 0.6875;0 0 0.703125;0 0 0.71875;0 0 0.734375;0 0 0.75;0 0 0.765625;0 0 0.78125;0 0 0.796875;0 0 0.8125;0 0 0.828125;0 0 0.84375;0 0 0.859375;0 0 0.875;0 0 0.890625;0 0 0.90625;0 0 0.921875;0 0 0.9375;0 0 0.953125;0 0 0.96875;0 0 0.984375;0 0 1;0 0.015625 1;0 0.03125 1;0 0.046875 1;0 0.0625 1;0 0.078125 1;0 0.09375 1;0 0.109375 1;0 0.125 1;0 0.140625 1;0 0.15625 1;0 0.171875 1;0 0.1875 1;0 0.203125 1;0 0.21875 1;0 0.234375 1;0 0.25 1;0 0.265625 1;0 0.28125 1;0 0.296875 1;0 0.3125 1;0 0.328125 1;0 0.34375 1;0 0.359375 1;0 0.375 1;0 0.390625 1;0 0.40625 1;0 0.421875 1;0 0.4375 1;0 0.453125 1;0 0.46875 1;0 0.484375 1;0 0.5 1;0 0.515625 1;0 0.53125 1;0 0.546875 1;0 0.5625 1;0 0.578125 1;0 0.59375 1;0 0.609375 1;0 0.625 1;0 0.640625 1;0 0.65625 1;0 0.671875 1;0 0.6875 1;0 0.703125 1;0 0.71875 1;0 0.734375 1;0 0.75 1;0 0.765625 1;0 0.78125 1;0 0.796875 1;0 0.8125 1;0 0.828125 1;0 0.84375 1;0 0.859375 1;0 0.875 1;0 0.890625 1;0 0.90625 1;0 0.921875 1;0 0.9375 1;0 0.953125 1;0 0.96875 1;0 0.984375 1;0 1 1;0.015625 1 0.984375;0.03125 1 0.96875;0.046875 1 0.953125;0.0625 1 0.9375;0.078125 1 0.921875;0.09375 1 0.90625;0.109375 1 0.890625;0.125 1 0.875;0.140625 1 0.859375;0.15625 1 0.84375;0.171875 1 0.828125;0.1875 1 0.8125;0.203125 1 0.796875;0.21875 1 0.78125;0.234375 1 0.765625;0.25 1 0.75;0.265625 1 0.734375;0.28125 1 0.71875;0.296875 1 0.703125;0.3125 1 0.6875;0.328125 1 0.671875;0.34375 1 0.65625;0.359375 1 0.640625;0.375 1 0.625;0.390625 1 0.609375;0.40625 1 0.59375;0.421875 1 0.578125;0.4375 1 0.5625;0.453125 1 0.546875;0.46875 1 0.53125;0.484375 1 0.515625;0.5 1 0.5;0.515625 1 0.484375;0.53125 1 0.46875;0.546875 1 0.453125;0.5625 1 0.4375;0.578125 1 0.421875;0.59375 1 0.40625;0.609375 1 0.390625;0.625 1 0.375;0.640625 1 0.359375;0.65625 1 0.34375;0.671875 1 0.328125;0.6875 1 0.3125;0.703125 1 0.296875;0.71875 1 0.28125;0.734375 1 0.265625;0.75 1 0.25;0.765625 1 0.234375;0.78125 1 0.21875;0.796875 1 0.203125;0.8125 1 0.1875;0.828125 1 0.171875;0.84375 1 0.15625;0.859375 1 0.140625;0.875 1 0.125;0.890625 1 0.109375;0.90625 1 0.09375;0.921875 1 0.078125;0.9375 1 0.0625;0.953125 1 0.046875;0.96875 1 0.03125;0.984375 1 0.015625;1 1 0;1 0.984375 0;1 0.96875 0;1 0.953125 0;1 0.9375 0;1 0.921875 0;1 0.90625 0;1 0.890625 0;1 0.875 0;1 0.859375 0;1 0.84375 0;1 0.828125 0;1 0.8125 0;1 0.796875 0;1 0.78125 0;1 0.765625 0;1 0.75 0;1 0.734375 0;1 0.71875 0;1 0.703125 0;1 0.6875 0;1 0.671875 0;1 0.65625 0;1 0.640625 0;1 0.625 0;1 0.609375 0;1 0.59375 0;1 0.578125 0;1 0.5625 0;1 0.546875 0;1 0.53125 0;1 0.515625 0;1 0.5 0;1 0.484375 0;1 0.46875 0;1 0.453125 0;1 0.4375 0;1 0.421875 0;1 0.40625 0;1 0.390625 0;1 0.375 0;1 0.359375 0;1 0.34375 0;1 0.328125 0;1 0.3125 0;1 0.296875 0;1 0.28125 0;1 0.265625 0;1 0.25 0;1 0.234375 0;1 0.21875 0;1 0.203125 0;1 0.1875 0;1 0.171875 0;1 0.15625 0;1 0.140625 0;1 0.125 0;1 0.109375 0;1 0.09375 0;1 0.078125 0;1 0.0625 0;1 0.046875 0;1 0.03125 0;1 0.015625 0;1 0 0;0.984375 0 0;0.96875 0 0;0.953125 0 0;0.9375 0 0;0.921875 0 0;0.90625 0 0;0.890625 0 0;0.875 0 0;0.859375 0 0;0.84375 0 0;0.828125 0 0;0.8125 0 0;0.796875 0 0;0.78125 0 0;0.765625 0 0;0.75 0 0;0.734375 0 0;0.71875 0 0;0.703125 0 0;0.6875 0 0;0.671875 0 0;0.65625 0 0;0.640625 0 0;0.625 0 0;0.609375 0 0;0.59375 0 0;0.578125 0 0;0.5625 0 0;0.546875 0 0;0.53125 0 0;0.515625 0 0;0.5 0 0]);
+        ax(1) = axes('Position',[0.075 0.6 0.35 0.35]);
         frog.recorded.wavelengthdomain.wavelength = c./(frequency + dataTransfer.finalFrog.frequencyOffset);
         frog.recorded.wavelengthdomain.delay = tau;
         frog.recorded.wavelengthdomain.intensity = IFrog .* repmat(c./frog.recorded.wavelengthdomain.wavelength'.^2, 1, length(frog.recorded.wavelengthdomain.delay ));
@@ -386,16 +384,16 @@ myfigure('Optics Letter Figure');
         %originalTracePlot = pcolor(frog.recorded.wavelengthdomain.delay * 1e15, frog.recorded.wavelengthdomain.wavelength * 1e9,  frog.recorded.wavelengthdomain.intensity  );
         shading flat;
 		%originalTracePlot = imagesc(tau * 1e15, (frequency + dataTransfer.finalFrog.frequencyOffset)* 2*pi*1e-15,IFrog, [0 1]);
-        xlabel('Delay (fs)', 'position', [0 240]);
+        xlabel('Delay (fs)');
            
         ylabel('Wavelength (nm)');
-        %title('Measured FROG Trace');
-        set(gca, 'TickDir', 'out');
-        set(ax(1) ,'box','off','color','none')
-        text(0.05,0.9,'a)', 'units', 'normalized', 'color', [1 1 1]);
-        colorbar([0.42 0.6 0.02 0.35]);
+        title('Measured FROG Trace');
+        set(gca, 'TickDir', 'in');
+        set(ax(1) ,'box','on','color','none')
+        cb = colorbar;
+        cb.Position = ([0.925 0.6 0.02 0.35]);
 
-        ax(2) = axes('Position',[0.6 0.6 0.3 0.35]);
+        ax(2) = axes('Position',[0.575 0.6 0.35 0.35]);
         
         frog.retrieved.wavelengthdomain.wavelength = c./(frequency + dataTransfer.finalFrog.frequencyOffset);
         frog.retrieved.wavelengthdomain.delay = tau;
@@ -413,32 +411,30 @@ myfigure('Optics Letter Figure');
         frog.retrieved.evenlyspacedWavelengthdomain.intensity = interp2(frog.retrieved.wavelengthdomain.delay, frog.retrieved.wavelengthdomain.wavelength, frog.retrieved.wavelengthdomain.intensity, Xq, Yq);
 		retrievedTracePlot = imagesc(frog.retrieved.evenlyspacedWavelengthdomain.delay * 1e15, frog.retrieved.evenlyspacedWavelengthdomain.wavelength * 1e9,  frog.retrieved.evenlyspacedWavelengthdomain.intensity  );
         set(gca,'ydir','normal');
-        xlabel('Delay (fs)', 'position', [0 240]);
+        xlabel('Delay (fs)');
         ylabel('Wavelength (nm)');
-        %title('Retrieved FROG Trace');
+        title('Retrieved FROG Trace');
 %        colorbar([0.9 0.6 0.02 0.35]);
 %         s1Pos = get(ax(1),'position');
 %         s2Pos = get(ax(2),'position');
 %         s2Pos(3:4) = [s1Pos(3:4)];
 %         set(ax(2),'position',s2Pos);     
-        set(gca, 'TickDir', 'out');
+        set(gca, 'TickDir', 'in');
         linkaxes([ax(1) ax(2)]);
         xlim([-65 65]);
         ylim([275 485 ]);
         set(ax(1),  'YTick',-300:50:450)
         set(ax(2),  'YTick',-300:50:450)
-        set(ax(2) ,'box','off','color','none')
-        text(0.05,0.9,'b)', 'units', 'normalized', 'color', [1 1 1]);
+        set(ax(2) ,'box','on','color','none')
 
     
-        ax(3) = axes('Position',[0.11 0.13 0.3 0.35]);
+        ax(3) = axes('Position',[0.075 0.13 0.35 0.35]);
         axes('Position',get(gca,'Position'),'box','on','xtick',[],'ytick',[]);
         axes(ax(3))
 
 
 		[temporalPlot, temporalPlot1, temporalPlot2] = plotyy(t * 1e15, abs(Efield).^2, t * 1e15, angleEfield);
-        set(temporalPlot(1), 'FontSize', 6, 'ycolor', 'black');
-        set(temporalPlot(2), 'FontSize', 6, 'ycolor', 'black');
+
 		xlabel('Time (fs)')
         
         ylabel('Intensity (arb. units)')
@@ -453,17 +449,16 @@ myfigure('Optics Letter Figure');
         set(temporalPlot(2), 'YTick',-8:4:8)
 		%hold(temporalPlot(1), 'on')
 		hold(temporalPlot(2), 'on')
-        set(temporalPlot1,'Color','black','LineWidth',0.7,'LineStyle','-')
-		set(temporalPlot2,'Color','black','LineWidth',0.5,'LineStyle','--')
-        %title('Retrieved Temporal Shape');
+        set(temporalPlot1,'LineStyle','-')
+		set(temporalPlot2,'LineStyle','--')
+        title('Retrieved Temporal Shape');
         hold off;
         set(temporalPlot(1), 'TickDir', 'out');
         set(temporalPlot(2), 'TickDir', 'out');
         set(ax(3),'box','off','color','none')
-        text(0.05,0.9,'c)', 'units', 'normalized', 'color', [0 0 0 ]);
 
         
-        ax(4) = axes('Position',[0.6 0.13 0.3 0.35]);
+        ax(4) = axes('Position',[0.575 0.13 0.35 0.35]);
         axes('Position',get(gca,'Position'),'box','on','xtick',[],'ytick',[]);
         axes(ax(4))
 
@@ -482,8 +477,6 @@ myfigure('Optics Letter Figure');
     
     
 		[spectralPlot, spectralPlot1, spectralPlot2] = plotyy(frog.wavelengthdomain.l*1e9,frog.wavelengthdomain.I ,frog.wavelengthdomain.l*1e9, frog.wavelengthdomain.phase);
-        set(spectralPlot(1), 'FontSize', 6, 'ycolor', 'black');
-        set(spectralPlot(2), 'FontSize', 6, 'ycolor', 'black');
         
         xlabel('Wavelength (nm)') 
         ylabel('Intensity (arb. units)')
@@ -496,12 +489,19 @@ myfigure('Optics Letter Figure');
         set(spectralPlot(2), 'YTick',-3:1:3)
 		
         hold(spectralPlot(1), 'on')
-		spectralPlot3 = plot(spectrumIndependent.wavelengthdomain.wavelength * 1e9,spectrumIndependent.wavelengthdomain.intensity * 1.4024e-7 ./ trapz(spectrumIndependent.wavelengthdomain.wavelength,spectrumIndependent.wavelengthdomain.intensity), 'r', 'Parent', spectralPlot(1));
-        set(spectralPlot1,'Color','black','LineWidth',0.7)
-		set(spectralPlot2,'Color','black','LineWidth',0.5,'LineStyle','--')
-		set(spectralPlot3,'Color','red','LineWidth',0.5)
-        %title('Retrieved Spectral Shape');
-        %h_legend = legend('Retrieved Int.', 'Measured Int.', 'Retrieved Phase', 'Location', 'NorthWest');
+		spectralPlot3 = plot(spectrumIndependent.wavelengthdomain.wavelength * 1e9,spectrumIndependent.wavelengthdomain.intensity * 1.4024e-7 ./ trapz(spectrumIndependent.wavelengthdomain.wavelength,spectrumIndependent.wavelengthdomain.intensity), 'Parent', spectralPlot(1));
+        %set(spectralPlot1,'Color','black')
+		set(spectralPlot2,'LineStyle','--')
+        set(spectralPlot3,'Color',Colors.loaGreen)
+        title('Retrieved Spectral Shape');
+        [h_legend hO] = legend('Retr. Int.', 'Meas. Int.', 'Retr. Phase', 'Location', 'NorthWest');
+        hO(1).Position(1) = hO(1).Position(1) -0.15;
+        hO(2).Position(1) = hO(2).Position(1) -0.15;
+        hO(3).Position(1) = hO(3).Position(1) -0.15;
+        hO(4).XData(2) = hO(4).XData(2)  * 0.6;
+        hO(6).XData(2) = hO(6).XData(2)  * 0.6;
+        hO(8).XData(2) = hO(8).XData(2)  * 0.6;
+        h_legend.Box = 'off';
         %set(h_legend,'FontSize',10);
         
         
@@ -510,10 +510,9 @@ myfigure('Optics Letter Figure');
         set(spectralPlot(1), 'TickDir', 'out');
         set(spectralPlot(2), 'TickDir', 'out');
         set(ax(4),'box','off','color','none')
-        text(0.05,0.9,'d)', 'units', 'normalized', 'color', [0 0 0 ]);
 
         
         
-        set(myfigure('Optics Letter Figure'), 'PaperSize', [8.4 8.4*3/4] , 'PaperPosition', [0 0 8.4 8.4*3/4] ); 
-        %saveFigure(gcf, '2013-12-11--17-46-29 001j Retrieved Optics Letters');
+        set(f, 'PaperSize', [20 15] , 'PaperPosition', [0 0 20 15] ); 
+        %saveFigure(f, '2013-12-11--17-46-29 001j Retrieved Thesis');
 end
